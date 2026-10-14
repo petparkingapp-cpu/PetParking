@@ -392,16 +392,157 @@
   </div>
 
   <main>
-    <!-- SECCIÓN APARCAR -->
-    <div id="tab-aparcar" class="tab-pane active">
-      <div class="section-title">Aparcamientos Recomendados</div>
+   <!-- SECCIÓN TIENDAS Y CENTROS COMERCIALES -->
+    <div id="tab-tiendas" class="tab-pane active">
+      <div class="título de la sección">Centros Comerciales y Tiendas Pet-Friendly</div>
       
       <div class="sub-filters">
-        <div class="sub-filter-pill" id="filter-sombra" onclick="toggleSubFilter('sombra')">🌳 Sombra</div>
-        <div class="sub-filter-pill" id="filter-fuente" onclick="toggleSubFilter('fuente')">💧 Fuente</div>
-      </div>
+    <div class="sub-filter-pill" id="filter-parking" onclick="toggleSubFilter('parking')">🅿️ Parking Cubierto</div>
+    <div class="sub-filter-pill" id="filter-tiendas" onclick="toggleSubFilter('tiendas')">🛍️ Acceso a Tiendas</div>
+</div>
 
       <div id="aparcarList">
+        <!-- Tarjeta Larios Centro -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Larios Centro</h3>
+            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Pet Friendly</span>
+        </div>
+        <div class="location">📍 Av. de la Aurora, 25, Málaga</div>
+        <div class="card-desc">
+            Permite el acceso a perros en galerías y en la mayoría de sus tiendas. Cuenta con amplio parking subterráneo cubierto.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Cubierto</span>
+            <span class="tag traffic">🛍️ Acceso a Tiendas</span>
+        </div>
+        <div class="card-footer">
+            <span>Climatizado · Zona comercial</span>
+            <a href="https://maps.google.com/?cid=155848102682662243" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta Plaza Mayor -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Plaza Mayor</h3>
+            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Al Aire Libre</span>
+        </div>
+        <div class="location">📍 C. Alfonso Ponce de León, Málaga</div>
+        <div class="card-desc">
+            Recinto al aire libre ideal para pasear con perro y entrar a multitud de tiendas. Dispone de parking exterior enorme y gratuito.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Gratis</span>
+            <span class="tag traffic">🌤️ Espacio Abierto</span>
+        </div>
+        <div class="card-footer">
+            <span>Zona comercial amplia</span>
+            <a href="https://maps.app.goo.gl/bG6qs6juE7Wbg9oD8" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta CC Rosaleda -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Centro Comercial Rosaleda</h3>
+            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+        </div>
+        <div class="location">📍 Av. de la Aurora / Martiricos, Málaga</div>
+        <div class="card-desc">
+            Permite pasear con perro atado por sus pasillos comunes. Cuenta con un parking subterráneo amplio y gratuito.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Subterráneo Gratis</span>
+            <span class="tag traffic">🐾 Zonas Comunes</span>
+        </div>
+        <div class="card-footer">
+            <span>Ideal para días de calor/lluvia</span>
+            <a href="https://maps.app.goo.gl/wR9S8aX5vP" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta Leroy Merlin -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Leroy Merlin</h3>
+            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        </div>
+        <div class="location">📍 Málaga (Málaga Nostrum / Rosaleda)</div>
+        <div class="card-desc">
+            Permiten la entrada de perros en toda la tienda. Disponen de parking gratuito muy amplio tanto exterior como subterráneo.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Amplio</span>
+            <span class="tag traffic">🛒 Acceso Total</span>
+        </div>
+        <div class="card-footer">
+            <span>Bricolaje y hogar</span>
+            <a href="https://maps.google.com/?q=Leroy+Merlin+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta Decathlon -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Decathlon</h3>
+            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        </div>
+        <div class="location">📍 Málaga (Guadalmar / C.C. Rosaleda)</div>
+        <div class="card-desc">
+            Acceso totalmente permitido con perro atado para hacer tus compras deportivas. Fácil aparcamiento gratuito en la puerta.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Sin Coste</span>
+            <span class="tag traffic">⚽ Acceso Deportivo</span>
+        </div>
+        <div class="card-footer">
+            <span>Grandes superficies</span>
+            <a href="https://maps.google.com/?q=Decathlon+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta Tiendanimal -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Tiendanimal</h3>
+            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        </div>
+        <div class="location">📍 Málaga Nostrum / Plaza Mayor</div>
+        <div class="card-desc">
+            Especialistas en mascotas, tu perro es más que bienvenido dentro del recinto. Tienen parking propio o de parque comercial directo en la puerta.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking en Puerta</span>
+            <span class="tag traffic">🐶 Tienda Especialista</span>
+        </div>
+        <div class="card-footer">
+            <span>Todo para tu mascota</span>
+            <a href="https://maps.google.com/?q=Tiendanimal+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        <!-- Tarjeta Obramat -->
+    <div class="card aparcar-card" data-parking="true" data-tiendas="true">
+        <div class="card-header">
+            <h3>Obramat (antiguo Bricomart)</h3>
+            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        </div>
+        <div class="location">📍 Parque Comercial Málaga Nostrum</div>
+        <div class="card-desc">
+            Permiten entrar con mascota a sus almacenes de construcción y bricolaje. Parking exterior enorme y de muy fácil acceso.
+        </div>
+        <div class="tags-row">
+            <span class="tag">🅿️ Parking Exterior Enorme</span>
+            <span class="tag traffic">🔨 Almacén Amplio</span>
+        </div>
+        <div class="card-footer">
+            <span>Construcción y reformas</span>
+            <a href="https://maps.google.com/?q=Obramat+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+
+        
         <!-- Tarjeta 1 -->
         <div class="card aparcar-card" data-sombra="true" data-fuente="true">
           <div class="card-header">
