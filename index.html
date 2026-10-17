@@ -1106,11 +1106,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
     function openAddTab() {
+    // Busca el botón de la pestaña de añadir de forma automática y lo pulsa
     const tabAdd = document.getElementById('btn-tab-add');
     if (tabAdd) {
         tabAdd.click();
     } else {
-        switchTab('add', null);
+        // Si no encuentra el ID, ejecuta la función de cambio de pestaña directamente
+        switchTab('add', document.querySelector('.filter-btn.add') || document.body);
     }
 }
 </script>
