@@ -1105,16 +1105,29 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
-    function openAddTab() {
-    // Busca el botón de la pestaña de añadir de forma automática y lo pulsa
-    const tabAdd = document.getElementById('btn-tab-add');
-    if (tabAdd) {
-        tabAdd.click();
-    } else {
-        // Si no encuentra el ID, ejecuta la función de cambio de pestaña directamente
-        switchTab('add', document.querySelector('.filter-btn.add') || document.body);
+    function switchTab(tabName, btnElement) {
+        // Ocultar todas las pestañas (incluyendo tab-tiendas y tab-add)
+        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        
+        // Quitar la clase active de todos los botones superiores de filtro
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.className = btn.className.replace(/active \w+/g, '').trim();
+            btn.classList.remove('active');
+        });
+
+        // Mostrar la pestaña seleccionada
+        const targetTab = document.getElementById('tab-' + tabName);
+        if (targetTab) {
+            targetTab.classList.add('active');
+        }
+
+        // Activar el botón correspondiente si se le pasa
+        if (btnElement) {
+            btnElement.classList.add('active', tabName);
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-}
 </script>
 </body>
 </html>
