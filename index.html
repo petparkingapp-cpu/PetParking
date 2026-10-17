@@ -28,7 +28,12 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-
+.header-tagline {
+    color: #718096;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+}
     .brand {
       display: flex;
       align-items: center;
@@ -398,16 +403,22 @@
 </head>
 <body>
 
-  <header>
-    <div class="brand">
-      <div class="brand-icon">🐾</div>
-      <div>
-        <h1>PetParking</h1>
-        <span>MÁLAGA & COSTA</span>
-      </div>
+  <header class="main-header">
+    <div class="header-logo">
+        <span class="logo-icon">🐾</span>
+        <div>
+            <h1>PetParking</h1>
+            <span class="sub-logo">MÁLAGA & COSTA</span>
+        </div>
     </div>
-    <button class="btn-add-header" onclick="switchTab('add', document.getElementById('btn-tab-add'))">+ Añadir</button>
-  </header>
+
+    <!-- Texto/Eslogan central -->
+    <div class="header-tagline">
+        Tu guía pet-friendly de aparcamiento y lugares en Málaga y la Costa del Sol 🐾
+    </div>
+
+    <button class="btn-add">+ Añadir</button>
+</header>
 
   <div class="search-container">
     <div class="search-box">
