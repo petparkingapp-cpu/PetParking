@@ -1023,6 +1023,7 @@
   </main>
 
   <script>
+    <script>
     function switchTab(tabName, btnElement) {
         document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1055,6 +1056,34 @@
             document.getElementById("successMsg").style.display = "none";
         }, 5000);
     }
+
+    // Filtrado de subcategorías para tiendas y parkings
+    document.querySelectorAll('.btn-subfiltro').forEach(button => {
+        button.addEventListener('click', function() {
+            document.querySelectorAll('.btn-subfiltro').forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            const filter = this.getAttribute('data-filter');
+            const cards = document.querySelectorAll('#aparcarList .card');
+
+            cards.forEach(card => {
+                if (filter === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const isCubierto = card.getAttribute('data-cubierto') === 'true';
+                    const isGratis = card.getAttribute('data-gratis') === 'true';
+
+                    if (filter === 'cubierto' && isCubierto) {
+                        card.style.display = 'block';
+                    } else if (filter === 'gratis' && isGratis) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        });
+    });
   </script>
 </body>
 </html>
