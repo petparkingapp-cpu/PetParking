@@ -1070,31 +1070,33 @@
 
 <script>
     function switchTab(tabName, btnElement) {
+        // Ocultar todas las pestañas
         document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+        
+        // Quitar la clase active de todos los botones de filtro superior
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.className = btn.className.replace(/active \w+/g, '').trim();
             btn.classList.remove('active');
         });
 
+        // Mostrar la pestaña a la que queremos ir
         const targetTab = document.getElementById('tab-' + tabName);
         if (targetTab) {
             targetTab.classList.add('active');
         }
 
+        // Marcar el botón como activo
         if (btnElement) {
             btnElement.classList.add('active', tabName);
         }
 
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        // Mostrar u ocultar la barra de subfiltros blancos solo si estamos en tiendas
+        const subfiltrosRow = document.querySelector('.subfiltros-row');
+        if (subfiltrosRow) {
+            subfiltrosRow.style.display = (tabName === 'tiendas') ? 'flex' : 'none';
+        }
 
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        document.getElementById("addSiteForm").reset();
-        document.getElementById("successMsg").style.display = "block";
-        setTimeout(() => {
-            document.getElementById("successMsg").style.display = "none";
-        }, 5000);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 </body>
