@@ -1007,126 +1007,94 @@
     </div>
 
     <!-- PESTAÑA AÑADIR SITIO -->
-    <div id="tab-add" class="tab-pane">
-      <div class="section-title">Recomendar un Sitio</div>
-      <div class="form-container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Parque Canino María Moliner</h3>
+            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
+        </div>
+        <div class="location">📍 Calle María Moliner, Málaga</div>
+        <div class="card-desc">Parque canino con terreno de tierra. Dispone de bancos para sentarse y fuente de agua en el exterior del recinto.</div>
+        <div class="card-footer">
+            <span>Suelo de tierra · Fuente fuera</span>
+            <a href="https://www.google.com/maps/place/Parque+Canino+Maria+Moliner" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+        </div>
+    </div>
+  </div>
+
+  <!-- PESTAÑA AÑADIR SITIO -->
+  <div id="tab-add" class="tab-pane">
+     <div class="section-title">Recomendar un Sitio</div>
+     <div class="form-container">
         <h2 style="margin-bottom: 10px; color: #2d3748; font-size: 1.2rem;">➕ Añade o Recomienda un Sitio</h2>
         <p style="color: #718096; font-size: 0.9rem; margin-bottom: 20px;">
-          ¿Conoces algún bar, hotel, zona de sombra o cuidador pet-friendly en Málaga? ¡Envíanoslo y lo revisaremos para incluirlo!
+           ¿Conoces algún bar, hotel, zona de sombra o cuidador pet-friendly en Málaga? ¡Envíanoslo y lo revisaremos para incluirlo!
         </p>
 
         <form id="addSiteForm" onsubmit="handleFormSubmit(event)">
-          <div class="form-group">
-            <label for="category">Categoría:</label>
-            <select id="category" required>
-              <option value="">Selecciona una opción...</option>
-              <option value="Terrazas y Bares">🍹 Bar / Terraza / Cafetería</option>
-              <option value="Hoteles">🏨 Hotel / Alojamiento Pet-Friendly</option>
-              <option value="Parking / Sombras">🅿️ Parking / Zona con Sombra</option>
-              <option value="Cuidadores">🏡 Cuidador / Guardería / Residencia</option>
-              <option value="Playas">🏖️ Playa Canina</option>
-            </select>
-          </div>
+           <div class="form-group">
+              <label for="category">Categoría:</label>
+              <select id="category" required>
+                 <option value="">Selecciona una opción...</option>
+                 <option value="Terrazas y Bares">🍹 Bar / Terraza / Cafetería</option>
+                 <option value="Hoteles">🏨 Hotel / Alojamiento Pet-Friendly</option>
+                 <option value="Parking / Sombras">🅿️ Parking / Zona con Sombra</option>
+                 <option value="Cuidadores">🏡 Cuidador / Guardería / Residencia</option>
+                 <option value="Playas">🏖️ Playa Canina</option>
+              </select>
+           </div>
 
-          <div class="form-group">
-            <label for="siteName">Nombre del Lugar / Servicio:</label>
-            <input type="text" id="siteName" placeholder="Ej. Bar El Sol, Hotel Picasso..." required>
-          </div>
+           <div class="form-group">
+              <label for="siteName">Nombre del Lugar / Servicio:</label>
+              <input type="text" id="siteName" placeholder="Ej. Bar El Sol, Hotel Picasso..." required>
+           </div>
 
-          <div class="form-group">
-            <label for="siteZone">Zona / Barrio en Málaga:</label>
-            <input type="text" id="siteZone" placeholder="Ej. Teatinos, Centro, Huelin, Pedregalejo..." required>
-          </div>
+           <div class="form-group">
+              <label for="siteZone">Zona / Barrio en Málaga:</label>
+              <input type="text" id="siteZone" placeholder="Ej. Teatinos, Centro, Huelin, Pedregalejo..." required>
+           </div>
 
-          <div class="form-group">
-            <label for="siteDetails">Detalles importantes (Normas, si ponen agua, sombra, etc.):</label>
-            <textarea id="siteDetails" rows="3" placeholder="Ej. Admiten perros en terraza e interior, les ponen cuenco de agua..." required></textarea>
-          </div>
+           <div class="form-group">
+              <label for="siteDetails">Detalles importantes (Normas, si ponen agua, sombra, etc.):</label>
+              <textarea id="siteDetails" rows="3" placeholder="Ej. Admiten perros en terraza e interior, les ponen cuenco de agua..." required></textarea>
+           </div>
 
-          <button type="submit" class="submit-btn">Enviar Recomendación</button>
+           <button type="submit" class="submit-btn">Enviar Recomendación</button>
         </form>
 
         <div id="successMsg" class="success-msg">
-          ¡Gracias por tu aporte! 🎉 Revisaremos la recomendación para añadirla muy pronto a la web.
+           ¡Gracias por tu aporte! 🎉 Revisaremos la recomendación para añadirla muy pronto a la web.
         </div>
-      </div>
-    </div>
-  </main>
+     </div>
+  </div>
+</main>
 
-  <script>
-    (function() {
-        const filterButtons = document.querySelectorAll('.btn-subfiltro');
-        const cards = document.querySelectorAll('.aparcar-card');
-
-        if (filterButtons.length === 0 || cards.length === 0) return;
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Cambiar clase activa en los botones
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-
-                const filter = button.getAttribute('data-filter');
-
-                cards.forEach(card => {
-                    const cubierto = card.getAttribute('data-cubierto');
-                    const gratis = card.getAttribute('data-gratis');
-
-                    if (filter === 'all') {
-                        card.style.display = ''; // Respeta el CSS original
-                    } else if (filter === 'cubierto') {
-                        if (cubierto === 'true') {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    } else if (filter === 'gratis') {
-                        if (gratis === 'true') {
-                            card.style.display = '';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                      
-                    }
-                });
-            });
-        });
-    })();
-    });
-})();
-
-// Ponlo aquí fuera, limpio al final
-document.addEventListener("DOMContentLoaded", function() {
-    const addBtn = document.getElementById('header-add-btn');
-    if (addBtn) {
-        addBtn.addEventListener('click', function() {
-            const targetTab = document.getElementById('btn-tab-add');
-            if (targetTab) targetTab.click();
-        });
-    }
-});
+<script>
     function switchTab(tabName, btnElement) {
-        // Ocultar todas las pestañas (incluyendo tab-tiendas y tab-add)
         document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-        
-        // Quitar la clase active de todos los botones superiores de filtro
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.className = btn.className.replace(/active \w+/g, '').trim();
             btn.classList.remove('active');
         });
 
-        // Mostrar la pestaña seleccionada
         const targetTab = document.getElementById('tab-' + tabName);
         if (targetTab) {
             targetTab.classList.add('active');
         }
 
-        // Activar el botón correspondiente si se le pasa
         if (btnElement) {
             btnElement.classList.add('active', tabName);
         }
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        document.getElementById("addSiteForm").reset();
+        document.getElementById("successMsg").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("successMsg").style.display = "none";
+        }, 5000);
     }
 </script>
 </body>
