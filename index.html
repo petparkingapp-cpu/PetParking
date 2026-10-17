@@ -431,7 +431,7 @@
         Tu guía pet-friendly de aparcamiento y lugares en Málaga y la Costa del Sol 🐾
     </div>
 
-    <button class="btn-add" onclick="switchTab('add', document.getElementById('btn-tab-add'))">+ Añadir</button>
+  <button class="btn-add" id="header-add-btn" onclick="openAddTab()">+ Añadir</button>
 </header>
 
   <div class="search-container">
@@ -1105,6 +1105,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 });
+    function openAddTab() {
+    const tabAdd = document.getElementById('btn-tab-add');
+    if (tabAdd) {
+        tabAdd.click();
+    } else {
+        switchTab('add', null);
+    }
+}
 </script>
 </body>
 </html>
