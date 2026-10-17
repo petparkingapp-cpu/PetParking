@@ -1029,100 +1029,43 @@
   </main>
 
   <script>
-    let activeSubFilters = {
-      sombra: false,
-      fuente: false
-    };
+    (function() {
+        const filterButtons = document.querySelectorAll('.btn-subfiltro');
+        const cards = document.querySelectorAll('.aparcar-card');
 
-    function switchTab(tabName, btnElement) {
-      document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.className = btn.className.replace(/active \w+/g, '').trim();
-      });
+        if (filterButtons.length === 0 || cards.length === 0) return;
 
-      document.getElementById('tab-' + tabName).classList.add('active');
-      if (btnElement) {
-        btnElement.classList.add('active', tabName);
-      }
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Cambiar clase activa en los botones
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
 
-    function toggleSubFilter(filterType) {
-      activeSubFilters[filterType] = !activeSubFilters[filterType];
-      const pill = document.getElementById('filter-' + filterType);
-      
-      if (activeSubFilters[filterType]) {
-        pill.classList.add('active');
-      } else {
-        pill.classList.remove('active');
-      }
+                const filter = button.getAttribute('data-filter');
 
-      applyFilters();
-    }
+                cards.forEach(card => {
+                    const cubierto = card.getAttribute('data-cubierto');
+                    const gratis = card.getAttribute('data-gratis');
 
-    function applyFilters() {
-      const cards = document.querySelectorAll('.aparcar-card');
-      
-      cards.forEach(card => {
-        const hasSombra = card.getAttribute('data-sombra') === 'true';
-        const hasFuente = card.getAttribute('data-fuente') === 'true';
-
-        let show = true;
-
-        if (activeSubFilters.sombra && !hasSombra) show = false;
-        if (activeSubFilters.fuente && !hasFuente) show = false;
-
-        card.style.display = show ? 'block' : 'none';
-      });
-    }
-
-    function filterContent() {
-      const query = document.getElementById('mainSearch').value.toLowerCase();
-      const activeTab = document.querySelector('.tab-pane.active');
-      const cards = activeTab.querySelectorAll('.card');
-
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      document.getElementById("addSiteForm").reset();
-      document.getElementById("successMsg").style.display = "block";
-      setTimeout(() => {
-        document.getElementById("successMsg").style.display = "none";
-      }, 5000);
-    }
-  <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.btn-subfiltro');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            const filter = button.getAttribute('data-filter');
-            const cards = document.querySelectorAll('.aparcar-card');
-
-            cards.forEach(card => {
-                if (filter === 'all') {
-                    card.style.display = 'block';
-                } else if (filter === 'cubierto') {
-                    card.style.display = card.getAttribute('data-cubierto') === 'true' ? 'block' : 'none';
-                } else if (filter === 'gratis') {
-                    card.style.display = card.getAttribute('data-gratis') === 'true' ? 'block' : 'none';
-                }
+                    if (filter === 'all') {
+                        card.style.display = ''; // Respeta el CSS original
+                    } else if (filter === 'cubierto') {
+                        if (cubierto === 'true') {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    } else if (filter === 'gratis') {
+                        if (gratis === 'true') {
+                            card.style.display = '';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
             });
         });
-    });
-});
+    })();
 </script>
 </body>
 </html>
