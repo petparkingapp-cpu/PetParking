@@ -28,12 +28,14 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
-.header-tagline {
-    color: #718096;
-    font-size: 0.95rem;
-    font-weight: 500;
-    text-align: center;
-}
+    
+    .header-tagline {
+      color: #718096;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
     .brand {
       display: flex;
       align-items: center;
@@ -141,7 +143,7 @@
       transition: all 0.2s;
     }
 
-    .filter-btn.active.aparcar { background: #22c55e; color: white; }
+    .filter-btn.active.aparcar, .filter-btn.active.tiendas { background: #22c55e; color: white; }
     .filter-btn.active.playas { background: #319795; color: white; }
     .filter-btn.active.parques { background: #d69e2e; color: white; }
     .filter-btn.active.bares { background: #dd6b20; color: white; }
@@ -164,33 +166,37 @@
       text-transform: uppercase;
     }
 
-    /* SUBFILTROS (Sombra, Fuente) */
-    .sub-filters {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+    /* Estilos para la fila de subfiltros */
+    .subfiltros-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
     }
 
-    .sub-filter-pill {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: white;
-      border: 1px solid #e2e8f0;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #4a5568;
-      cursor: pointer;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
-      transition: all 0.2s;
+    .btn-subfiltro {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    .sub-filter-pill.active {
-      background: #2b6cb0;
-      color: white;
-      border-color: #2b6cb0;
+    .btn-subfiltro:hover {
+        background-color: #f7fafc;
+        border-color: #cbd5e0;
+    }
+
+    .btn-subfiltro.active {
+        background-color: #ebf8ff;
+        color: #2b6cb0;
+        border-color: #90cdf4;
+        font-weight: 600;
     }
 
     /* TARJETAS */
@@ -364,75 +370,23 @@
     .tab-pane.active {
       display: block;
     }
-  <style>
-    /* ... todo tu CSS anterior ... */
-
-    /* Estilos para la fila de subfiltros */
-    .subfiltros-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
-    }
-    
-.btn-add {
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.btn-add:hover {
-    background-color: #16a34a;
-}
-    .btn-subfiltro {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        color: #4a5568;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .btn-subfiltro:hover {
-        background-color: #f7fafc;
-        border-color: #cbd5e0;
-    }
-
-    .btn-subfiltro.active {
-        background-color: #ebf8ff;
-        color: #2b6cb0;
-        border-color: #90cdf4;
-        font-weight: 600;
-    }
-</style>
+  </style>
 </head>
 <body>
 
-  <header class="main-header">
-    <div class="header-logo">
-        <span class="logo-icon">🐾</span>
-        <div>
-            <h1>PetParking</h1>
-            <span class="sub-logo">MÁLAGA & COSTA</span>
-        </div>
+  <header>
+    <div class="brand">
+      <div class="brand-icon">🐾</div>
+      <div>
+        <h1>PetParking</h1>
+        <span>MÁLAGA & COSTA</span>
+      </div>
     </div>
-
-    <!-- Texto/Eslogan central -->
     <div class="header-tagline">
-        Tu guía pet-friendly de aparcamiento y lugares en Málaga y la Costa del Sol 🐾
+      Tu guía pet-friendly de aparcamiento y lugares en Málaga y la Costa del Sol 🐾
     </div>
-
-  <button class="btn-add-header" onclick="switchTab('add', document.getElementById('btn-tab-add'))">+ Añadir</button>
-</header>
+    <button class="btn-add-header" onclick="switchTab('add', document.getElementById('btn-tab-add'))">+ Añadir</button>
+  </header>
 
   <div class="search-container">
     <div class="search-box">
@@ -442,7 +396,7 @@
   </div>
 
   <div class="filter-tabs">
-    <button class="filter-btn active" onclick="switchTab('aparcar', this)">🛍️ Centros Comerciales y Tiendas</button>
+    <button class="filter-btn active tiendas" onclick="switchTab('tiendas', this)">🛍️ Centros Comerciales y Tiendas</button>
     <button class="filter-btn playas" onclick="switchTab('playas', this)">🏖️ Playas</button>
     <button class="filter-btn parques" onclick="switchTab('parques', this)">🐕 Parques</button>
     <button class="filter-btn bares" onclick="switchTab('bares', this)">☕ Bares/Tier.</button>
@@ -452,198 +406,196 @@
   </div>
 
   <main>
-   <!-- SECCIÓN TIENDAS Y CENTROS COMERCIALES -->
+    <!-- SECCIÓN TIENDAS Y CENTROS COMERCIALES -->
     <div id="tab-tiendas" class="tab-pane active">
-      
       <div class="subfiltros-row">
-    <button class="btn-subfiltro active" data-filter="all">Todos</button>
-    <button class="btn-subfiltro" data-filter="cubierto">🅿️ Parking Cubierto</button>
-    <button class="btn-subfiltro" data-filter="gratis">🆓 Parking Gratis</button>
-</div>
+        <button class="btn-subfiltro active" data-filter="all">Todos</button>
+        <button class="btn-subfiltro" data-filter="cubierto">🅿️ Parking Cubierto</button>
+        <button class="btn-subfiltro" data-filter="gratis">🆓 Parking Gratis</button>
+      </div>
       
       <div id="aparcarList">
         <!-- Tarjeta Larios Centro -->
-    <div class="card aparcar-card" data-cubierto="true" data-gratis="false">
-        <div class="card-header">
-            <h3>Larios Centro</h3>
-            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+        <div class="card aparcar-card" data-cubierto="true" data-gratis="false">
+            <div class="card-header">
+                <h3>Larios Centro</h3>
+                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+            </div>
+            <div class="location">📍 Av. de la Aurora, 25, Málaga</div>
+            <div class="card-desc">
+                Permite el acceso a perros en zonas comunes y la mayoría de sus tiendas. Cuenta con parking subterráneo (3h gratis presentando ticket de compra superior a 6€).
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ 3h Gratis (Compra min. 6€)</span>
+                <span class="tag traffic">🐾 Pet-Friendly</span>
+            </div>
+            <div class="card-footer">
+                <span>Galería comercial cubierta</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Larios+Centro+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Av. de la Aurora, 25, Málaga</div>
-        <div class="card-desc">
-            Permite el acceso a perros en zonas comunes y la mayoría de sus tiendas. Cuenta con parking subterráneo (3h gratis presentando ticket de compra superior a 6€).
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ 3h Gratis (Compra min. 6€)</span>
-            <span class="tag traffic">🐾 Pet-Friendly</span>
-        </div>
-        <div class="card-footer">
-            <span>Galería comercial cubierta</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Larios+Centro+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
         
         <!-- Tarjeta Vialia Málaga -->
-    <div class="card aparcar-card" data-cubierto="true" data-gratis="false"> </div>
-        <div class="card-header">
-            <h3>Vialia Centro Comercial</h3>
-            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+        <div class="card aparcar-card" data-cubierto="true" data-gratis="false">
+            <div class="card-header">
+                <h3>Vialia Centro Comercial</h3>
+                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+            </div>
+            <div class="location">📍 C/ Explanada de la Estación, s/n, Málaga</div>
+            <div class="card-desc">
+                Galerías pet-friendly integradas en la estación de trenes. Dispone de parking subterráneo con 2h gratis presentando ticket de compra/consumición.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ 2h Gratis (Con ticket de compra)</span>
+                <span class="tag traffic">🐾 Zonas Comunes</span>
+            </div>
+            <div class="card-footer">
+                <span>Ubicación céntrica</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Vialia+Centro+Comercial+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 C/ Explanada de la Estación, s/n, Málaga</div>
-        <div class="card-desc">
-            Galerías pet-friendly integradas en la estación de trenes. Dispone de parking subterráneo con 2h gratis presentando ticket de compra/consumición.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ 2h Gratis (Con ticket de compra)</span>
-            <span class="tag traffic">🐾 Zonas Comunes</span>
-        </div>
-        <div class="card-footer">
-            <span>Ubicación céntrica</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Vialia+Centro+Comercial+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
         <!-- Tarjeta CC Miramar Fuengirola -->
-   <div class="card aparcar-card" data-cubierto="true" data-gratis="true"> </div>
-        <div class="card-header">
-            <h3>Centro Comercial Miramar</h3>
-            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Pet-Friendly + Carritos</span>
+        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
+            <div class="card-header">
+                <h3>Centro Comercial Miramar</h3>
+                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Pet-Friendly + Carritos</span>
+            </div>
+            <div class="location">📍 Av. de la Encarnación, s/n, 29640 Fuengirola, Málaga</div>
+            <div class="card-desc">
+                Muy adaptado a mascotas, permite el acceso en galerías y dispone de servicio de carritos para perros. Parking exterior e subterráneo 100% gratuito.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Gratis</span>
+                <span class="tag traffic">🛒 Carritos para perros</span>
+            </div>
+            <div class="card-footer">
+                <span>Fuengirola</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Miramar+Fuengirola" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Av. de la Encarnación, s/n, 29640 Fuengirola, Málaga</div>
-        <div class="card-desc">
-            Muy adaptado a mascotas, permite el acceso en galerías y dispone de servicio de carritos para perros. Parking exterior e subterráneo 100% gratuito.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Gratis</span>
-            <span class="tag traffic">🛒 Carritos para perros</span>
-        </div>
-        <div class="card-footer">
-            <span>Fuengirola</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Miramar+Fuengirola" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
-       <!-- Tarjeta CC Rosaleda -->
-    <div class="card aparcar-card" data-cubierto="true" data-gratis="true"> </div>
-        <div class="card-header">
-            <h3>Centro Comercial Rosaleda</h3>
-            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+        <!-- Tarjeta CC Rosaleda -->
+        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
+            <div class="card-header">
+                <h3>Centro Comercial Rosaleda</h3>
+                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
+            </div>
+            <div class="location">📍 Av. Simón Bolívar, s/n, Palma-Palmilla, Málaga</div>
+            <div class="card-desc">
+                Permite pasear con perro atado por sus pasillos comunes. Cuenta con un amplio parking subterráneo gratuito.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Subterráneo Gratis</span>
+                <span class="tag traffic">🐾 Zonas Comunes</span>
+            </div>
+            <div class="card-footer">
+                <span>Ideal para días de calor/lluvia</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Rosaleda+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Av. Simón Bolívar, s/n, Palma-Palmilla, Málaga</div>
-        <div class="card-desc">
-            Permite pasear con perro atado por sus pasillos comunes. Cuenta con un amplio parking subterráneo gratuito.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Subterráneo Gratis</span>
-            <span class="tag traffic">🐾 Zonas Comunes</span>
-        </div>
-        <div class="card-footer">
-            <span>Ideal para días de calor/lluvia</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Rosaleda+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
-    <!-- Tarjeta Plaza Mayor -->
-   <div class="card aparcar-card" data-cubierto="false" data-gratis="true"> </div>
-        <div class="card-header">
-            <h3>Plaza Mayor</h3>
-            <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Al Aire Libre</span>
+        <!-- Tarjeta Plaza Mayor -->
+        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
+            <div class="card-header">
+                <h3>Plaza Mayor</h3>
+                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Al Aire Libre</span>
+            </div>
+            <div class="location">📍 C. Alfonso Ponce de León, 3, Churriana, Málaga</div>
+            <div class="card-desc">
+                Recinto al aire libre ideal para pasear con perro y entrar a multitud de tiendas. Dispone de parking exterior enorme y gratuito.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Gratis</span>
+                <span class="tag traffic">🌤️ Espacio Abierto</span>
+            </div>
+            <div class="card-footer">
+                <span>Zona comercial abierta</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Plaza+Mayor+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 C. Alfonso Ponce de León, 3, Churriana, Málaga</div>
-        <div class="card-desc">
-            Recinto al aire libre ideal para pasear con perro y entrar a multitud de tiendas. Dispone de parking exterior enorme y gratuito.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Gratis</span>
-            <span class="tag traffic">🌤️ Espacio Abierto</span>
-        </div>
-        <div class="card-footer">
-            <span>Zona comercial abierta</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Plaza+Mayor+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
         <!-- Tarjeta Leroy Merlin -->
-    <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-        <div class="card-header">
-            <h3>Leroy Merlin</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
+            <div class="card-header">
+                <h3>Leroy Merlin</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+            </div>
+            <div class="location">📍 Málaga (Málaga Nostrum / Rosaleda)</div>
+            <div class="card-desc">
+                Permiten la entrada de perros en toda la tienda. Disponen de parking gratuito muy amplio tanto exterior como subterráneo.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Amplio</span>
+                <span class="tag traffic">🛒 Acceso Total</span>
+            </div>
+            <div class="card-footer">
+                <span>Bricolaje y hogar</span>
+                <a href="https://maps.google.com/?q=Leroy+Merlin+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Málaga (Málaga Nostrum / Rosaleda)</div>
-        <div class="card-desc">
-            Permiten la entrada de perros en toda la tienda. Disponen de parking gratuito muy amplio tanto exterior como subterráneo.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Amplio</span>
-            <span class="tag traffic">🛒 Acceso Total</span>
-        </div>
-        <div class="card-footer">
-            <span>Bricolaje y hogar</span>
-            <a href="https://maps.google.com/?q=Leroy+Merlin+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
         <!-- Tarjeta Decathlon -->
-    <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-        <div class="card-header">
-            <h3>Decathlon</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
+            <div class="card-header">
+                <h3>Decathlon</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+            </div>
+            <div class="location">📍 Málaga (Guadalmar / C.C. Rosaleda)</div>
+            <div class="card-desc">
+                Acceso totalmente permitido con perro atado para hacer tus compras deportivas. Fácil aparcamiento gratuito en la puerta.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Sin Coste</span>
+                <span class="tag traffic">⚽ Acceso Deportivo</span>
+            </div>
+            <div class="card-footer">
+                <span>Grandes superficies</span>
+                <a href="https://maps.google.com/?q=Decathlon+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Málaga (Guadalmar / C.C. Rosaleda)</div>
-        <div class="card-desc">
-            Acceso totalmente permitido con perro atado para hacer tus compras deportivas. Fácil aparcamiento gratuito en la puerta.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Sin Coste</span>
-            <span class="tag traffic">⚽ Acceso Deportivo</span>
-        </div>
-        <div class="card-footer">
-            <span>Grandes superficies</span>
-            <a href="https://maps.google.com/?q=Decathlon+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
         <!-- Tarjeta Tiendanimal -->
-    <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-        <div class="card-header">
-            <h3>Tiendanimal</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
+            <div class="card-header">
+                <h3>Tiendanimal</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+            </div>
+            <div class="location">📍 Málaga Nostrum / Plaza Mayor</div>
+            <div class="card-desc">
+                Especialistas en mascotas, tu perro es más que bienvenido dentro del recinto. Tienen parking propio o de parque comercial directo en la puerta.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking en Puerta</span>
+                <span class="tag traffic">🐶 Tienda Especialista</span>
+            </div>
+            <div class="card-footer">
+                <span>Todo para tu mascota</span>
+                <a href="https://maps.google.com/?q=Tiendanimal+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Málaga Nostrum / Plaza Mayor</div>
-        <div class="card-desc">
-            Especialistas en mascotas, tu perro es más que bienvenido dentro del recinto. Tienen parking propio o de parque comercial directo en la puerta.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking en Puerta</span>
-            <span class="tag traffic">🐶 Tienda Especialista</span>
-        </div>
-        <div class="card-footer">
-            <span>Todo para tu mascota</span>
-            <a href="https://maps.google.com/?q=Tiendanimal+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
         <!-- Tarjeta Obramat -->
-    <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-        <div class="card-header">
-            <h3>Obramat (antiguo Bricomart)</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
+            <div class="card-header">
+                <h3>Obramat (antiguo Bricomart)</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
+            </div>
+            <div class="location">📍 Parque Comercial Málaga Nostrum</div>
+            <div class="card-desc">
+                Permiten entrar con mascota a sus almacenes de construcción y bricolaje. Parking exterior enorme y de muy fácil acceso.
+            </div>
+            <div class="tags-row">
+                <span class="tag">🅿️ Parking Exterior Enorme</span>
+                <span class="tag traffic">🔨 Almacén Amplio</span>
+            </div>
+            <div class="card-footer">
+                <span>Construcción y reformas</span>
+                <a href="https://maps.google.com/?q=Obramat+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
-        <div class="location">📍 Parque Comercial Málaga Nostrum</div>
-        <div class="card-desc">
-            Permiten entrar con mascota a sus almacenes de construcción y bricolaje. Parking exterior enorme y de muy fácil acceso.
-        </div>
-        <div class="tags-row">
-            <span class="tag">🅿️ Parking Exterior Enorme</span>
-            <span class="tag traffic">🔨 Almacén Amplio</span>
-        </div>
-        <div class="card-footer">
-            <span>Construcción y reformas</span>
-            <a href="https://maps.google.com/?q=Obramat+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-    </div>
 
-        
-        <!-- Tarjeta 1 -->
+        <!-- Tarjeta Paseo Marítimo -->
         <div class="card aparcar-card" data-sombra="true" data-fuente="true">
           <div class="card-header">
             <h3>Explanada Arbolada Paseo Marítimo</h3>
@@ -663,7 +615,7 @@
           </div>
         </div>
 
-        <!-- Tarjeta 2 -->
+        <!-- Tarjeta Plaza Mayor Exterior -->
         <div class="card aparcar-card" data-sombra="true" data-fuente="true">
           <div class="card-header">
             <h3>Parking C.C. Plaza Mayor (Zona Exterior)</h3>
@@ -683,7 +635,7 @@
           </div>
         </div>
 
-        <!-- Tarjeta 3 -->
+        <!-- Tarjeta McArthurGlen -->
         <div class="card aparcar-card" data-sombra="true" data-fuente="true">
           <div class="card-header">
             <h3>Parking Subterráneo / Exterior McArthurGlen</h3>
@@ -776,113 +728,114 @@
     </div>
 
     <!-- PESTAÑA PARQUES -->
-<div id="tab-parques" class="tab-pane">
-    <div class="section-title">Parques Caninos</div>
-    
-    <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Huelin</h3>
-            <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Vallado</span>
+    <div id="tab-parques" class="tab-pane">
+        <div class="section-title">Parques Caninos</div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Huelin</h3>
+                <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Vallado</span>
+            </div>
+            <div class="location">📍 Parque de Huelin, Málaga</div>
+            <div class="card-desc">Amplio pipican con zona de Agility y fuentes adaptadas para mascotas.</div>
+            <div class="card-footer">
+                <span>Zona iluminada</span>
+                <a href="https://maps.google.com/?q=Parque+Canino+Huelin+Malaga" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
         </div>
-        <div class="location">📍 Parque de Huelin, Málaga</div>
-        <div class="card-desc">Amplio pipican con zona de Agility y fuentes adaptadas para mascotas.</div>
-        <div class="card-footer">
-            <span>Zona iluminada</span>
-            <a href="https://maps.google.com/?q=Parque+Canino+Huelin+Malaga" target="_blank" class="btn-route">¡Cómo llegar!</a>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Parque del Oeste</h3>
+                <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Abierto 10:00 - 23:00</span>
+            </div>
+            <div class="location">📍 Carretera de Cádiz, Málaga</div>
+            <div class="card-desc">Zona canina amplia con arboleda y zonas de descanso. Equipado con fuentes adaptadas para perros y bancos.</div>
+            <div class="card-footer">
+                <span>Arboleda y bancos</span>
+                <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0xd72f9d0deb51205:0xa77f5f3d35fd4771?sa=X&ved=1t:8290&ictx=111" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Miraflores de los Ángeles</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
+            </div>
+            <div class="location">📍 Calle Monte Pizarro, Málaga</div>
+            <div class="card-desc">Zona canina vallada situada en la zona de Miraflores. Amplio espacio para que los perros corran con libertad.</div>
+            <div class="card-footer">
+                <span>Zona vallada · Llevar agua propia</span>
+                <a href="https://maps.app.goo.gl/gKMQXeBnCxRH5MYm8" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque para animales Guadalmar</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Doble puerta</span>
+            </div>
+            <div class="location">📍 Churriana, Málaga</div>
+            <div class="card-desc">Espacio amplio dividido en dos zonas con doble puerta de seguridad. Cuenta con fuente de agua y bancos, aunque es recomendable tener en cuenta la escasez de sombra.</div>
+            <div class="card-footer">
+                <span>Zona dividida · Fuente disponible</span>
+                <a href="https://maps.app.goo.gl/bG6qs6juE7Wbg9oD8" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Parque de El Morlaco</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 20:00</span>
+            </div>
+            <div class="location">📍 Málaga-Este (Zona El Morlaco)</div>
+            <div class="card-desc">Amplio recinto rodeado de naturaleza y gran arboleda. Ofrece muchísima sombra natural y un espacio ideal para que los perros corran en libertad entre pinos.</div>
+            <div class="card-footer">
+                <span>Entorno natural · Zona de pinar</span>
+                <a href="https://maps.google.com/?cid=8799174917089542317" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Parque del Norte</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 23:00</span>
+            </div>
+            <div class="location">📍 Camino Cuarto, Bailén-Miraflores</div>
+            <div class="card-desc">Recinto amplio de barrio muy frecuentado por los vecinos. Zona vallada cómoda y accesible para los paseos diarios de la zona norte.</div>
+            <div class="card-footer">
+                <span>Zona vallada · Horario amplio</span>
+                <a href="https://maps.google.com/?cid=5030924818686783569" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino Portales del Popo</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 8:00 a 00:00</span>
+            </div>
+            <div class="location">📍 C. Portales del Popo, Churriana</div>
+            <div class="card-desc">Zona canina abierta desde primera hora hasta la medianoche en la zona de Churriana. Espacio tranquilo y vallado para el esparcimiento de las mascotas.</div>
+            <div class="card-footer">
+                <span>Amplio horario · Zona tranquila</span>
+                <a href="https://maps.google.com/?cid=11150011398652759048" target="_blank" class="btn-route">¡Cómo llegar!</a>
+            </div>
+        </div>
+      
+        <div class="card">
+            <div class="card-header">
+                <h3>Parque Canino María Moliner</h3>
+                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
+            </div>
+            <div class="location">📍 Calle María Moliner, Málaga</div>
+            <div class="card-desc">Parque canino con terreno de tierra. Dispone de bancos para sentarse y fuente de agua en el exterior del recinto.</div>
+            <div class="card-footer">
+                <span>Suelo de tierra · Fuente fuera</span>
+                <a href="https://www.google.com/maps/place/Parque+Canino+Maria+Moliner" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+            </div>
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Parque del Oeste</h3>
-            <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Abierto 10:00 - 23:00</span>
-        </div>
-        <div class="location">📍 Carretera de Cádiz, Málaga</div>
-        <div class="card-desc">Zona canina amplia con arboleda y zonas de descanso. Equipado con fuentes adaptadas para perros y bancos.</div>
-        <div class="card-footer">
-            <span>Arboleda y bancos</span>
-            <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0xd72f9d0deb51205:0xa77f5f3d35fd4771?sa=X&ved=1t:8290&ictx=111" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-
-  <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Miraflores de los Ángeles</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
-        </div>
-        <div class="location">📍 Calle Monte Pizarro, Málaga</div>
-        <div class="card-desc">Zona canina vallada situada en la zona de Miraflores. Amplio espacio para que los perros corran con libertad.</div>
-        <div class="card-footer">
-            <span>Zona vallada · Llevar agua propia</span>
-            <a href="https://maps.app.goo.gl/gKMQXeBnCxRH5MYm8" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-
-  <div class="card">
-        <div class="card-header">
-            <h3>Parque para animales Guadalmar</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Doble puerta</span>
-        </div>
-        <div class="location">📍 Churriana, Málaga</div>
-        <div class="card-desc">Espacio amplio dividido en dos zonas con doble puerta de seguridad. Cuenta con fuente de agua y bancos, aunque es recomendable tener en cuenta la escasez de sombra.</div>
-        <div class="card-footer">
-            <span>Zona dividida · Fuente disponible</span>
-            <a href="https://maps.app.goo.gl/bG6qs6juE7Wbg9oD8" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-
-  <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Parque de El Morlaco</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 20:00</span>
-        </div>
-        <div class="location">📍 Málaga-Este (Zona El Morlaco)</div>
-        <div class="card-desc">Amplio recinto rodeado de naturaleza y gran arboleda. Ofrece muchísima sombra natural y un espacio ideal para que los perros corran en libertad entre pinos.</div>
-        <div class="card-footer">
-            <span>Entorno natural · Zona de pinar</span>
-            <a href="https://maps.google.com/?cid=8799174917089542317" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-
-  <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Parque del Norte</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 23:00</span>
-        </div>
-        <div class="location">📍 Camino Cuarto, Bailén-Miraflores</div>
-        <div class="card-desc">Recinto amplio de barrio muy frecuentado por los vecinos. Zona vallada cómoda y accesible para los paseos diarios de la zona norte.</div>
-        <div class="card-footer">
-            <span>Zona vallada · Horario amplio</span>
-            <a href="https://maps.google.com/?cid=5030924818686783569" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-
-  <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino Portales del Popo</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 8:00 a 00:00</span>
-        </div>
-        <div class="location">📍 C. Portales del Popo, Churriana</div>
-        <div class="card-desc">Zona canina abierta desde primera hora hasta la medianoche en la zona de Churriana. Espacio tranquilo y vallado para el esparcimiento de las mascotas.</div>
-        <div class="card-footer">
-            <span>Amplio horario · Zona tranquila</span>
-            <a href="https://maps.google.com/?cid=11150011398652759048" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-  
-    <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino María Moliner</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
-        </div>
-        <div class="location">📍 Calle María Moliner, Málaga</div>
-        <div class="card-desc">Parque canino con terreno de tierra. Dispone de bancos para sentarse y fuente de agua en el exterior del recinto.</div>
-        <div class="card-footer">
-            <span>Suelo de tierra · Fuente fuera</span>
-            <a href="https://www.google.com/maps/place/Parque+Canino+Maria+Moliner/@36.6853826,-4.4599905,132m/data=!3m2!1e3!4b1!4m6!3m5!1s0xd72f940da9d8cf1:0x7fe4242b4f128b01!8m2!3d36.6853815!4d-4.4593468!16s%2Fg%2F11g0dbytth" target="_blank" class="btn-route">¡Cómo llegar!</a>
-        </div>
-    </div>
-</div>
     <!-- PESTAÑA BARES -->
     <div id="tab-bares" class="tab-pane">
       <div class="section-title">Bares y Terrazas Pet-Friendly</div>
@@ -1007,71 +960,54 @@
     </div>
 
     <!-- PESTAÑA AÑADIR SITIO -->
-    <div class="card">
-        <div class="card-header">
-            <h3>Parque Canino María Moliner</h3>
-            <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
-        </div>
-        <div class="location">📍 Calle María Moliner, Málaga</div>
-        <div class="card-desc">Parque canino con terreno de tierra. Dispone de bancos para sentarse y fuente de agua en el exterior del recinto.</div>
-        <div class="card-footer">
-            <span>Suelo de tierra · Fuente fuera</span>
-            <a href="https://www.google.com/maps/place/Parque+Canino+Maria+Moliner" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
+    <div id="tab-add" class="tab-pane">
+       <div class="section-title">Recomendar un Sitio</div>
+       <div class="form-container">
+          <h2 style="margin-bottom: 10px; color: #2d3748; font-size: 1.2rem;">➕ Añade o Recomienda un Sitio</h2>
+          <p style="color: #718096; font-size: 0.9rem; margin-bottom: 20px;">
+             ¿Conoces algún bar, hotel, zona de sombra o cuidador pet-friendly en Málaga? ¡Envíanoslo y lo revisaremos para incluirlo!
+          </p>
+
+          <form id="addSiteForm" onsubmit="handleFormSubmit(event)">
+             <div class="form-group">
+                <label for="category">Categoría:</label>
+                <select id="category" required>
+                   <option value="">Selecciona una opción...</option>
+                   <option value="Terrazas y Bares">🍹 Bar / Terraza / Cafetería</option>
+                   <option value="Hoteles">🏨 Hotel / Alojamiento Pet-Friendly</option>
+                   <option value="Parking / Sombras">🅿️ Parking / Zona con Sombra</option>
+                   <option value="Cuidadores">🏡 Cuidador / Guardería / Residencia</option>
+                   <option value="Playas">🏖️ Playa Canina</option>
+                </select>
+             </div>
+
+             <div class="form-group">
+                <label for="siteName">Nombre del Lugar / Servicio:</label>
+                <input type="text" id="siteName" placeholder="Ej. Bar El Sol, Hotel Picasso..." required>
+             </div>
+
+             <div class="form-group">
+                <label for="siteZone">Zona / Barrio en Málaga:</label>
+                <input type="text" id="siteZone" placeholder="Ej. Teatinos, Centro, Huelin, Pedregalejo..." required>
+             </div>
+
+             <div class="form-group">
+                <label for="siteDetails">Detalles importantes (Normas, si ponen agua, sombra, etc.):</label>
+                <textarea id="siteDetails" rows="3" placeholder="Ej. Admiten perros en terraza e interior, les ponen cuenco de agua..." required></textarea>
+             </div>
+
+             <button type="submit" class="submit-btn">Enviar Recomendación</button>
+          </form>
+
+          <div id="successMsg" class="success-msg">
+             ¡Gracias por tu aporte! 🎉 Revisaremos la recomendación para añadirla muy pronto a la web.
+          </div>
+       </div>
     </div>
-  </div>
+  </main>
 
-  <!-- PESTAÑA AÑADIR SITIO -->
-  <div id="tab-add" class="tab-pane">
-     <div class="section-title">Recomendar un Sitio</div>
-     <div class="form-container">
-        <h2 style="margin-bottom: 10px; color: #2d3748; font-size: 1.2rem;">➕ Añade o Recomienda un Sitio</h2>
-        <p style="color: #718096; font-size: 0.9rem; margin-bottom: 20px;">
-           ¿Conoces algún bar, hotel, zona de sombra o cuidador pet-friendly en Málaga? ¡Envíanoslo y lo revisaremos para incluirlo!
-        </p>
-
-        <form id="addSiteForm" onsubmit="handleFormSubmit(event)">
-           <div class="form-group">
-              <label for="category">Categoría:</label>
-              <select id="category" required>
-                 <option value="">Selecciona una opción...</option>
-                 <option value="Terrazas y Bares">🍹 Bar / Terraza / Cafetería</option>
-                 <option value="Hoteles">🏨 Hotel / Alojamiento Pet-Friendly</option>
-                 <option value="Parking / Sombras">🅿️ Parking / Zona con Sombra</option>
-                 <option value="Cuidadores">🏡 Cuidador / Guardería / Residencia</option>
-                 <option value="Playas">🏖️ Playa Canina</option>
-              </select>
-           </div>
-
-           <div class="form-group">
-              <label for="siteName">Nombre del Lugar / Servicio:</label>
-              <input type="text" id="siteName" placeholder="Ej. Bar El Sol, Hotel Picasso..." required>
-           </div>
-
-           <div class="form-group">
-              <label for="siteZone">Zona / Barrio en Málaga:</label>
-              <input type="text" id="siteZone" placeholder="Ej. Teatinos, Centro, Huelin, Pedregalejo..." required>
-           </div>
-
-           <div class="form-group">
-              <label for="siteDetails">Detalles importantes (Normas, si ponen agua, sombra, etc.):</label>
-              <textarea id="siteDetails" rows="3" placeholder="Ej. Admiten perros en terraza e interior, les ponen cuenco de agua..." required></textarea>
-           </div>
-
-           <button type="submit" class="submit-btn">Enviar Recomendación</button>
-        </form>
-
-        <div id="successMsg" class="success-msg">
-           ¡Gracias por tu aporte! 🎉 Revisaremos la recomendación para añadirla muy pronto a la web.
-        </div>
-     </div>
-  </div>
-</main>
-
-<script>
+  <script>
     function switchTab(tabName, btnElement) {
-        console.log("Cambiando a pestaña:", tabName); // <--- Añade esto
-        
         document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.className = btn.className.replace(/active \w+/g, '').trim();
@@ -1081,8 +1017,6 @@
         const targetTab = document.getElementById('tab-' + tabName);
         if (targetTab) {
             targetTab.classList.add('active');
-        } else {
-            console.error("¡No se encuentra el contenedor con id: tab-" + tabName); // <--- Y esto
         }
 
         if (btnElement) {
@@ -1096,6 +1030,15 @@
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-</script>
+
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        document.getElementById("addSiteForm").reset();
+        document.getElementById("successMsg").style.display = "block";
+        setTimeout(() => {
+            document.getElementById("successMsg").style.display = "none";
+        }, 5000);
+    }
+  </script>
 </body>
 </html>
