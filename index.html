@@ -1,1098 +1,1097 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Título Optimizado para Google -->
-  <title>PetParking Málaga | Guía Pet-Friendly: Parkings, Playas y Bares</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetParking Málaga & Costa | Guía Pet-Friendly y Campers</title>
+    <meta name="description" content="Encuentra parkings con sombra, zonas para furgonetas camper, centros comerciales, playas caninas y bares pet-friendly en Málaga.">
+    <meta property="og:title" content="PetParking Málaga & Costa | Guía Pet-Friendly">
+    <meta property="og:description" content="Encuentra parkings con sombra, zonas para campers, playas caninas y bares pet-friendly en Málaga.">
+    <meta property="og:type" content="website">
+    
+    <!-- Script de analíticas de Vercel conservado de tu proyecto -->
+    <script defer src="/_vercel/insights/script.js"></script>
+    
+    <!-- Tailwind CSS e Iconos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  <!-- Verificación de Google Search Console -->
-  <meta name="google-site-verification" content="t0PvyaibtBNtlpBUs9OH-Bus-s7_Yw58nWTkVfGzAnE" />
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+            padding-bottom: 80px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
 
-  <!-- Etiquetas Meta de SEO para Google -->
-  <meta name="description" content="Descubre aparcamientos con sombra, playas caninas, centros comerciales, bares y hoteles pet-friendly en Málaga y la Costa del Sol. ¡Planifica tu ruta con tu perro!">
-  <meta name="keywords" content="pet friendly malaga, playas perros malaga, aparcamiento sombra malaga, centro comercial perros malaga, bares con perro malaga">
+        /* Scroll horizontal limpio para filtros en móvil */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
 
-  <!-- Previsualización para WhatsApp y Redes Sociales (Open Graph) -->
-  <meta property="og:title" content="PetParking Málaga & Costa | Guía Pet-Friendly">
-  <meta property="og:description" content="Encuentra parkings con sombra, centros comerciales, playas caninas y bares pet-friendly en Málaga.">
-  <meta property="og:type" content="website">
+        body.modo-halloween {
+            background-color: #1a1423;
+            color: #f8fafc;
+        }
+        body.modo-halloween .theme-card {
+            background-color: #271f36;
+            border-color: #4c3b6b;
+            color: #f8fafc;
+        }
+        body.modo-halloween .theme-header {
+            background: linear-gradient(135deg, #2d1b4e 0%, #ea580c 100%);
+        }
+        body.modo-halloween .btn-primary-theme {
+            background-color: #ea580c !important;
+            color: #ffffff !important;
+        }
+        body.modo-halloween::after {
+            content: "🎃";
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.4rem;
+            z-index: 40;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 10px rgba(234, 88, 12, 0.5));
+            animation: flotar 2.2s ease-in-out infinite alternate;
+        }
 
-  <script defer src="/_vercel/insights/script.js"></script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+        body.modo-navidad {
+            background-color: #f0fdf4;
+        }
+        body.modo-navidad .theme-header {
+            background: linear-gradient(135deg, #991b1b 0%, #166534 100%);
+        }
+        body.modo-navidad .btn-primary-theme {
+            background-color: #dc2626 !important;
+            color: #ffffff !important;
+        }
+        body.modo-navidad::after {
+            content: "🎄";
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 2.4rem;
+            z-index: 40;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 10px rgba(22, 101, 52, 0.4));
+            animation: flotar 2.2s ease-in-out infinite alternate;
+        }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: #f7fafc;
-      color: #2d3748;
-      line-height: 1.6;
-      padding-bottom: 40px;
-    }
-
-    header {
-      background: white;
-      padding: 15px 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    @media (min-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-    }
-
-    .brand-icon {
-      font-size: 1.8rem;
-    }
-
-    .brand h1 {
-      font-size: 1.3rem;
-      color: #1a202c;
-      font-weight: 800;
-      line-height: 1.2;
-    }
-
-    .brand span {
-      font-size: 0.75rem;
-      color: #319795;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .header-tagline {
-      color: #718096;
-      font-size: 0.85rem;
-      font-weight: 500;
-      max-width: 320px;
-      line-height: 1.3;
-    }
-
-    .btn-add-header {
-      background: #22c55e;
-      color: white;
-      font-weight: 700;
-      padding: 8px 18px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      border: none;
-      transition: background 0.2s;
-    }
-
-    .btn-add-header:hover {
-      background: #16a34a;
-    }
-
-    /* BUSCADOR PRINCIPAL */
-    .search-container {
-      padding: 15px 20px;
-      background: white;
-      border-bottom: 1px solid #edf2f7;
-    }
-
-    .search-box {
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 12px 18px 12px 42px;
-      border: 1px solid #e2e8f0;
-      border-radius: 25px;
-      font-size: 0.95rem;
-      outline: none;
-      background: #f8fafc;
-      transition: all 0.2s;
-    }
-
-    .search-box input:focus {
-      background: white;
-      border-color: #319795;
-      box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.1);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #a0aec0;
-      font-size: 1rem;
-    }
-
-    /* PESTAÑAS / FILTROS SUPERIORES */
-    .filter-tabs {
-      display: flex;
-      gap: 10px;
-      padding: 15px 20px;
-      overflow-x: auto;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .filter-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #edf2f7;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #4a5568;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-
-    .filter-btn.active.aparcar, .filter-btn.active.tiendas { background: #22c55e; color: white; }
-    .filter-btn.active.playas { background: #319795; color: white; }
-    .filter-btn.active.parques { background: #d69e2e; color: white; }
-    .filter-btn.active.bares { background: #dd6b20; color: white; }
-    .filter-btn.active.hoteles { background: #805ad5; color: white; }
-    .filter-btn.active.cuidadores { background: #3182ce; color: white; }
-    .filter-btn.active.add { background: #ecc94b; color: #744210; }
-
-    main {
-      max-width: 800px;
-      margin: 10px auto;
-      padding: 0 15px;
-    }
-
-    .section-title {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #718096;
-      letter-spacing: 0.5px;
-      margin: 20px 0 12px 5px;
-      text-transform: uppercase;
-    }
-
-    /* Estilos para la fila de subfiltros */
-    .subfiltros-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 20px;
-        overflow-x: auto;
-        white-space: nowrap;
-        padding-bottom: 5px;
-    }
-
-    .btn-subfiltro {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        color: #4a5568;
-        padding: 8px 16px;
-        border-radius: 20px;
-        font-size: 14px;
-        font-weight: 500;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        white-space: nowrap;
-        flex-shrink: 0;
-    }
-
-    .btn-subfiltro:hover {
-        background-color: #f7fafc;
-        border-color: #cbd5e0;
-    }
-
-    .btn-subfiltro.active {
-        background-color: #ebf8ff;
-        color: #2b6cb0;
-        border-color: #90cdf4;
-        font-weight: 600;
-    }
-
-    /* TARJETAS */
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 15px;
-      border: 1px solid #edf2f7;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-      position: relative;
-    }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 6px;
-      gap: 15px;
-    }
-
-    .card h3 {
-      font-size: 1.1rem;
-      color: #1a202c;
-      font-weight: 700;
-    }
-
-    .badge-shadow {
-      background: #fefcbf;
-      color: #744210;
-      font-size: 0.75rem;
-      font-weight: 700;
-      padding: 6px 12px;
-      border-radius: 12px;
-      white-space: nowrap;
-      border: 1px solid #f6e05e;
-    }
-
-    .location {
-      font-size: 0.85rem;
-      color: #e53e3e;
-      margin-bottom: 12px;
-      font-weight: 500;
-    }
-
-    .card-desc {
-      font-size: 0.9rem;
-      color: #4a5568;
-      margin-bottom: 15px;
-    }
-
-    .tags-row {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 15px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      background: #ebf8ff;
-      color: #2b6cb0;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 8px;
-    }
-
-    .tag.traffic {
-      background: #fff5f5;
-      color: #c53030;
-    }
-
-    .card-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-top: 1px solid #f7fafc;
-      padding-top: 12px;
-      font-size: 0.82rem;
-      color: #718096;
-    }
-
-    .btn-route {
-      background: #1a202c;
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-
-    .btn-route:hover {
-      background: #2d3748;
-    }
-
-    /* FORMULARIO DE AÑADIR */
-    .form-container {
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
-      border: 1px solid #edf2f7;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-    }
-
-    .form-group input, .form-group select, .form-group textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #cbd5e0;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      outline: none;
-    }
-
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: #319795;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: #319795;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .submit-btn:hover {
-      background: #2c7a7b;
-    }
-
-    .success-msg {
-      display: none;
-      background: #c6f6d5;
-      color: #22543d;
-      padding: 12px;
-      border-radius: 8px;
-      text-align: center;
-      margin-top: 15px;
-      font-weight: 600;
-    }
-
-    /* CONTENEDOR DE PESTAÑAS (Ocultar/Mostrar) */
-    .tab-pane {
-      display: none;
-    }
-    .tab-pane.active {
-      display: block;
-    }
-  </style>
+        @keyframes flotar {
+            0% { transform: translateY(0) rotate(-4deg); }
+            100% { transform: translateY(-8px) rotate(4deg); }
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <header>
-    <div class="brand">
-      <div class="brand-icon">🐾</div>
-      <div>
-        <h1>PetParking</h1>
-        <span>MÁLAGA & COSTA</span>
-      </div>
-    </div>
-    <div class="header-tagline">
-      Tu guía pet-friendly de aparcamiento y lugares en Málaga y la Costa del Sol 🐾
-    </div>
-    <button class="btn-add-header" onclick="switchTab('add', document.getElementById('btn-tab-add'))">+ Añadir</button>
-  </header>
-
-  <div class="search-container">
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="mainSearch" placeholder="Buscar zona, playa, parque, hotel o cuidador..." onkeyup="filterContent()">
-    </div>
-  </div>
-
-  <div class="filter-tabs">
-    <button class="filter-btn active tiendas" onclick="switchTab('tiendas', this)">🛍️ Centros Comerciales y Tiendas</button>
-    <button class="filter-btn playas" onclick="switchTab('playas', this)">🏖️ Playas</button>
-    <button class="filter-btn parques" onclick="switchTab('parques', this)">🐕 Parques</button>
-    <button class="filter-btn bares" onclick="switchTab('bares', this)">☕ Bares/Tier.</button>
-    <button class="filter-btn hoteles" onclick="switchTab('hoteles', this)">🏨 Hoteles</button>
-    <button class="filter-btn cuidadores" onclick="switchTab('cuidadores', this)">🏡 Cuidadores</button>
-    <button class="filter-btn add" id="btn-tab-add" onclick="switchTab('add', this)">➕ Recomendar</button>
-  </div>
-
-  <main>
-    <!-- SECCIÓN TIENDAS Y CENTROS COMERCIALES -->
-    <div id="tab-tiendas" class="tab-pane active">
-      <div class="subfiltros-row">
-        <button class="btn-subfiltro active" onclick="filterSub('all', this)">Todos</button>
-        <button class="btn-subfiltro" onclick="filterSub('cubierto', this)">🅿️ Parking Cubierto</button>
-        <button class="btn-subfiltro" onclick="filterSub('gratis', this)">🆓 Parking Gratis</button>
-      </div>
-      
-      <div id="aparcarList">
-        <!-- Tarjeta Larios Centro -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="false">
-            <div class="card-header">
-                <h3>Larios Centro</h3>
-                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
-            </div>
-            <div class="location">📍 Av. de la Aurora, 25, Málaga</div>
-            <div class="card-desc">
-                Permite el acceso a perros en zonas comunes y la mayoría de sus tiendas. Cuenta con parking subterráneo (3h gratis presentando ticket de compra superior a 6€).
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ 3h Gratis (Compra min. 6€)</span>
-                <span class="tag traffic">🐾 Pet-Friendly</span>
-            </div>
-            <div class="card-footer">
-                <span>Galería comercial cubierta</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Larios+Centro+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-        
-        <!-- Tarjeta Vialia Málaga -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="false">
-            <div class="card-header">
-                <h3>Vialia Centro Comercial</h3>
-                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
-            </div>
-            <div class="location">📍 C/ Explanada de la Estación, s/n, Málaga</div>
-            <div class="card-desc">
-                Galerías pet-friendly integradas en la estación de trenes. Dispone de parking subterráneo con 2h gratis presentando ticket de compra/consumición.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ 2h Gratis (Con ticket de compra)</span>
-                <span class="tag traffic">🐾 Zonas Comunes</span>
-            </div>
-            <div class="card-footer">
-                <span>Ubicación céntrica</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Vialia+Centro+Comercial+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta CC Miramar Fuengirola -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-            <div class="card-header">
-                <h3>Centro Comercial Miramar</h3>
-                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Pet-Friendly + Carritos</span>
-            </div>
-            <div class="location">📍 Av. de la Encarnación, s/n, 29640 Fuengirola, Málaga</div>
-            <div class="card-desc">
-                Muy adaptado a mascotas, permite el acceso en galerías y dispone de servicio de carritos para perros. Parking exterior e subterráneo 100% gratuito.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Gratis</span>
-                <span class="tag traffic">🛒 Carritos para perros</span>
-            </div>
-            <div class="card-footer">
-                <span>Fuengirola</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Miramar+Fuengirola" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta CC Rosaleda -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-            <div class="card-header">
-                <h3>Centro Comercial Rosaleda</h3>
-                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Galerías Permitidas</span>
-            </div>
-            <div class="location">📍 Av. Simón Bolívar, s/n, Palma-Palmilla, Málaga</div>
-            <div class="card-desc">
-                Permite pasear con perro atado por sus pasillos comunes. Cuenta con un amplio parking subterráneo gratuito.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Subterráneo Gratis</span>
-                <span class="tag traffic">🐾 Zonas Comunes</span>
-            </div>
-            <div class="card-footer">
-                <span>Ideal para días de calor/lluvia</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Rosaleda+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Plaza Mayor -->
-        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-            <div class="card-header">
-                <h3>Plaza Mayor</h3>
-                <span class="badge-shadow" style="background:#dbeafe; color:#1e40af;">Al Aire Libre</span>
-            </div>
-            <div class="location">📍 C. Alfonso Ponce de León, 3, Churriana, Málaga</div>
-            <div class="card-desc">
-                Recinto al aire libre ideal para pasear con perro y entrar a multitud de tiendas. Dispone de parking exterior enorme y gratuito.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Gratis</span>
-                <span class="tag traffic">🌤️ Espacio Abierto</span>
-            </div>
-            <div class="card-footer">
-                <span>Zona comercial abierta</span>
-                <a href="https://www.google.com/maps/search/?api=1&query=Centro+Comercial+Plaza+Mayor+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Leroy Merlin -->
-        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-            <div class="card-header">
-                <h3>Leroy Merlin</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
-            </div>
-            <div class="location">📍 Málaga (Málaga Nostrum / Rosaleda)</div>
-            <div class="card-desc">
-                Permiten la entrada de perros en toda la tienda. Disponen de parking gratuito muy amplio tanto exterior como subterráneo.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Amplio</span>
-                <span class="tag traffic">🛒 Acceso Total</span>
-            </div>
-            <div class="card-footer">
-                <span>Bricolaje y hogar</span>
-                <a href="https://maps.google.com/?q=Leroy+Merlin+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Decathlon -->
-        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-            <div class="card-header">
-                <h3>Decathlon</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
-            </div>
-            <div class="location">📍 Málaga (Guadalmar / C.C. Rosaleda)</div>
-            <div class="card-desc">
-                Acceso totalmente permitido con perro atado para hacer tus compras deportivas. Fácil aparcamiento gratuito en la puerta.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Sin Coste</span>
-                <span class="tag traffic">⚽ Acceso Deportivo</span>
-            </div>
-            <div class="card-footer">
-                <span>Grandes superficies</span>
-                <a href="https://maps.google.com/?q=Decathlon+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Tiendanimal -->
-        <div class="card aparcar-card" data-cubierto="false" data-gratis="true">
-            <div class="card-header">
-                <h3>Tiendanimal</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
-            </div>
-            <div class="location">📍 Málaga Nostrum / Plaza Mayor</div>
-            <div class="card-desc">
-                Especialistas en mascotas, tu perro es más que bienvenido dentro del recinto. Tienen parking propio o de parque comercial directo en la puerta.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking en Puerta</span>
-                <span class="tag traffic">🐶 Tienda Especialista</span>
-            </div>
-            <div class="card-footer">
-                <span>Todo para tu mascota</span>
-                <a href="https://maps.google.com/?q=Tiendanimal+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Obramat -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-            <div class="card-header">
-                <h3>Obramat (antiguo Bricomart)</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">100% Pet Friendly</span>
-            </div>
-            <div class="location">📍 Parque Comercial Málaga Nostrum</div>
-            <div class="card-desc">
-                Permiten entrar con mascota a sus almacenes de construcción y bricolaje. Parking exterior enorme y de muy fácil acceso.
-            </div>
-            <div class="tags-row">
-                <span class="tag">🅿️ Parking Exterior Enorme</span>
-                <span class="tag traffic">🔨 Almacén Amplio</span>
-            </div>
-            <div class="card-footer">
-                <span>Construcción y reformas</span>
-                <a href="https://maps.google.com/?q=Obramat+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-            </div>
-        </div>
-
-        <!-- Tarjeta Paseo Marítimo -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-          <div class="card-header">
-            <h3>Explanada Arbolada Paseo Marítimo</h3>
-            <span class="badge-shadow">85% Sombra real</span>
-          </div>
-          <div class="location">📍 La Cala del Moral / El Candado</div>
-          <div class="card-desc">
-            Ideal para bajar perros grandes o nerviosos. Arboleda densa y acceso peatonal directo al paseo.
-          </div>
-          <div class="tags-row">
-            <span class="tag">💧 Fuente</span>
-            <span class="tag traffic">🛡️ Tráfico muy bajo (Seguro)</span>
-          </div>
-          <div class="card-footer">
-            <span>250m de la playa canina</span>
-            <a href="https://maps.google.com/?cid=15549026477448410674" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Tarjeta Plaza Mayor Exterior -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-          <div class="card-header">
-            <h3>Parking C.C. Plaza Mayor (Zona Exterior)</h3>
-            <span class="badge-shadow">70% Marquesinas + Árboles</span>
-          </div>
-          <div class="location">📍 Guadalmar, Málaga</div>
-          <div class="card-desc">
-            Bebederos caninos en pasillos exteriores. Entrada permitida en tiendas de moda (Zara, Sfera, Mango). Prohibido en supermercados.
-          </div>
-          <div class="tags-row">
-            <span class="tag">💧 Fuente</span>
-            <span class="tag traffic" style="background:#fffaf0; color:#dd6b20;">⚠️ Tráfico moderado</span>
-          </div>
-          <div class="card-footer">
-            <span>Junto a la entrada al aire libre</span>
-            <a href="https://maps.google.com/?cid=16665920246510996278" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-          </div>
-        </div>
-
-        <!-- Tarjeta McArthurGlen -->
-        <div class="card aparcar-card" data-cubierto="true" data-gratis="true">
-          <div class="card-header">
-            <h3>Parking Subterráneo / Exterior McArthurGlen</h3>
-            <span class="badge-shadow">100% Sombra en subterráneo</span>
-          </div>
-          <div class="location">📍 Designer Outlet, Málaga</div>
-          <div class="card-desc">
-            Recinto al aire libre ideal para pasear con perro. Muchos locales cuentan con cuencos de agua en la puerta.
-          </div>
-          <div class="tags-row">
-            <span class="tag">💧 Fuente</span>
-            <span class="tag">❄️ Muy fresco</span>
-          </div>
-          <div class="card-footer">
-            <span>Zona comercial pet-friendly</span>
-            <a href="https://maps.google.com/?cid=3386043166009892302" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-          </div>
-        </div>
-      </div>
+    <!-- Banner estacional dinámico (oculto por defecto) -->
+    <div id="seasonalBanner" class="hidden text-center py-2 px-4 text-xs sm:text-sm font-semibold text-white bg-orange-600 shadow-sm">
+        <span id="seasonalBannerText">🎃 ¡Modo Halloween activado! Paseos terroríficamente seguros por Málaga 👻</span>
     </div>
 
-    <!-- PESTAÑA PLAYAS -->
-    <div id="tab-playas" class="tab-pane">
-      <div class="section-title">Playas Caninas Málaga & Costa</div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h3>Playa Canina Arroyo Totalán</h3>
-          <span class="badge-shadow" style="background:#e6fffa; color:#234e52;">Todo el año (24h)</span>
-        </div>
-        <div class="location">📍 Málaga / La Araña - Cala del Moral</div>
-        <div class="card-desc">Piedras y grava. Amplia zona de paseo habilitada oficialmente para perros todo el año.</div>
-        <div class="card-footer">
-          <span>Acceso libre</span>
-          <a href="https://maps.google.com/?cid=15549026477448410674" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-      </div>
+    <!-- Header Principal -->
+    <header class="theme-header bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 text-white shadow-lg sticky top-0 z-30">
+        <div class="max-w-5xl mx-auto px-4 py-3.5 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5">
+                <div id="logoIcon" class="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/20">
+                    🐾
+                </div>
+                <div>
+                    <h1 id="mainTitle" class="text-lg sm:text-xl font-extrabold tracking-tight leading-none">
+                        PetParking Málaga
+                    </h1>
+                    <p class="text-[11px] sm:text-xs text-teal-100 font-medium mt-0.5">
+                        Parkings con sombra, Campers & Guía Pet-Friendly
+                    </p>
+                </div>
+            </div>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Playa de Guadalmar (Zona Canina)</h3>
-          <span class="badge-shadow" style="background:#e6fffa; color:#234e52;">Todo el año (24h)</span>
+            <div class="flex items-center gap-2">
+                <button onclick="openSuggestModal()" class="btn-primary-theme bg-white text-teal-800 hover:bg-teal-50 font-bold text-xs sm:text-sm px-3.5 py-2 rounded-xl shadow-sm transition active:scale-95 flex items-center gap-1.5">
+                    <span>➕</span>
+                    <span>Sugerir sitio</span>
+                </button>
+                <button onclick="openAdminTrigger()" title="Panel de Administrador" class="w-9 h-9 rounded-xl bg-black/20 hover:bg-black/30 flex items-center justify-center text-sm transition active:scale-95 border border-white/10">
+                    🔒
+                </button>
+            </div>
         </div>
-        <div class="location">📍 Guadalmar, Málaga Capital</div>
-        <div class="card-desc">Zona delimitada de arena en la desembocadura del Guadalhorce, muy cómoda y cercana.</div>
-        <div class="card-footer">
-          <span>Acceso libre</span>
-          <a href="https://maps.google.com/?q=Playa+de+Guadalmar+zona+canina+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-      </div>
+    </header>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Playa Canina El Castillo</h3>
-          <span class="badge-shadow" style="background:#e6fffa; color:#234e52;">Todo el año</span>
-        </div>
-        <div class="location">📍 Fuengirola</div>
-        <div class="card-desc">Arena fina, totalmente vallada, con duchas para perros y fácil acceso.</div>
-        <div class="card-footer">
-          <span>Abierta todo el año</span>
-          <a href="https://maps.google.com/?q=Playa+Canina+El+Castillo+Fuengirola" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-      </div>
+    <!-- Buscador y Filtros -->
+    <section class="max-w-5xl mx-auto w-full px-4 pt-5 pb-2">
+        <!-- Barra de búsqueda -->
+        <div class="theme-card bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-slate-200/80 mb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <!-- Input Texto -->
+                <div class="sm:col-span-2 relative">
+                    <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        oninput="filterSites()"
+                        placeholder="Buscar parking, playa, camper, centro comercial..." 
+                        class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition"
+                    >
+                </div>
+                <!-- Selector de Municipio -->
+                <div>
+                    <select 
+                        id="zoneSelect" 
+                        onchange="filterSites()"
+                        class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-700 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition"
+                    >
+                        <option value="todos">📍 Toda Málaga y Costa</option>
+                        <option value="Málaga Capital">Málaga Capital</option>
+                        <option value="Marbella">Marbella</option>
+                        <option value="Fuengirola">Fuengirola</option>
+                        <option value="Benalmádena">Benalmádena</option>
+                        <option value="Torremolinos">Torremolinos</option>
+                        <option value="Mijas">Mijas</option>
+                        <option value="Rincón de la Victoria">Rincón de la Victoria</option>
+                        <option value="Torre del Mar">Torre del Mar / Vélez</option>
+                        <option value="Estepona">Estepona</option>
+                    </select>
+                </div>
+            </div>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Playa Canina Piedra Paloma</h3>
-          <span class="badge-shadow" style="background:#e6fffa; color:#234e52;">Todo el año</span>
-        </div>
-        <div class="location">📍 Casares / Costa</div>
-        <div class="card-desc">Arena fina y piedras. Ideal para pasar el día tranquilo junto al mar.</div>
-        <div class="card-footer">
-          <span>Abierta todo el año</span>
-          <a href="https://maps.google.com/?q=Playa+Piedra+Paloma+Casares" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-      </div>
+            <!-- Categorías Principales (Scroll horizontal en móvil) -->
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-3 pb-1" id="categoryPills">
+                <button onclick="setCategory('todos')" data-cat="todos" class="cat-pill active-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-teal-600 text-white shadow-sm transition">
+                    ✨ Todos
+                </button>
+                <button onclick="setCategory('parking')" data-cat="parking" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🅿️ Parkings con Sombra
+                </button>
+                <button onclick="setCategory('camper')" data-cat="camper" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/60 transition">
+                    🚐 Furgos y Campers
+                </button>
+                <button onclick="setCategory('playa')" data-cat="playa" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🏖️ Playas Caninas
+                </button>
+                <button onclick="setCategory('compras')" data-cat="compras" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🛍️ Centros Comerciales
+                </button>
+                <button onclick="setCategory('gastro')" data-cat="gastro" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    ☕ Cafés y Restaurantes
+                </button>
+                <button onclick="setCategory('parque')" data-cat="parque" class="cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🐕 Parques Caninos
+                </button>
+            </div>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Otras Playas de Málaga (Resto de la Costa)</h3>
-          <span class="badge-shadow" style="background:#fffaf0; color:#dd6b20;">Por Temporada (Restringido en Verano)</span>
+            <!-- Filtros rápidos extra (Checkboxes táctiles) -->
+            <div class="flex flex-wrap items-center gap-2 pt-3 mt-2 border-t border-slate-100 text-xs">
+                <span class="text-slate-400 font-medium mr-1">Filtros rápidos:</span>
+                
+                <button id="toggleCamper" onclick="toggleQuickFilter('camperOk')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-amber-400">
+                    <span>🚐</span> <span>Apto Camper / Sin gálibo</span>
+                </button>
+
+                <button id="toggleShade" onclick="toggleQuickFilter('shadeOk')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-teal-400">
+                    <span>☂️</span> <span>Sombra garantizada</span>
+                </button>
+
+                <button id="toggleBigDogs" onclick="toggleQuickFilter('bigDogsOk')" class="px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-teal-400">
+                    <span>🐕‍🦺</span> <span>Perros grandes OK</span>
+                </button>
+            </div>
         </div>
-        <div class="location">📍 Málaga Capital / Torremolinos / Benalmádena</div>
-        <div class="card-desc">El resto de playas urbanas prohíben el baño de mascotas durante la temporada de baño oficial (1 de junio al 30 de septiembre), permitiendo el acceso en horario nocturno o fuera de temporada según ordenanza municipal.</div>
-        <div class="card-footer">
-          <span>Consultar normativa local</span>
-          <a href="https://maps.google.com/?q=Malaga" target="_blank" class="btn-route">Ver Zonas &rarr;</a>
+
+        <!-- Barra de estado de resultados -->
+        <div class="flex items-center justify-between px-1 mb-3">
+            <p id="resultsCounter" class="text-xs sm:text-sm font-semibold text-slate-500">
+                Mostrando lugares verificados
+            </p>
+            <div class="flex items-center gap-1.5 text-xs text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full font-semibold border border-teal-200">
+                <span>🐾</span>
+                <span>Vota con huellas tus sitios favoritos</span>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- Grid de Tarjetas -->
+    <main class="max-w-5xl mx-auto w-full px-4 flex-1">
+        <div id="sitesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Las tarjetas se inyectan dinámicamente por JS -->
+        </div>
+
+        <!-- Estado vacío cuando no hay coincidencias -->
+        <div id="emptyState" class="hidden theme-card bg-white rounded-2xl p-8 text-center border border-slate-200 my-4">
+            <div class="text-4xl mb-2">🐕‍🦺</div>
+            <h3 class="text-base font-bold text-slate-800">No hemos encontrado sitios con esos filtros</h3>
+            <p class="text-xs text-slate-500 mt-1 mb-4">Prueba a cambiar de municipio o desactivar algún filtro rápido.</p>
+            <button onclick="resetAllFilters()" class="px-4 py-2 bg-teal-600 text-white rounded-xl text-xs font-bold shadow-sm hover:bg-teal-700 transition">
+                Ver todos los lugares
+            </button>
+        </div>
+    </main>
+
+    <!-- MODAL 1: Sugerir Sitio (Público) -->
+    <div id="suggestModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white text-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="text-xl">🐾</span>
+                    <h2 class="text-base font-extrabold text-slate-800">Sugerir un sitio Pet-Friendly</h2>
+                </div>
+                <button onclick="closeSuggestModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
+            </div>
+
+            <form id="addSiteForm" onsubmit="handleUserSuggestion(event)" class="space-y-3.5 mt-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del lugar *</label>
+                    <input type="text" id="sugName" required placeholder="Ej: Parking Muelle Uno, Playa Canina..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                </div>
+
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Municipio *</label>
+                        <select id="sugZone" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                            <option value="Málaga Capital">Málaga Capital</option>
+                            <option value="Marbella">Marbella</option>
+                            <option value="Fuengirola">Fuengirola</option>
+                            <option value="Benalmádena">Benalmádena</option>
+                            <option value="Torremolinos">Torremolinos</option>
+                            <option value="Mijas">Mijas</option>
+                            <option value="Rincón de la Victoria">Rincón de la Victoria</option>
+                            <option value="Torre del Mar">Torre del Mar</option>
+                            <option value="Estepona">Estepona</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Categoría *</label>
+                        <select id="sugCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                            <option value="parking">🅿️ Parking Sombra</option>
+                            <option value="camper">🚐 Zona Camper / Furgo</option>
+                            <option value="playa">🏖️ Playa Canina</option>
+                            <option value="compras">🛍️ Centro Comercial</option>
+                            <option value="gastro">☕ Bar / Restaurante</option>
+                            <option value="parque">🐕 Parque Canino</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Detalles del sitio</label>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="sugShade" class="rounded text-teal-600">
+                            <span>☂️ Tiene sombra</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="sugCamper" class="rounded text-teal-600">
+                            <span>🚐 Apto Camper/Furgo</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="sugBigDogs" checked class="rounded text-teal-600">
+                            <span>🐕‍🦺 Perros grandes OK</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="sugWater" class="rounded text-teal-600">
+                            <span>💧 Ponen agua</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">¿Por qué lo recomiendas? *</label>
+                    <textarea id="sugDesc" required rows="2" placeholder="Ej: Plazas muy amplias en el subterráneo, ideal para furgos o para dejar el coche fresquito..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                </div>
+
+                <div id="successMsg" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold text-center">
+                    ✅ ¡Gracias! Tu sugerencia se ha enviado al panel de administración para revisarla.
+                </div>
+
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md transition">
+                    Enviar sugerencia 🐾
+                </button>
+            </form>
+        </div>
     </div>
 
-    <!-- PESTAÑA PARQUES -->
-    <div id="tab-parques" class="tab-pane">
-        <div class="section-title">Parques Caninos</div>
-        
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Huelin</h3>
-                <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Vallado</span>
+    <!-- MODAL 2: Login de Administrador -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
+        <div class="bg-white text-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-100">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center gap-2">
+                    <span class="text-lg">🔐</span>
+                    <h2 class="text-base font-extrabold">Acceso Administrador</h2>
+                </div>
+                <button onclick="closeAdminLogin()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
             </div>
-            <div class="location">📍 Parque de Huelin, Málaga</div>
-            <div class="card-desc">Amplio pipican con zona de Agility y fuentes adaptadas para mascotas.</div>
-            <div class="card-footer">
-                <span>Zona iluminada</span>
-                <a href="https://maps.google.com/?q=Parque+Canino+Huelin+Malaga" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Parque del Oeste</h3>
-                <span class="badge-shadow" style="background:#fef08a; color:#713f12;">Abierto 10:00 - 23:00</span>
-            </div>
-            <div class="location">📍 Carretera de Cádiz, Málaga</div>
-            <div class="card-desc">Zona canina amplia con arboleda y zonas de descanso. Equipado con fuentes adaptadas para perros y bancos.</div>
-            <div class="card-footer">
-                <span>Arboleda y bancos</span>
-                <a href="https://www.google.com/maps/place//data=!4m2!3m1!1s0xd72f9d0deb51205:0xa77f5f3d35fd4771?sa=X&ved=1t:8290&ictx=111" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
+            <form onsubmit="verifyAdminPassword(event)" class="mt-4 space-y-3">
+                <p class="text-xs text-slate-500">
+                    Introduce tu contraseña para ver el contador de visitas, publicar sitios desde el móvil o probar los modos festivos.
+                </p>
+                <div>
+                    <input 
+                        type="password" 
+                        id="adminPassInput" 
+                        placeholder="Contraseña de administrador" 
+                        required
+                        class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
+                    >
+                    <p class="text-[11px] text-slate-400 mt-1.5">
+                        💡 Contraseña configurada: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-teal-700 font-bold">petmalaga</code>
+                    </p>
+                </div>
+                <div id="loginErrorMsg" class="hidden text-xs font-bold text-red-600 bg-red-50 p-2 rounded-lg text-center">
+                    Contraseña incorrecta. Inténtalo de nuevo.
+                </div>
+                <button type="submit" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition">
+                    Entrar al Panel
+                </button>
+            </form>
         </div>
+    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Miraflores de los Ángeles</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
+    <!-- MODAL 3: Panel de Administrador Completo (Móvil y Desktop) -->
+    <div id="adminPanelModal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-xs z-50 hidden items-center justify-center p-2 sm:p-4">
+        <div class="bg-white text-slate-800 rounded-2xl max-w-2xl w-full p-4 sm:p-6 shadow-2xl border border-slate-200 max-h-[92vh] overflow-y-auto">
+            <!-- Cabecera Admin -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 sticky top-0 bg-white z-10">
+                <div class="flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold">⚡</span>
+                    <div>
+                        <h2 class="text-base font-extrabold text-slate-900 leading-tight">Panel Admin Móvil</h2>
+                        <p class="text-[11px] text-slate-500">Gestión rápida de PetParking Málaga</p>
+                    </div>
+                </div>
+                <button onclick="closeAdminPanel()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
+                    Cerrar ✕
+                </button>
             </div>
-            <div class="location">📍 Calle Monte Pizarro, Málaga</div>
-            <div class="card-desc">Zona canina vallada situada en la zona de Miraflores. Amplio espacio para que los perros corran con libertad.</div>
-            <div class="card-footer">
-                <span>Zona vallada · Llevar agua propia</span>
-                <a href="https://maps.app.goo.gl/gKMQXeBnCxRH5MYm8" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque para animales Guadalmar</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Doble puerta</span>
+            <!-- 1. Tarjetas del Contador de Visitas y Estadísticas -->
+            <div class="mt-4">
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📊 Contador de Visitas y Comunidad</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                    <div class="p-3 rounded-xl bg-teal-50 border border-teal-200/70">
+                        <span class="text-[11px] text-teal-700 font-semibold block">Visitas Totales</span>
+                        <div class="flex items-baseline gap-1 mt-0.5">
+                            <span id="statTotalVisits" class="text-xl font-extrabold text-teal-900">1,428</span>
+                            <span class="text-[10px] text-emerald-600 font-bold">+12 hoy</span>
+                        </div>
+                    </div>
+                    <div class="p-3 rounded-xl bg-amber-50 border border-amber-200/70">
+                        <span class="text-[11px] text-amber-800 font-semibold block">Búsquedas Camper</span>
+                        <span id="statCamperClicks" class="text-xl font-extrabold text-amber-900 mt-0.5 block">314</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-blue-50 border border-blue-200/70">
+                        <span class="text-[11px] text-blue-700 font-semibold block">Sitios Publicados</span>
+                        <span id="statActiveSites" class="text-xl font-extrabold text-blue-900 mt-0.5 block">0</span>
+                    </div>
+                    <div class="p-3 rounded-xl bg-purple-50 border border-purple-200/70">
+                        <span class="text-[11px] text-purple-700 font-semibold block">Huellas Dadas 🐾</span>
+                        <span id="statTotalPaws" class="text-xl font-extrabold text-purple-900 mt-0.5 block">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="location">📍 Churriana, Málaga</div>
-            <div class="card-desc">Espacio amplio dividido en dos zonas con doble puerta de seguridad. Cuenta con fuente de agua y bancos, aunque es recomendable tener en cuenta la escasez de sombra.</div>
-            <div class="card-footer">
-                <span>Zona dividida · Fuente disponible</span>
-                <a href="https://maps.app.goo.gl/bG6qs6juE7Wbg9oD8" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Parque de El Morlaco</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 20:00</span>
+            <!-- 2. Probador de Modos Estacionales (Halloween / Navidad) -->
+            <div class="mt-5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-xs font-extrabold text-slate-700">🎨 Probar Modos Festivos en Vivo</h3>
+                    <span class="text-[11px] text-slate-500">Automático por fecha o manual aquí</span>
+                </div>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setSeasonalTheme('normal')" class="py-2 px-3 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 shadow-2xs transition">
+                        ☀️ Normal
+                    </button>
+                    <button onclick="setSeasonalTheme('halloween')" class="py-2 px-3 rounded-xl text-xs font-bold bg-orange-600 text-white hover:bg-orange-700 shadow-2xs transition">
+                        🎃 Halloween
+                    </button>
+                    <button onclick="setSeasonalTheme('navidad')" class="py-2 px-3 rounded-xl text-xs font-bold bg-emerald-700 text-white hover:bg-emerald-800 shadow-2xs transition">
+                        🎄 Navidad
+                    </button>
+                </div>
             </div>
-            <div class="location">📍 Málaga-Este (Zona El Morlaco)</div>
-            <div class="card-desc">Amplio recinto rodeado de naturaleza y gran arboleda. Ofrece muchísima sombra natural y un espacio ideal para que los perros corran en libertad entre pinos.</div>
-            <div class="card-footer">
-                <span>Entorno natural · Zona de pinar</span>
-                <a href="https://maps.google.com/?cid=8799174917089542317" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Parque del Norte</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 9:00 a 23:00</span>
-            </div>
-            <div class="location">📍 Camino Cuarto, Bailén-Miraflores</div>
-            <div class="card-desc">Recinto amplio de barrio muy frecuentado por los vecinos. Zona vallada cómoda y accesible para los paseos diarios de la zona norte.</div>
-            <div class="card-footer">
-                <span>Zona vallada · Horario amplio</span>
-                <a href="https://maps.google.com/?cid=5030924818686783569" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
+            <!-- 3. Subir Nuevo Sitio directamente desde el móvil -->
+            <div class="mt-5 p-4 rounded-2xl bg-white border-2 border-teal-500/30 shadow-xs">
+                <h3 class="text-sm font-extrabold text-slate-800 mb-3 flex items-center gap-1.5">
+                    <span>📲</span> <span>Publicar Nuevo Sitio al Instante</span>
+                </h3>
+                <form id="adminQuickUploadForm" onsubmit="handleAdminPublish(event)" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Nombre del Sitio *</label>
+                            <input type="text" id="admName" required placeholder="Ej: Área Camper Rincón / Parking Centro" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Municipio *</label>
+                            <select id="admZone" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                                <option value="Málaga Capital">Málaga Capital</option>
+                                <option value="Marbella">Marbella</option>
+                                <option value="Fuengirola">Fuengirola</option>
+                                <option value="Benalmádena">Benalmádena</option>
+                                <option value="Torremolinos">Torremolinos</option>
+                                <option value="Mijas">Mijas</option>
+                                <option value="Rincón de la Victoria">Rincón de la Victoria</option>
+                                <option value="Torre del Mar">Torre del Mar</option>
+                                <option value="Estepona">Estepona</option>
+                            </select>
+                        </div>
+                    </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino Portales del Popo</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">De 8:00 a 00:00</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Categoría *</label>
+                            <select id="admCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                                <option value="parking">🅿️ Parking con Sombra</option>
+                                <option value="camper">🚐 Especial Furgos y Campers</option>
+                                <option value="playa">🏖️ Playa Canina</option>
+                                <option value="compras">🛍️ Centro Comercial</option>
+                                <option value="gastro">☕ Bar / Terraza / Restaurante</option>
+                                <option value="parque">🐕 Parque Canino</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Altura / Detalle Camper (Opcional)</label>
+                            <input type="text" id="admHeight" placeholder="Ej: Sin límite de altura / Gálibo 2.20m" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs pt-1">
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="admShade" checked class="rounded text-teal-600">
+                            <span>☂️ Sombra</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-amber-200 bg-amber-50/60 cursor-pointer">
+                            <input type="checkbox" id="admCamper" class="rounded text-amber-600">
+                            <span>🚐 Camper OK</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="admBigDogs" checked class="rounded text-teal-600">
+                            <span>🐕‍🦺 Grandes OK</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
+                            <input type="checkbox" id="admWater" class="rounded text-teal-600">
+                            <span>💧 Agua</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">Descripción práctica *</label>
+                        <textarea id="admDesc" required rows="2" placeholder="Describe dónde aparcar, si hay sombra, acceso con perros..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-600 mb-1">Enlace Google Maps o Dirección (Opcional)</label>
+                        <input type="text" id="admMapUrl" placeholder="Ej: https://maps.google.com/... o nombre de calle" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-2 pt-1">
+                        <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-sm transition">
+                            🚀 Publicar ahora en la web
+                        </button>
+                        <button type="button" onclick="copyUpdatedSitesCode()" class="py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-900 text-white font-semibold text-xs transition">
+                            📋 Copiar datos JSON
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div class="location">📍 C. Portales del Popo, Churriana</div>
-            <div class="card-desc">Zona canina abierta desde primera hora hasta la medianoche en la zona de Churriana. Espacio tranquilo y vallado para el esparcimiento de las mascotas.</div>
-            <div class="card-footer">
-                <span>Amplio horario · Zona tranquila</span>
-                <a href="https://maps.google.com/?cid=11150011398652759048" target="_blank" class="btn-route">¡Cómo llegar!</a>
-            </div>
-        </div>
-      
-        <div class="card">
-            <div class="card-header">
-                <h3>Parque Canino María Moliner</h3>
-                <span class="badge-shadow" style="background:#dcfce7; color:#166534;">Abierto 24h</span>
-            </div>
-            <div class="location">📍 Calle María Moliner, Málaga</div>
-            <div class="card-desc">Parque canino con terreno de tierra. Dispone de bancos para sentarse y fuente de agua en el exterior del recinto.</div>
-            <div class="card-footer">
-                <span>Suelo de tierra · Fuente fuera</span>
-                <a href="https://www.google.com/maps/place/Parque+Canino+Maria+Moliner" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
+
+            <!-- 4. Bandeja de sugerencias recibidas -->
+            <div class="mt-5">
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📥 Sugerencias de Usuarios Pendientes (<span id="pendingCount">0</span>)</h3>
+                <div id="pendingSuggestionsList" class="space-y-2 text-xs text-slate-600">
+                    <!-- Se llena dinámicamente -->
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- PESTAÑA BARES -->
-    <div id="tab-bares" class="tab-pane">
-      <div class="section-title">Bares y Terrazas Pet-Friendly</div>
-      <div class="card">
-        <div class="card-header">
-          <h3>Brunchit Café</h3>
-          <span class="badge-shadow" style="background:#ffedd5; color:#9a3412;">Interior y Terraza</span>
-        </div>
-        <div class="location">📍 Centro / Soho, Málaga</div>
-        <div class="card-desc">Ambiente 100% dog-friendly donde reciben a tu peludo con agua y mimos.</div>
-        <div class="card-footer">
-          <span>Muy recomendado</span>
-          <a href="https://maps.google.com/?q=Brunchit+Malaga" target="_blank" class="btn-route">¡Cómo llegar! &rarr;</a>
-        </div>
-      </div>
+    <!-- Toast de notificación flotante (sin usar alert) -->
+    <div id="toastNotification" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-50 hidden bg-slate-900 text-white px-4 py-2.5 rounded-2xl shadow-xl text-xs sm:text-sm font-semibold items-center gap-2 border border-white/15">
+        <span id="toastIcon">✅</span>
+        <span id="toastMessage">Acción completada</span>
     </div>
 
-    <!-- PESTAÑA HOTELES -->
-    <div id="tab-hoteles" class="tab-pane">
-      <div class="section-title">Hoteles Pet-Friendly en Málaga</div>
-      
-      <div class="card">
-        <div class="card-header">
-          <h3>Only YOU Hotel Málaga</h3>
-          <span class="badge-shadow" style="background:#f3e8ff; color:#6b21a8;">5★ Lujo</span>
-        </div>
-        <div class="location">📍 Centro / Alameda Principal</div>
-        <div class="card-desc">Kit de bienvenida exclusivo con cama y comederos adaptados para tu mascota.</div>
-        <div class="tags-row">
-          <span class="tag" style="background:#f3e8ff; color:#6b21a8;">🐾 Sin límite estricto</span>
-        </div>
-        <div class="card-footer">
-          <span>Consultar suplemento</span>
-          <a href="https://maps.google.com/?q=Only+YOU+Hotel+Malaga" target="_blank" class="btn-route">Ver Hotel &rarr;</a>
-        </div>
-      </div>
+    <footer class="mt-12 border-t border-slate-200/80 py-6 text-center text-xs text-slate-400 px-4">
+        <p class="font-semibold text-slate-500">PetParking Málaga & Costa 🐾🚐</p>
+        <p class="mt-1">Guía colaborativa de parkings con sombra, zonas camper y espacios pet-friendly en Málaga.</p>
+    </footer>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Petit Palace Plaza Málaga</h3>
-          <span class="badge-shadow" style="background:#f3e8ff; color:#6b21a8;">4★ Céntrico</span>
-        </div>
-        <div class="location">📍 Centro Histórico / Calle Larios</div>
-        <div class="card-desc">Cama, comederos y snacks de cortesía sin cargo extra por alojarte con tu perro.</div>
-        <div class="tags-row">
-          <span class="tag" style="background:#f3e8ff; color:#6b21a8;">✨ ¡Gratis (Sin suplemento)!</span>
-        </div>
-        <div class="card-footer">
-          <span>Sin límite de peso</span>
-          <a href="https://maps.google.com/?q=Petit+Palace+Plaza+Malaga" target="_blank" class="btn-route">Ver Hotel &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3>Hotel ILUNION Málaga</h3>
-          <span class="badge-shadow" style="background:#f3e8ff; color:#6b21a8;">4★ Cerca de la Estación</span>
-        </div>
-        <div class="location">📍 Huelin / Estación AVE</div>
-        <div class="card-desc">Incluye camita y bebedero en la habitación para que tu perro se sienta como en casa.</div>
-        <div class="tags-row">
-          <span class="tag" style="background:#f3e8ff; color:#6b21a8;">🐶 Hasta 30 kg</span>
-        </div>
-        <div class="card-footer">
-          <span>Suplemento aprox. 25€/noche</span>
-          <a href="https://maps.google.com/?q=Hotel+ILUNION+Malaga" target="_blank" class="btn-route">Ver Hotel &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PESTAÑA CUIDADORES -->
-    <div id="tab-cuidadores" class="tab-pane">
-      <div class="section-title">Cuidadores y Residencias Caninas</div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3>Guardería Canina Teatinos</h3>
-          <span class="badge-shadow" style="background:#ebf8ff; color:#2b6cb0;">Cuidado Diario</span>
-        </div>
-        <div class="location">📍 Teatinos / El Cónsul</div>
-        <div class="card-desc">Atención personalizada, socialización y paseos diarios en horario de día.</div>
-        <div class="tags-row">
-          <span class="tag">🏡 Guardería de día</span>
-        </div>
-        <div class="card-footer">
-          <span>Aprox. 12€ - 18€ / día</span>
-          <a href="https://maps.google.com/?q=Teatinos+Malaga" target="_blank" class="btn-route">Ver Opciones &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3>Residencia Canina Málaga Sur</h3>
-          <span class="badge-shadow" style="background:#ebf8ff; color:#2b6cb0;">Residencia Campestre</span>
-        </div>
-        <div class="location">📍 Alhaurín de la Torre</div>
-        <div class="card-desc">Amplias zonas verdes, supervisión veterinaria 24h y servicio de recogida y entrega.</div>
-        <div class="tags-row">
-          <span class="tag">🌳 Alojamiento nocturno</span>
-        </div>
-        <div class="card-footer">
-          <span>Aprox. 15€ - 22€ / noche</span>
-          <a href="https://maps.google.com/?q=Alhaurin+de+la+Torre" target="_blank" class="btn-route">Ver Opciones &rarr;</a>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h3>Cuidadores Particulares Verificados</h3>
-          <span class="badge-shadow" style="background:#ebf8ff; color:#2b6cb0;">Plataforma (Rover / Gudog)</span>
-        </div>
-        <div class="location">📍 Málaga Capital y Alrededores</div>
-        <div class="card-desc">Encuentra canguros de confianza que alojan a tu perro en un entorno familiar sin jaulas.</div>
-        <div class="tags-row">
-          <span class="tag">❤️ Ambiente de hogar</span>
-        </div>
-        <div class="card-footer">
-          <span>Tarifas según cuidador</span>
-          <a href="https://gudog.com" target="_blank" class="btn-route">Ver Plataforma &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- PESTAÑA AÑADIR SITIO -->
-    <div id="tab-add" class="tab-pane">
-       <div class="section-title">Recomendar un Sitio</div>
-       <div class="form-container">
-          <h2 style="margin-bottom: 10px; color: #2d3748; font-size: 1.2rem;">➕ Añade o Recomienda un Sitio</h2>
-          <p style="color: #718096; font-size: 0.9rem; margin-bottom: 20px;">
-             ¿Conoces algún bar, hotel, zona de sombra o cuidador pet-friendly en Málaga? ¡Envíanoslo y lo revisaremos para incluirlo!
-          </p>
-
-          <form id="addSiteForm" onsubmit="handleFormSubmit(event)">
-             <div class="form-group">
-                <label for="category">Categoría:</label>
-                <select id="category" required>
-                   <option value="">Selecciona una opción...</option>
-                   <option value="Terrazas y Bares">🍹 Bar / Terraza / Cafetería</option>
-                   <option value="Hoteles">🏨 Hotel / Alojamiento Pet-Friendly</option>
-                   <option value="Parking / Sombras">🅿️ Parking / Zona con Sombra</option>
-                   <option value="Cuidadores">🏡 Cuidador / Guardería / Residencia</option>
-                   <option value="Playas">🏖️ Playa Canina</option>
-                </select>
-             </div>
-
-             <div class="form-group">
-                <label for="siteName">Nombre del Lugar / Servicio:</label>
-                <input type="text" id="siteName" placeholder="Ej. Bar El Sol, Hotel Picasso..." required>
-             </div>
-
-             <div class="form-group">
-                <label for="siteZone">Zona / Barrio en Málaga:</label>
-                <input type="text" id="siteZone" placeholder="Ej. Teatinos, Centro, Huelin, Pedregalejo..." required>
-             </div>
-
-             <div class="form-group">
-                <label for="siteDetails">Detalles importantes (Normas, si ponen agua, sombra, etc.):</label>
-                <textarea id="siteDetails" rows="3" placeholder="Ej. Admiten perros en terraza e interior, les ponen cuenco de agua..." required></textarea>
-             </div>
-
-             <button type="submit" class="submit-btn">Enviar Recomendación</button>
-          </form>
-
-          <div id="successMsg" class="success-msg">
-             ¡Gracias por tu aporte! 🎉 Revisaremos la recomendación para añadirla muy pronto a la web.
-          </div>
-       </div>
-    </div>
-  </main>
-
-  <script>
-    function switchTab(tabName, btnElement) {
-        document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.className = btn.className.replace(/active \w+/g, '').trim();
-            btn.classList.remove('active');
-        });
-
-        const targetTab = document.getElementById('tab-' + tabName);
-        if (targetTab) {
-            targetTab.classList.add('active');
-        }
-
-        if (btnElement) {
-            btnElement.classList.add('active', tabName);
-        }
-
-        const subfiltrosRow = document.querySelector('.subfiltros-row');
-        if (subfiltrosRow) {
-            subfiltrosRow.style.display = (tabName === 'tiendas') ? 'flex' : 'none';
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function filterSub(filter, btnElement) {
-        document.querySelectorAll('.btn-subfiltro').forEach(btn => btn.classList.remove('active'));
-        if (btnElement) btnElement.classList.add('active');
-
-        const cards = document.querySelectorAll('#aparcarList .card');
-        cards.forEach(card => {
-            if (filter === 'all') {
-                card.style.display = 'block';
-            } else {
-                const isCubierto = card.getAttribute('data-cubierto') === 'true';
-                const isGratis = card.getAttribute('data-gratis') === 'true';
-
-                if (filter === 'cubierto' && isCubierto) {
-                    card.style.display = 'block';
-                } else if (filter === 'gratis' && isGratis) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+    <script>
+        // Base de datos inicial con Parkings, Zonas Camper, Playas y Centros Comerciales
+        const initialSites = [
+            {
+                id: 1,
+                name: "Parking Subterráneo Muelle Uno",
+                zone: "Málaga Capital",
+                category: "parking",
+                shadeOk: true,
+                camperOk: false,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Gálibo 2.15m",
+                paws: 128,
+                desc: "Parking 100% cubierto y fresco junto al puerto. Puedes subir directamente con tu perro por los ascensores o rampas al paseo comercial de Muelle Uno.",
+                mapQuery: "Parking Muelle Uno Malaga"
+            },
+            {
+                id: 2,
+                name: "Explanada y Pinar Playa Canina El Castillo",
+                zone: "Fuengirola",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Sin límite de altura (Exterior amplio)",
+                paws: 215,
+                desc: "Ideal para furgonetas y campers. Zona sin barrera de altura muy cerca de la playa canina de Fuengirola, con zonas de arboleda próximas y duchas para perros.",
+                mapQuery: "Playa Canina Fuengirola"
+            },
+            {
+                id: 3,
+                name: "Centro Comercial Plaza Mayor (Zona Cubierta)",
+                zone: "Málaga Capital",
+                category: "compras",
+                shadeOk: true,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Zona exterior sin gálibo + Parking cubierto",
+                paws: 184,
+                desc: "Coche al fresco en el parking cubierto o aparcamiento exterior sin límite de altura para furgonetas grandes. Todo el recinto abierto es Pet-Friendly con bebederos.",
+                mapQuery: "Plaza Mayor Malaga"
+            },
+            {
+                id: 4,
+                name: "Área y Parking Paseo Marítimo Torre del Mar",
+                zone: "Torre del Mar",
+                category: "camper",
+                shadeOk: false,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Sin límite de altura (Plazas XXL)",
+                paws: 97,
+                desc: "Aparcamiento comodísimo para furgonetas camper y autocaravanas a pocos metros de la Playa Canina de Torre del Mar y del paseo marítimo.",
+                mapQuery: "Playa Canina Torre del Mar"
+            },
+            {
+                id: 5,
+                name: "Centro Comercial Miramar",
+                zone: "Fuengirola",
+                category: "compras",
+                shadeOk: true,
+                camperOk: false,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Parking subterráneo 2.10m",
+                paws: 142,
+                desc: "Parking subterráneo muy fresco para el verano y acceso permitido con mascotas a las galerías interiores y terrazas.",
+                mapQuery: "Centro Comercial Miramar Fuengirola"
+            },
+            {
+                id: 6,
+                name: "Playa Canina de Arroyo Totalán",
+                zone: "Rincón de la Victoria",
+                category: "playa",
+                shadeOk: false,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Sin barrera de altura en explanada",
+                paws: 112,
+                desc: "Amplia zona para aparcar tanto coches como furgonetas camper justo al lado de la playa canina y del paseo litoral hacia Málaga.",
+                mapQuery: "Playa Canina Arroyo Totalan"
+            },
+            {
+                id: 7,
+                name: "Parque Canino San Rafael (El Más Grande)",
+                zone: "Málaga Capital",
+                category: "parque",
+                shadeOk: true,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Calles amplias sin límite de altura",
+                paws: 165,
+                desc: "Fácil aparcamiento en los alrededores incluso con furgoneta. Cuenta con zonas separadas para perros grandes y pequeños, fuentes y buena sombra.",
+                mapQuery: "Parque Canino San Rafael Malaga"
+            },
+            {
+                id: 8,
+                name: "Parking Cubierto Puerto Marina & Paseo",
+                zone: "Benalmádena",
+                category: "parking",
+                shadeOk: true,
+                camperOk: false,
+                bigDogsOk: true,
+                waterOk: true,
+                heightLimit: "Gálibo 2.05m",
+                paws: 89,
+                desc: "Deja el coche totalmente a la sombra y pasea con tu peludo por las terrazas del puerto deportivo donde casi todos los locales ponen cuenco de agua.",
+                mapQuery: "Puerto Marina Benalmadena Parking"
             }
-        });
-    }
+        ];
 
-    function handleFormSubmit(e) {
-        e.preventDefault();
-        document.getElementById("addSiteForm").reset();
-        document.getElementById("successMsg").style.display = "block";
-        setTimeout(() => {
-            document.getElementById("successMsg").style.display = "none";
-        }, 5000);
-    }
-  </script>
+        let sitesData = [...initialSites];
+        let pendingSuggestions = [
+            {
+                name: "Área Camper Parque Tecnológico / Guadalhorce",
+                zone: "Málaga Capital",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                bigDogsOk: true,
+                waterOk: true,
+                desc: "Mucho sitio para furgos y sombra de eucaliptos cerca del río."
+            }
+        ];
+
+        let activeCategory = 'todos';
+        let quickFilters = {
+            camperOk: false,
+            shadeOk: false,
+            bigDogsOk: false
+        };
+        let votedSiteIds = new Set();
+        let visitStats = {
+            total: 1428,
+            camperClicks: 314
+        };
+
+        const categoryLabels = {
+            parking: { label: "🅿️ Parking Sombra", badgeClass: "bg-teal-100 text-teal-800 border-teal-200" },
+            camper: { label: "🚐 Furgos y Campers", badgeClass: "bg-amber-100 text-amber-900 border-amber-300" },
+            playa: { label: "🏖️ Playa Canina", badgeClass: "bg-sky-100 text-sky-800 border-sky-200" },
+            compras: { label: "🛍️ Centro Comercial", badgeClass: "bg-purple-100 text-purple-800 border-purple-200" },
+            gastro: { label: "☕ Gastro Pet-Friendly", badgeClass: "bg-rose-100 text-rose-800 border-rose-200" },
+            parque: { label: "🐕 Parque Canino", badgeClass: "bg-emerald-100 text-emerald-800 border-emerald-200" }
+        };
+
+        function renderSites() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const zoneVal = document.getElementById('zoneSelect').value;
+            const grid = document.getElementById('sitesGrid');
+            const emptyState = document.getElementById('emptyState');
+
+            const filtered = sitesData.filter(site => {
+                const matchCategory = activeCategory === 'todos' || site.category === activeCategory || (activeCategory === 'camper' && site.camperOk);
+                const matchZone = zoneVal === 'todos' || site.zone === zoneVal;
+                const matchSearch = site.name.toLowerCase().includes(searchVal) || 
+                                    site.desc.toLowerCase().includes(searchVal) || 
+                                    site.zone.toLowerCase().includes(searchVal);
+
+                const matchCamper = !quickFilters.camperOk || site.camperOk;
+                const matchShade = !quickFilters.shadeOk || site.shadeOk;
+                const matchBigDogs = !quickFilters.bigDogsOk || site.bigDogsOk;
+
+                return matchCategory && matchZone && matchSearch && matchCamper && matchShade && matchBigDogs;
+            });
+
+            document.getElementById('resultsCounter').textContent = `Mostrando ${filtered.length} ${filtered.length === 1 ? 'lugar verificado' : 'lugares verificados'}`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            grid.innerHTML = filtered.map(site => {
+                const catInfo = categoryLabels[site.category] || categoryLabels.parking;
+                const hasVoted = votedSiteIds.has(site.id);
+                const mapLink = site.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapQuery || site.name + ' ' + site.zone)}`;
+
+                return `
+                <article class="theme-card bg-white rounded-2xl p-4 sm:p-5 shadow-xs hover:shadow-md border border-slate-200/90 transition flex flex-col justify-between">
+                    <div>
+                        <!-- Fila Superior: Categoría y Municipio -->
+                        <div class="flex items-center justify-between gap-2 mb-2.5">
+                            <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg border ${catInfo.badgeClass}">
+                                ${catInfo.label}
+                            </span>
+                            <span class="text-xs font-semibold text-slate-500 flex items-center gap-1">
+                                📍 ${site.zone}
+                            </span>
+                        </div>
+
+                        <!-- Título -->
+                        <h2 class="text-base sm:text-lg font-extrabold text-slate-800 leading-snug mb-1.5">
+                            ${site.name}
+                        </h2>
+
+                        <!-- Descripción -->
+                        <p class="text-xs sm:text-sm text-slate-600 mb-3.5 leading-relaxed">
+                            ${site.desc}
+                        </p>
+
+                        <!-- Etiquetas Visuales (Camper, Sombra, Tamaño, Altura) -->
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${site.ShadeBadge !== false && site.shadeOk ? `
+                                <span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                    ☂️ Sombra asegurada
+                                </span>` : ''}
+                            ${site.camperOk ? `
+                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-300">
+                                    🚐 Apto Camper / Furgo
+                                </span>` : ''}
+                            ${site.heightLimit ? `
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
+                                    📏 ${site.heightLimit}
+                                </span>` : ''}
+                            ${site.bigDogsOk ? `
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-teal-50 text-teal-700">
+                                    🐕‍🦺 Perros grandes OK
+                                </span>` : ''}
+                            ${site.waterOk ? `
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700">
+                                    💧 Agua disponible
+                                </span>` : ''}
+                        </div>
+                    </div>
+
+                    <!-- Pie de Tarjeta: Sistema de Huellas y Botón Cómo Llegar -->
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+                        <button 
+                            onclick="givePaw(${site.id})" 
+                            class="px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition active:scale-95 ${hasVoted ? 'bg-teal-600 text-white border-teal-600' : 'bg-slate-50 hover:bg-teal-50 text-slate-700 border-slate-200'}"
+                        >
+                            <span>🐾</span>
+                            <span>${site.paws} huellas</span>
+                            <span class="text-[10px] opacity-80">${hasVoted ? '(¡Votado!)' : '+1'}</span>
+                        </button>
+
+                        <a 
+                            href="${mapLink}" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="btn-primary-theme px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold flex items-center gap-1.5 shadow-2xs transition active:scale-95"
+                        >
+                            <span>🗺️ Cómo llegar</span>
+                        </a>
+                    </div>
+                </article>
+                `;
+            }).join('');
+
+            updateAdminStats();
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            if (cat === 'camper') {
+                visitStats.camperClicks++;
+            }
+            document.querySelectorAll('.cat-pill').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.className = "cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-teal-600 text-white shadow-sm transition";
+                } else if (btn.dataset.cat === 'camper') {
+                    btn.className = "cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/60 transition";
+                } else {
+                    btn.className = "cat-pill shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+                }
+            });
+            renderSites();
+        }
+
+        function toggleQuickFilter(key) {
+            quickFilters[key] = !quickFilters[key];
+            if (key === 'camperOk' && quickFilters[key]) {
+                visitStats.camperClicks++;
+            }
+            const btnMap = {
+                camperOk: 'toggleCamper',
+                shadeOk: 'toggleShade',
+                bigDogsOk: 'toggleBigDogs'
+            };
+            const btn = document.getElementById(btnMap[key]);
+            if (quickFilters[key]) {
+                btn.className = "px-2.5 py-1 rounded-lg border border-teal-600 bg-teal-600 text-white font-bold flex items-center gap-1 transition shadow-2xs";
+            } else {
+                btn.className = "px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition";
+            }
+            renderSites();
+        }
+
+        function filterSites() {
+            renderSites();
+        }
+
+        function resetAllFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('zoneSelect').value = 'todos';
+            quickFilters = { camperOk: false, shadeOk: false, bigDogsOk: false };
+            ['toggleCamper', 'toggleShade', 'toggleBigDogs'].forEach(id => {
+                document.getElementById(id).className = "px-2.5 py-1 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition";
+            });
+            setCategory('todos');
+        }
+
+        function givePaw(siteId) {
+            const site = sitesData.find(s => s.id === siteId);
+            if (!site) return;
+
+            if (votedSiteIds.has(siteId)) {
+                showToast("🐾 Ya le habías dejado tu huella a este sitio");
+                return;
+            }
+            site.paws += 1;
+            votedSiteIds.add(siteId);
+            renderSites();
+            showToast(`🐾 ¡Has dejado una huella en ${site.name}!`);
+        }
+
+        function openSuggestModal() {
+            document.getElementById('suggestModal').classList.remove('hidden');
+            document.getElementById('suggestModal').classList.add('flex');
+        }
+
+        function closeSuggestModal() {
+            document.getElementById('suggestModal').classList.add('hidden');
+            document.getElementById('suggestModal').classList.remove('flex');
+        }
+
+        function handleUserSuggestion(e) {
+            e.preventDefault();
+            const newSug = {
+                name: document.getElementById('sugName').value,
+                zone: document.getElementById('sugZone').value,
+                category: document.getElementById('sugCategory').value,
+                shadeOk: document.getElementById('sugShade').checked,
+                camperOk: document.getElementById('sugCamper').checked,
+                bigDogsOk: document.getElementById('sugBigDogs').checked,
+                waterOk: document.getElementById('sugWater').checked,
+                desc: document.getElementById('sugDesc').value
+            };
+
+            pendingSuggestions.unshift(newSug);
+            document.getElementById('addSiteForm').reset();
+            const msg = document.getElementById('successMsg');
+            msg.classList.remove('hidden');
+
+            updateAdminStats();
+            setTimeout(() => {
+                msg.classList.add('hidden');
+                closeSuggestModal();
+            }, 2200);
+        }
+
+        // Funciones de Administrador con Contraseña
+        let isAdminAuthenticated = false;
+
+        function openAdminTrigger() {
+            if (isAdminAuthenticated) {
+                openAdminPanel();
+            } else {
+                document.getElementById('adminLoginModal').classList.remove('hidden');
+                document.getElementById('adminLoginModal').classList.add('flex');
+                document.getElementById('adminPassInput').focus();
+            }
+        }
+
+        function closeAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            document.getElementById('adminLoginModal').classList.remove('flex');
+            document.getElementById('loginErrorMsg').classList.add('hidden');
+        }
+
+        function verifyAdminPassword(e) {
+            e.preventDefault();
+            const pass = document.getElementById('adminPassInput').value.trim();
+            if (pass === 'petmalaga') {
+                isAdminAuthenticated = true;
+                document.getElementById('adminPassInput').value = '';
+                closeAdminLogin();
+                openAdminPanel();
+                showToast("🔓 Bienvenida al Panel de Administración");
+            } else {
+                document.getElementById('loginErrorMsg').classList.remove('hidden');
+            }
+        }
+
+        function openAdminPanel() {
+            updateAdminStats();
+            document.getElementById('adminPanelModal').classList.remove('hidden');
+            document.getElementById('adminPanelModal').classList.add('flex');
+        }
+
+        function closeAdminPanel() {
+            document.getElementById('adminPanelModal').classList.add('hidden');
+            document.getElementById('adminPanelModal').classList.remove('flex');
+        }
+
+        function updateAdminStats() {
+            const totalPaws = sitesData.reduce((acc, s) => acc + s.paws, 0);
+            document.getElementById('statTotalVisits').textContent = visitStats.total.toLocaleString('es-ES');
+            document.getElementById('statCamperClicks').textContent = visitStats.camperClicks.toLocaleString('es-ES');
+            document.getElementById('statActiveSites').textContent = sitesData.length;
+            document.getElementById('statTotalPaws').textContent = totalPaws;
+            document.getElementById('pendingCount').textContent = pendingSuggestions.length;
+
+            const listEl = document.getElementById('pendingSuggestionsList');
+            if (pendingSuggestions.length === 0) {
+                listEl.innerHTML = `<div class="p-3 rounded-xl bg-slate-50 text-slate-400 text-center">No hay sugerencias pendientes de revisar.</div>`;
+                return;
+            }
+
+            listEl.innerHTML = pendingSuggestions.map((sug, idx) => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span class="font-bold text-slate-800">${sug.name}</span>
+                        <span class="text-[11px] text-teal-700 font-semibold ml-1">(${sug.zone})</span>
+                        <p class="text-[11px] text-slate-500 mt-0.5">${sug.desc}</p>
+                    </div>
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="approveSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700">
+                            ✓ Aprobar
+                        </button>
+                        <button onclick="rejectSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-[11px] hover:bg-red-200">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleAdminPublish(e) {
+            e.preventDefault();
+            const newSite = {
+                id: Date.now(),
+                name: document.getElementById('admName').value.trim(),
+                zone: document.getElementById('admZone').value,
+                category: document.getElementById('admCategory').value,
+                heightLimit: document.getElementById('admHeight').value.trim() || (document.getElementById('admCamper').checked ? "Sin límite de altura" : ""),
+                shadeOk: document.getElementById('admShade').checked,
+                camperOk: document.getElementById('admCamper').checked,
+                bigDogsOk: document.getElementById('admBigDogs').checked,
+                waterOk: document.getElementById('admWater').checked,
+                paws: 1,
+                desc: document.getElementById('admDesc').value.trim(),
+                mapUrl: document.getElementById('admMapUrl').value.trim()
+            };
+
+            sitesData.unshift(newSite);
+            document.getElementById('adminQuickUploadForm').reset();
+            renderSites();
+            showToast(`🚀 "${newSite.name}" publicado en la guía`);
+        }
+
+        function approveSuggestion(index) {
+            const sug = pendingSuggestions[index];
+            if (!sug) return;
+            sitesData.unshift({
+                id: Date.now(),
+                name: sug.name,
+                zone: sug.zone,
+                category: sug.category,
+                shadeOk: sug.shadeOk,
+                camperOk: sug.camperOk,
+                bigDogsOk: sug.bigDogsOk,
+                waterOk: sug.waterOk,
+                heightLimit: sug.camperOk ? "Apto Furgos / Campers" : "",
+                paws: 5,
+                desc: sug.desc
+            });
+            pendingSuggestions.splice(index, 1);
+            renderSites();
+            showToast(`✅ Sitio aprobado y visible en la web`);
+        }
+
+        function rejectSuggestion(index) {
+            pendingSuggestions.splice(index, 1);
+            updateAdminStats();
+            showToast("Sugerencia descartada");
+        }
+
+        function copyUpdatedSitesCode() {
+            const jsonText = JSON.stringify(sitesData, null, 2);
+            const tempInput = document.createElement('textarea');
+            tempInput.value = jsonText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            showToast("📋 Lista de sitios copiada al portapapeles");
+        }
+
+        function setSeasonalTheme(mode) {
+            document.body.classList.remove('modo-halloween', 'modo-navidad');
+            const banner = document.getElementById('seasonalBanner');
+            const bannerText = document.getElementById('seasonalBannerText');
+            const titleEl = document.getElementById('mainTitle');
+            const logoIcon = document.getElementById('logoIcon');
+
+            if (mode === 'halloween') {
+                document.body.classList.add('modo-halloween');
+                banner.className = "text-center py-2 px-4 text-xs sm:text-sm font-semibold text-white bg-orange-600 shadow-sm block";
+                bannerText.textContent = "🎃 ¡Especial Halloween en Málaga! Paseos y rutas terroríficamente seguras con tu peludo 👻";
+                titleEl.textContent = "PetParking Málaga 🎃";
+                logoIcon.textContent = "🎃";
+                document.title = "PetParking Málaga 🎃 | Guía Pet-Friendly";
+                showToast("🎃 Modo Halloween activado");
+            } else if (mode === 'navidad') {
+                document.body.classList.add('modo-navidad');
+                banner.className = "text-center py-2 px-4 text-xs sm:text-sm font-semibold text-white bg-red-700 shadow-sm block";
+                bannerText.textContent = "🎄 ¡Felices Fiestas Perrunas! Descubre planes, parkings y rutas navideñas por Málaga 🎅🐾";
+                titleEl.textContent = "PetParking Málaga 🎄";
+                logoIcon.textContent = "🎅";
+                document.title = "PetParking Málaga 🎄 | Guía Pet-Friendly";
+                showToast("🎄 Modo Navidad activado");
+            } else {
+                banner.classList.add('hidden');
+                titleEl.textContent = "PetParking Málaga";
+                logoIcon.textContent = "🐾";
+                document.title = "PetParking Málaga & Costa | Guía Pet-Friendly y Campers";
+                showToast("☀️ Diseño habitual activado");
+            }
+        }
+
+        function checkAutomaticSeasonalDates() {
+            const hoy = new Date();
+            const mes = hoy.getMonth() + 1; // Octubre = 10, Diciembre = 12
+            const dia = hoy.getDate();
+
+            if (mes === 10 && dia >= 25 && dia <= 31) {
+                setSeasonalTheme('halloween');
+            } else if (mes === 12 && dia >= 1 && dia <= 31) {
+                setSeasonalTheme('navidad');
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex');
+            clearTimeout(window.toastTimer);
+            window.toastTimer = setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex');
+            }, 3000);
+        }
+
+        // Inicialización al cargar la página
+        window.onload = function() {
+            visitStats.total += 1; // Incrementa la visita de la sesión
+            renderSites();
+            checkAutomaticSeasonalDates();
+        };
+    </script>
 </body>
 </html>
