@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -109,7 +110,7 @@
                         </span>
                     </div>
                     <p class="text-[11px] sm:text-xs text-teal-100 font-medium mt-0.5">
-                        Parkings con Sombra, Campers, Campings, Playas y Guía Verificada
+                        Parkings con Sombra, Caravanas, Campers, Campings, Playas y Guía Verificada
                     </p>
                 </div>
             </div>
@@ -169,7 +170,7 @@
                     🅿️ Parkings con Sombra
                 </button>
                 <button onclick="setCategory('camper')" data-cat="camper" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/70 transition">
-                    🚐 Campers, Furgos y Campings
+                    🚐 Caravanas, Campers y Campings
                 </button>
                 <button onclick="setCategory('playa')" data-cat="playa" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
                     🏖️ Playas Caninas
@@ -189,7 +190,7 @@
             <div class="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-slate-100 text-xs">
                 <span class="text-slate-400 font-semibold mr-1">Verificación rápida:</span>
                 <button id="toggleCamper" onclick="toggleQuickFilter('camperOk')" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition hover:border-amber-400">
-                    <span>🚐</span> <span>Apto Camper / Sin límite de altura</span>
+                    <span>🚐</span> <span>Apto Caravanas y Campers / Sin gálibo</span>
                 </button>
                 <button id="toggleShade" onclick="toggleQuickFilter('shadeOk')" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition hover:border-teal-400">
                     <span>☂️</span> <span>Sombra asegurada</span>
@@ -264,7 +265,7 @@
                         <label class="block text-xs font-bold text-slate-700 mb-1">Categoría *</label>
                         <select id="sugCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
                             <option value="parking">🅿️ Parking Sombra</option>
-                            <option value="camper">🚐 Camper / Camping</option>
+                            <option value="camper">🚐 Caravanas, Campers y Camping</option>
                             <option value="playa">🏖️ Playa Canina</option>
                             <option value="parque">🐕 Parque Canino</option>
                             <option value="gastro">☕ Bar / Restaurante</option>
@@ -282,7 +283,7 @@
                         </label>
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugCamper" class="rounded text-teal-600">
-                            <span>🚐 Apto Camper/Furgo</span>
+                            <span>🚐 Apto Caravana/Camper</span>
                         </label>
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugInside" class="rounded text-teal-600">
@@ -377,13 +378,13 @@
                     <div class="p-3 rounded-xl bg-teal-50 border border-teal-200/70">
                         <span class="text-[11px] text-teal-700 font-semibold block">Visitas Totales</span>
                         <div class="flex items-baseline gap-1.5 mt-0.5">
-                            <span id="statTotalVisits" class="text-xl font-extrabold text-teal-900">1.430</span>
+                            <span id="statTotalVisits" class="text-xl font-extrabold text-teal-900">0</span>
                             <span class="text-[10px] text-emerald-600 font-bold">● En vivo</span>
                         </div>
                     </div>
                     <div class="p-3 rounded-xl bg-amber-50 border border-amber-200/70">
-                        <span class="text-[11px] text-amber-800 font-semibold block">Interés Camper/Camping</span>
-                        <span id="statCamperClicks" class="text-xl font-extrabold text-amber-900 mt-0.5 block">318</span>
+                        <span class="text-[11px] text-amber-800 font-semibold block">Interés Caravanas/Camping</span>
+                        <span id="statCamperClicks" class="text-xl font-extrabold text-amber-900 mt-0.5 block">0</span>
                     </div>
                     <div class="p-3 rounded-xl bg-blue-50 border border-blue-200/70">
                         <span class="text-[11px] text-blue-700 font-semibold block">Sitios Verificados</span>
@@ -428,7 +429,7 @@
                             <label class="block text-[11px] font-bold text-slate-700 mb-1">Categoría *</label>
                             <select id="admCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
                                 <option value="parking">🅿️ Parking con Sombra</option>
-                                <option value="camper">🚐 Área Camper / Camping Pet-Friendly</option>
+                                <option value="camper">🚐 Caravanas, Campers y Camping Pet-Friendly</option>
                                 <option value="playa">🏖️ Playa Canina</option>
                                 <option value="parque">🐕 Parque Canino</option>
                                 <option value="gastro">☕ Cafetería / Restaurante</option>
@@ -437,7 +438,7 @@
                         </div>
                         <div>
                             <label class="block text-[11px] font-bold text-slate-700 mb-1">Nota de Gálibo / Normativa Verificada *</label>
-                            <input type="text" id="admHeight" required placeholder="Ej: Gálibo 2.10m (Solo turismos) / Entran al salón interior" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm">
+                            <input type="text" id="admHeight" required placeholder="Ej: Gálibo 2.10m (Solo turismos) / Habilitado Caravanas" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm">
                         </div>
                     </div>
 
@@ -448,7 +449,7 @@
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-xl border border-amber-200 bg-amber-50/70 cursor-pointer">
                             <input type="checkbox" id="admCamper" class="rounded text-amber-600">
-                            <span>🚐 Apto Camper</span>
+                            <span>🚐 Apto Caravanas/Camper</span>
                         </label>
                         <label class="flex items-center gap-1.5 p-2 rounded-xl border border-rose-200 bg-rose-50/70 cursor-pointer">
                             <input type="checkbox" id="admInside" class="rounded text-rose-600">
@@ -770,75 +771,75 @@
                 mapAddress: "Calle Catedrático Cristóbal Cuevas, 29010 Málaga"
             },
 
-            // ================= ÁREAS CAMPER Y CAMPINGS PET-FRIENDLY VERIFICADOS =================
+            // ================= ÁREAS DE AUTOCARAVANAS, CARAVANAS Y CAMPINGS PET-FRIENDLY =================
             {
                 id: "camper-area-malaga-beach",
-                name: "Área Camper Málaga Beach (Autocaravanas y Furgos)",
+                name: "Área Málaga Beach (Autocaravanas, Caravanas y Campers)",
                 zone: "Rincón de la Victoria",
                 category: "camper",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
                 waterOk: true,
-                heightLimit: "🚐 100% Exclusivo Campers y Autocaravanas (Sin gálibo)",
+                heightLimit: "🚐 Recinto oficial habilitado para Autocaravanas y Campers (Sin gálibo)",
                 paws: 3,
-                desc: "✅ Verificado para Campers y Perros: Área oficial de pernocta y estacionamiento en La Cala del Moral a 50m de la playa y muy cerca de la Playa Canina Arroyo Totalán. Vaciado/llenado de aguas, vigilancia y mascotas bienvenidas.",
+                desc: "✅ Verificado para Autocaravanas y Perros: Área oficial de pernocta y estacionamiento en La Cala del Moral a 50m de la playa y muy cerca de la Playa Canina Arroyo Totalán. Vaciado/llenado de aguas, vigilancia y mascotas bienvenidas.",
                 mapAddress: "Área Málaga Beach, Carretera MA-24 Salida 2, 29730 La Cala del Moral, Málaga"
             },
             {
                 id: "camper-mh-el-rincon",
-                name: "Camper Área M&H El Rincón",
+                name: "Área de Autocaravanas y Campers M&H El Rincón",
                 zone: "Rincón de la Victoria",
                 category: "camper",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
                 waterOk: true,
-                heightLimit: "🚐 35 Parcelas Arboladas para Campers y Autocaravanas",
+                heightLimit: "🚐 35 Parcelas Arboladas habilitadas para Autocaravanas y Campers",
                 paws: 3,
-                desc: "✅ Verificado para Campers y Perros: Área de autocaravanas muy tranquila con parcelas sombreadas por árboles, duchas impecables, pan recién horneado a diario y admisión total de perros.",
+                desc: "✅ Verificado para Autocaravanas y Perros: Área oficial muy tranquila con parcelas sombreadas por árboles, duchas impecables, electricidad, vaciado de aguas y admisión total de perros.",
                 mapAddress: "Camper Area M&H El Rincón, Calle Sócrates, 29738 Rincón de la Victoria, Málaga"
             },
             {
                 id: "camping-cabopino",
-                name: "Camping Cabopino (Pet-Friendly & Sombra de Pinos)",
+                name: "Camping Cabopino (Caravanas, Campers & Sombra de Pinos)",
                 zone: "Marbella",
                 category: "camper",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
                 waterOk: true,
-                heightLimit: "🏕️ Parcelas sombreadas para Furgos, Campers y Caravanas",
+                heightLimit: "🏕️ Parcelas sombreadas para Caravanas, Autocaravanas y Campers",
                 paws: 3,
-                desc: "✅ Camping Verificado Pet-Friendly: Situado en un gran pinar con sombra natural garantizada junto a las dunas de Artola y playa de Cabopino. Admiten perros en parcelas camper y restaurantes de terraza.",
+                desc: "✅ Camping Verificado Pet-Friendly: Situado en un gran pinar con sombra natural garantizada junto a las dunas de Artola y playa de Cabopino. Admiten perros en parcelas para caravanas, autocaravanas y campers.",
                 mapAddress: "Camping Cabopino, Autovía del Mediterráneo Km 194, 29604 Marbella, Málaga"
             },
             {
                 id: "camping-el-pino-torrox",
-                name: "Camping El Pino (Pet-Friendly & Sombra Natural)",
+                name: "Camping El Pino (Caravanas, Campers & Sombra Natural)",
                 zone: "Torre del Mar / Torrox",
                 category: "camper",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
                 waterOk: true,
-                heightLimit: "🏕️ 392 Parcelas entre aguacates y pinos para Campers",
+                heightLimit: "🏕️ 392 Parcelas entre aguacates y pinos para Caravanas y Campers",
                 paws: 2,
-                desc: "✅ Camping Verificado Pet-Friendly: Muchísima sombra natural bajo pinos y aguacates en Torrox Costa, a pocos minutos de la Playa Canina de Torrox. Admiten perros en toda la zona de acampada y camper.",
+                desc: "✅ Camping Verificado Pet-Friendly: Muchísima sombra natural bajo pinos y aguacates en Torrox Costa, a pocos minutos de la Playa Canina de Torrox. Admiten perros en toda la zona de caravanas y acampada.",
                 mapAddress: "Camping El Pino, Urbanización Torrox Park, 29770 Torrox Costa, Málaga"
             },
             {
                 id: "camping-marbella-playa",
-                name: "Camping Marbella Playa (Pet-Friendly)",
+                name: "Camping Marbella Playa (Caravanas y Autocaravanas Pet-Friendly)",
                 zone: "Marbella",
                 category: "camper",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
                 waterOk: true,
-                heightLimit: "🏕️ Parcelas amplias para Autocaravanas y Campers",
+                heightLimit: "🏕️ Parcelas amplias para Caravanas, Autocaravanas y Campers",
                 paws: 2,
-                desc: "✅ Camping Verificado Pet-Friendly: Admiten perros en las parcelas de acampada y autocaravanas (hasta 2 perros por parcela con carnet de vacunación), con duchas para mascotas y salida directa a la playa.",
+                desc: "✅ Camping Verificado Pet-Friendly: Admiten perros en las parcelas de caravanas y autocaravanas (hasta 2 perros por parcela con carnet de vacunación), con duchas para mascotas y salida directa a la playa.",
                 mapAddress: "Camping Marbella Playa, Carretera N-340 Km 192, 29604 Marbella, Málaga"
             },
 
@@ -1011,7 +1012,7 @@
 
         const categoryLabels = {
             parking: { label: "🅿️ Parking Sombra", badgeClass: "bg-teal-100 text-teal-800 border-teal-200" },
-            camper: { label: "🚐 Camper / Camping", badgeClass: "bg-amber-100 text-amber-900 border-amber-300" },
+            camper: { label: "🚐 Caravana / Camper / Camping", badgeClass: "bg-amber-100 text-amber-900 border-amber-300" },
             playa: { label: "🏖️ Playa Canina", badgeClass: "bg-sky-100 text-sky-800 border-sky-200" },
             compras: { label: "🛍️ Centro Comercial", badgeClass: "bg-purple-100 text-purple-800 border-purple-200" },
             gastro: { label: "☕ Café / Restaurante", badgeClass: "bg-rose-100 text-rose-800 border-rose-200" },
@@ -1100,8 +1101,8 @@
                 // Escuchar estadísticas de visitas en tiempo real
                 onSnapshot(statsDocRef, (docSnap) => {
                     if (docSnap.exists()) {
-                        visitStats.total = docSnap.data().total || 1431;
-                        visitStats.camperClicks = docSnap.data().camperClicks || 318;
+                        visitStats.total = docSnap.data().total || 0;
+                        visitStats.camperClicks = docSnap.data().camperClicks || 0;
                         updateAdminStats();
                     }
                 }, (err) => {
@@ -1192,7 +1193,7 @@
                                 </span>` : ''}
                             ${site.camperOk ? `
                                 <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-300">
-                                    🚐 Apto Camper / Furgo
+                                    🚐 Apto Caravana / Camper
                                 </span>` : `
                                 <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500">
                                     🚗 Solo Turismos
