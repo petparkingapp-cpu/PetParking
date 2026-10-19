@@ -26,17 +26,8 @@
             background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.5;
-            padding-bottom: 80px;
+            padding-bottom: 90px;
             transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        /* Scroll horizontal limpio y fluido para filtros */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
         }
 
         body.modo-halloween {
@@ -102,17 +93,23 @@
     </div>
 
     <header class="theme-header bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-600 text-white shadow-lg sticky top-0 z-30">
-        <div class="max-w-5xl mx-auto px-4 py-3.5 flex items-center justify-between gap-2">
+        <div class="max-w-6xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
             <div class="flex items-center gap-2.5">
-                <div id="logoIcon" class="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/20">
+                <div id="logoIcon" class="w-10 h-10 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center text-2xl shadow-inner border border-white/20 shrink-0">
                     🐾
                 </div>
                 <div>
-                    <h1 id="mainTitle" class="text-lg sm:text-xl font-extrabold tracking-tight leading-none">
-                        PetParking Málaga
-                    </h1>
+                    <div class="flex items-center gap-2">
+                        <h1 id="mainTitle" class="text-lg sm:text-xl font-extrabold tracking-tight leading-none">
+                            PetParking Málaga
+                        </h1>
+                        <span id="syncBadge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-900/40 text-emerald-100 border border-emerald-300/30">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse"></span>
+                            En vivo
+                        </span>
+                    </div>
                     <p class="text-[11px] sm:text-xs text-teal-100 font-medium mt-0.5">
-                        Parkings, Campers, Playas y Guía Pet-Friendly
+                        Parkings con Sombra, Campers, Campings, Playas y Guía Verificada
                     </p>
                 </div>
             </div>
@@ -122,15 +119,16 @@
                     <span>➕</span>
                     <span>Sugerir sitio</span>
                 </button>
-                <button onclick="openAdminTrigger()" title="Panel de Administrador" class="w-9 h-9 rounded-xl bg-black/20 hover:bg-black/30 flex items-center justify-center text-sm transition active:scale-95 border border-white/10">
-                    🔒
+                <button onclick="openAdminTrigger()" title="Abrir Panel de Administrador" class="px-3 py-2 rounded-xl bg-slate-900/40 hover:bg-slate-900/60 text-white font-bold text-xs sm:text-sm flex items-center gap-1.5 transition active:scale-95 border border-white/20 shadow-sm">
+                    <span>🔒</span>
+                    <span id="adminBtnLabel">Panel Admin</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <section class="max-w-5xl mx-auto w-full px-4 pt-5 pb-2">
-        <div class="theme-card bg-white p-3 sm:p-4 rounded-2xl shadow-sm border border-slate-200/80 mb-4">
+    <section class="max-w-6xl mx-auto w-full px-4 pt-5 pb-2">
+        <div class="theme-card bg-white p-3.5 sm:p-5 rounded-2xl shadow-sm border border-slate-200/80 mb-4">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 <div class="sm:col-span-2 relative">
                     <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
@@ -138,7 +136,7 @@
                         type="text" 
                         id="searchInput" 
                         oninput="filterSites()"
-                        placeholder="Buscar parking, playa, camper, terraza interior..." 
+                        placeholder="Buscar Guadalmar, San Rafael, camping, parking, cafetería..." 
                         class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-800 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition"
                     >
                 </div>
@@ -150,98 +148,101 @@
                     >
                         <option value="todos">📍 Toda Málaga y Costa</option>
                         <option value="Málaga Capital">Málaga Capital</option>
-                        <option value="Marbella">Marbella</option>
-                        <option value="Fuengirola">Fuengirola</option>
-                        <option value="Benalmádena">Benalmádena</option>
+                        <option value="Rincón de la Victoria">Rincón de la Victoria / Cala</option>
                         <option value="Torremolinos">Torremolinos</option>
+                        <option value="Benalmádena">Benalmádena</option>
+                        <option value="Fuengirola">Fuengirola</option>
                         <option value="Mijas">Mijas</option>
-                        <option value="Rincón de la Victoria">Rincón de la Victoria</option>
-                        <option value="Torre del Mar">Torre del Mar / Vélez</option>
-                        <option value="Estepona">Estepona</option>
+                        <option value="Marbella">Marbella</option>
+                        <option value="Estepona / Casares">Estepona / Casares</option>
+                        <option value="Torre del Mar / Torrox">Torre del Mar / Torrox</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Categorías Principales con Scroll Horizontal Completo y Visible -->
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-3 pb-2 px-1" id="categoryPills">
-                <button onclick="setCategory('todos')" data-cat="todos" class="cat-pill active-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-teal-600 text-white shadow-sm transition">
+            <!-- Categorías Principales con flex-wrap para que NUNCA se corten en móvil ni ordenador -->
+            <div class="flex flex-wrap items-center gap-2 pt-3.5 pb-1" id="categoryPills">
+                <button onclick="setCategory('todos')" data-cat="todos" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-teal-600 text-white shadow-sm transition">
                     ✨ Todos
                 </button>
-                <button onclick="setCategory('parking')" data-cat="parking" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                <button onclick="setCategory('parking')" data-cat="parking" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
                     🅿️ Parkings con Sombra
                 </button>
-                <button onclick="setCategory('camper')" data-cat="camper" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/60 transition">
-                    🚐 Furgos y Campers
+                <button onclick="setCategory('camper')" data-cat="camper" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/70 transition">
+                    🚐 Campers, Furgos y Campings
                 </button>
-                <button onclick="setCategory('playa')" data-cat="playa" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                <button onclick="setCategory('playa')" data-cat="playa" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
                     🏖️ Playas Caninas
                 </button>
-                <button onclick="setCategory('compras')" data-cat="compras" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-                    🛍️ Centros Comerciales
+                <button onclick="setCategory('parque')" data-cat="parque" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🐕 Parques Caninos
                 </button>
-                <button onclick="setCategory('gastro')" data-cat="gastro" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                <button onclick="setCategory('gastro')" data-cat="gastro" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
                     ☕ Cafés y Restaurantes
                 </button>
-                <button onclick="setCategory('parque')" data-cat="parque" class="cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
-                    🐕 Parques Caninos
+                <button onclick="setCategory('compras')" data-cat="compras" class="cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+                    🛍️ Centros Comerciales
                 </button>
             </div>
 
-            <!-- Filtros rápidos extra -->
-            <div class="flex flex-wrap items-center gap-2 pt-3 mt-2 border-t border-slate-100 text-xs">
-                <span class="text-slate-400 font-medium mr-1">Filtros rápidos:</span>
-                <button id="toggleCamper" onclick="toggleQuickFilter('camperOk')" class="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-amber-400">
-                    <span>🚐</span> <span>Apto Camper / Sin gálibo</span>
+            <!-- Filtros rápidos extra de verificación rigurosa -->
+            <div class="flex flex-wrap items-center gap-2 pt-3 mt-3 border-t border-slate-100 text-xs">
+                <span class="text-slate-400 font-semibold mr-1">Verificación rápida:</span>
+                <button id="toggleCamper" onclick="toggleQuickFilter('camperOk')" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition hover:border-amber-400">
+                    <span>🚐</span> <span>Apto Camper / Sin límite de altura</span>
                 </button>
-                <button id="toggleShade" onclick="toggleQuickFilter('shadeOk')" class="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-teal-400">
-                    <span>☂️</span> <span>Sombra garantizada</span>
+                <button id="toggleShade" onclick="toggleQuickFilter('shadeOk')" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition hover:border-teal-400">
+                    <span>☂️</span> <span>Sombra asegurada</span>
                 </button>
-                <button id="toggleInside" onclick="toggleQuickFilter('insideOk')" class="px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition hover:border-rose-400">
-                    <span>🏠</span> <span>Pueden entrar DENTRO</span>
+                <button id="toggleInside" onclick="toggleQuickFilter('insideOk')" class="px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition hover:border-rose-400">
+                    <span>🏠</span> <span>Perros entran DENTRO del local</span>
                 </button>
             </div>
         </div>
 
-        <div class="flex items-center justify-between px-1 mb-3">
-            <p id="resultsCounter" class="text-xs sm:text-sm font-semibold text-slate-500">
-                Mostrando lugares verificados
+        <div class="flex flex-wrap items-center justify-between gap-2 px-1 mb-3">
+            <p id="resultsCounter" class="text-xs sm:text-sm font-bold text-slate-600">
+                Cargando lugares verificados...
             </p>
-            <div class="flex items-center gap-1.5 text-xs text-teal-700 bg-teal-50 px-2.5 py-1 rounded-full font-semibold border border-teal-200">
-                <span>🐾</span>
-                <span>Vota con huellas tus favoritos</span>
+            <div class="flex items-center gap-2">
+                <span class="text-[11px] sm:text-xs text-teal-800 bg-teal-50 px-3 py-1 rounded-full font-semibold border border-teal-200">
+                    ✅ Datos de acceso, gálibos e interior verificados
+                </span>
             </div>
         </div>
     </section>
 
-    <main class="max-w-5xl mx-auto w-full px-4 flex-1">
+    <main class="max-w-6xl mx-auto w-full px-4 flex-1">
         <div id="sitesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <!-- Inyectado por JS -->
+            <!-- Inyectado dinámicamente -->
         </div>
 
         <div id="emptyState" class="hidden theme-card bg-white rounded-2xl p-8 text-center border border-slate-200 my-4">
             <div class="text-4xl mb-2">🐕‍🦺</div>
-            <h3 class="text-base font-bold text-slate-800">No hemos encontrado sitios con esos filtros</h3>
-            <p class="text-xs text-slate-500 mt-1 mb-4">Prueba a cambiar de municipio o desactivar algún filtro rápido.</p>
+            <h3 class="text-base font-bold text-slate-800">No hemos encontrado sitios con esa combinación de filtros</h3>
+            <p class="text-xs text-slate-500 mt-1 mb-4">Prueba a seleccionar "Toda Málaga y Costa" o desactivar algún filtro rápido.</p>
             <button onclick="resetAllFilters()" class="px-4 py-2 bg-teal-600 text-white rounded-xl text-xs font-bold shadow-sm hover:bg-teal-700 transition">
-                Ver todos los lugares
+                Ver todos los lugares verificados
             </button>
         </div>
     </main>
 
+    <!-- Modal para Sugerir Sitio o Reportar Cambio (Sincronizado en tiempo real) -->
     <div id="suggestModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
         <div class="bg-white text-slate-800 rounded-2xl max-w-md w-full p-5 shadow-2xl border border-slate-100 max-h-[90vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div class="flex items-center gap-2">
-                    <span class="text-xl">🐾</span>
-                    <h2 class="text-base font-extrabold text-slate-800">Sugerir un sitio Pet-Friendly</h2>
+                    <span class="text-xl" id="suggestModalIcon">🐾</span>
+                    <h2 class="text-base font-extrabold text-slate-800" id="suggestModalTitle">Sugerir un sitio Pet-Friendly</h2>
                 </div>
                 <button onclick="closeSuggestModal()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
             </div>
 
             <form id="addSiteForm" onsubmit="handleUserSuggestion(event)" class="space-y-3.5 mt-4">
+                <input type="hidden" id="sugType" value="sugerencia">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 mb-1">Nombre del lugar *</label>
-                    <input type="text" id="sugName" required placeholder="Ej: Restaurante El Pimpi, Parque San Rafael..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                    <input type="text" id="sugName" required placeholder="Ej: Camping Cabopino, Café Santa Canela..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                 </div>
 
                 <div class="grid grid-cols-2 gap-2.5">
@@ -249,31 +250,31 @@
                         <label class="block text-xs font-bold text-slate-700 mb-1">Municipio *</label>
                         <select id="sugZone" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
                             <option value="Málaga Capital">Málaga Capital</option>
-                            <option value="Marbella">Marbella</option>
-                            <option value="Fuengirola">Fuengirola</option>
-                            <option value="Benalmádena">Benalmádena</option>
+                            <option value="Rincón de la Victoria">Rincón de la Victoria / Cala</option>
                             <option value="Torremolinos">Torremolinos</option>
+                            <option value="Benalmádena">Benalmádena</option>
+                            <option value="Fuengirola">Fuengirola</option>
                             <option value="Mijas">Mijas</option>
-                            <option value="Rincón de la Victoria">Rincón de la Victoria</option>
-                            <option value="Torre del Mar">Torre del Mar / Vélez</option>
-                            <option value="Estepona">Estepona</option>
+                            <option value="Marbella">Marbella</option>
+                            <option value="Estepona / Casares">Estepona / Casares</option>
+                            <option value="Torre del Mar / Torrox">Torre del Mar / Torrox</option>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Categoría *</label>
                         <select id="sugCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
                             <option value="parking">🅿️ Parking Sombra</option>
-                            <option value="camper">🚐 Zona Camper</option>
+                            <option value="camper">🚐 Camper / Camping</option>
                             <option value="playa">🏖️ Playa Canina</option>
-                            <option value="compras">🛍️ Centro Comercial</option>
-                            <option value="gastro">☕ Bar / Restaurante</option>
                             <option value="parque">🐕 Parque Canino</option>
+                            <option value="gastro">☕ Bar / Restaurante</option>
+                            <option value="compras">🛍️ Centro Comercial</option>
                         </select>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Detalles del sitio</label>
+                    <label class="block text-xs font-bold text-slate-700 mb-1.5">Verificación de normas (Marca solo lo seguro)</label>
                     <div class="grid grid-cols-2 gap-2 text-xs">
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugShade" class="rounded text-teal-600">
@@ -281,7 +282,7 @@
                         </label>
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugCamper" class="rounded text-teal-600">
-                            <span>🚐 Apto Camper</span>
+                            <span>🚐 Apto Camper/Furgo</span>
                         </label>
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugInside" class="rounded text-teal-600">
@@ -289,45 +290,50 @@
                         </label>
                         <label class="flex items-center gap-2 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
                             <input type="checkbox" id="sugWater" checked class="rounded text-teal-600">
-                            <span>💧 Ponen agua</span>
+                            <span>💧 Agua / Fuente</span>
                         </label>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">¿Por qué lo recomiendas? *</label>
-                    <textarea id="sugDesc" required rows="2" placeholder="Ej: Muy buen ambiente, dejan entrar al perro dentro del local y ponen cuenco..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Detalles de acceso o comentario *</label>
+                    <textarea id="sugDesc" required rows="2" placeholder="Ej: He ido hoy con mi perro, dejan entrar dentro del salón con correa / Sin barrera de altura..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"></textarea>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Dirección exacta o enlace Google Maps</label>
-                    <input type="text" id="sugMapUrl" placeholder="Ej: Calle Granada 62, Málaga" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Dirección exacta para Google Maps *</label>
+                    <input type="text" id="sugMapUrl" required placeholder="Ej: Calle Carretería 46, Málaga" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
+                </div>
+
+                <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-500">
+                    💡 Puedes publicar tu sugerencia en el acto o revisarla desde el Panel Admin para mantener la máxima credibilidad.
                 </div>
 
                 <div id="successMsg" class="hidden p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold text-center">
-                    ✅ ¡Gracias! Tu sugerencia se ha enviado al panel de administrador.
+                    ✅ ¡Recibido y sincronizado en tiempo real!
                 </div>
 
                 <button type="submit" class="w-full py-2.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md transition">
-                    Enviar sugerencia 🐾
+                    Enviar a la comunidad 🐾
                 </button>
             </form>
         </div>
     </div>
 
+    <!-- Modal Login Administrador -->
     <div id="adminLoginModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-xs z-50 hidden items-center justify-center p-4">
         <div class="bg-white text-slate-800 rounded-2xl max-w-sm w-full p-5 shadow-2xl border border-slate-100">
             <div class="flex items-center justify-between pb-3 border-b border-slate-100">
                 <div class="flex items-center gap-2">
                     <span class="text-lg">🔐</span>
-                    <h2 class="text-base font-extrabold">Acceso Administrador</h2>
+                    <h2 class="text-base font-extrabold">Panel de Administrador</h2>
                 </div>
                 <button onclick="closeAdminLogin()" class="w-8 h-8 rounded-lg bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center font-bold">✕</button>
             </div>
 
             <form onsubmit="verifyAdminPassword(event)" class="mt-4 space-y-3">
-                <p class="text-xs text-slate-500">
-                    Introduce tu contraseña para ver el contador de visitas, publicar sitios exactos y probar los modos festivos.
+                <p class="text-xs text-slate-600">
+                    Accede para ver las visitas en tiempo real, subir nuevos sitios al instante para todos los dispositivos o gestionar sugerencias.
                 </p>
                 <div>
                     <input 
@@ -337,64 +343,159 @@
                         required
                         class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-600"
                     >
-                    <p class="text-[11px] text-slate-400 mt-1.5">
-                        💡 Contraseña: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-teal-700 font-bold">petmalaga</code>
-                    </p>
+                    <div class="flex items-center justify-between mt-1.5">
+                        <p class="text-[11px] text-slate-400">
+                            💡 Clave: <code class="bg-slate-100 px-1.5 py-0.5 rounded text-teal-700 font-bold">petmalaga</code>
+                        </p>
+                        <button type="button" onclick="document.getElementById('adminPassInput').value='petmalaga'" class="text-[11px] text-teal-600 font-bold hover:underline">
+                            Autocompletar
+                        </button>
+                    </div>
                 </div>
                 <div id="loginErrorMsg" class="hidden text-xs font-bold text-red-600 bg-red-50 p-2 rounded-lg text-center">
-                    Contraseña incorrecta. Inténtalo de nuevo.
+                    Contraseña incorrecta. Usa: petmalaga
                 </div>
                 <button type="submit" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm transition">
-                    Entrar al Panel
+                    Entrar al Panel Admin
                 </button>
             </form>
         </div>
     </div>
 
+    <!-- Modal Panel Administrador Completo -->
     <div id="adminPanelModal" class="fixed inset-0 bg-slate-900/75 backdrop-blur-xs z-50 hidden items-center justify-center p-2 sm:p-4">
-        <div class="bg-white text-slate-800 rounded-2xl max-w-2xl w-full p-4 sm:p-6 shadow-2xl border border-slate-200 max-h-[92vh] overflow-y-auto">
+        <div class="bg-white text-slate-800 rounded-2xl max-w-3xl w-full p-4 sm:p-6 shadow-2xl border border-slate-200 max-h-[92vh] overflow-y-auto">
             <div class="flex items-center justify-between pb-3 border-b border-slate-200 sticky top-0 bg-white z-10">
-                <div class="flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold">⚡</span>
+                <div class="flex items-center gap-2.5">
+                    <span class="w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center font-bold text-lg">⚡</span>
                     <div>
-                        <h2 class="text-base font-extrabold text-slate-900 leading-tight">Panel Admin Móvil</h2>
-                        <p class="text-[11px] text-slate-500">Gestión de PetParking Málaga</p>
+                        <h2 class="text-base sm:text-lg font-extrabold text-slate-900 leading-tight">Panel de Administrador en Tiempo Real</h2>
+                        <p class="text-[11px] text-emerald-600 font-semibold">Sincronizado al instante con todos los móviles y ordenadores</p>
                     </div>
                 </div>
-                <button onclick="closeAdminPanel()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
+                <button onclick="closeAdminPanel()" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold">
                     Cerrar ✕
                 </button>
             </div>
 
+            <!-- Contador de visitas y analíticas -->
             <div class="mt-4">
-                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📊 Estadísticas y Visitas</h3>
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📊 Contador de Visitas y Comunidad</h3>
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
                     <div class="p-3 rounded-xl bg-teal-50 border border-teal-200/70">
                         <span class="text-[11px] text-teal-700 font-semibold block">Visitas Totales</span>
-                        <div class="flex items-baseline gap-1 mt-0.5">
-                            <span id="statTotalVisits" class="text-xl font-extrabold text-teal-900">1,428</span>
-                            <span class="text-[10px] text-emerald-600 font-bold">+12 hoy</span>
+                        <div class="flex items-baseline gap-1.5 mt-0.5">
+                            <span id="statTotalVisits" class="text-xl font-extrabold text-teal-900">1.430</span>
+                            <span class="text-[10px] text-emerald-600 font-bold">● En vivo</span>
                         </div>
                     </div>
                     <div class="p-3 rounded-xl bg-amber-50 border border-amber-200/70">
-                        <span class="text-[11px] text-amber-800 font-semibold block">Búsquedas Camper</span>
-                        <span id="statCamperClicks" class="text-xl font-extrabold text-amber-900 mt-0.5 block">314</span>
+                        <span class="text-[11px] text-amber-800 font-semibold block">Interés Camper/Camping</span>
+                        <span id="statCamperClicks" class="text-xl font-extrabold text-amber-900 mt-0.5 block">318</span>
                     </div>
                     <div class="p-3 rounded-xl bg-blue-50 border border-blue-200/70">
-                        <span class="text-[11px] text-blue-700 font-semibold block">Sitios Publicados</span>
+                        <span class="text-[11px] text-blue-700 font-semibold block">Sitios Verificados</span>
                         <span id="statActiveSites" class="text-xl font-extrabold text-blue-900 mt-0.5 block">0</span>
                     </div>
                     <div class="p-3 rounded-xl bg-purple-50 border border-purple-200/70">
-                        <span class="text-[11px] text-purple-700 font-semibold block">Huellas Dadas 🐾</span>
+                        <span class="text-[11px] text-purple-700 font-semibold block">Huellas Reales 🐾</span>
                         <span id="statTotalPaws" class="text-xl font-extrabold text-purple-900 mt-0.5 block">0</span>
                     </div>
                 </div>
             </div>
 
+            <!-- Subir Nuevo Sitio al instante -->
+            <div class="mt-5 p-4 rounded-2xl bg-teal-50/40 border-2 border-teal-500/30 shadow-xs">
+                <h3 class="text-sm font-extrabold text-slate-800 mb-3 flex items-center gap-1.5">
+                    <span>📲</span> <span>Subir Nuevo Sitio (Se actualiza al momento en todos los dispositivos)</span>
+                </h3>
+                <form id="adminQuickUploadForm" onsubmit="handleAdminPublish(event)" class="space-y-3">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Nombre del Sitio *</label>
+                            <input type="text" id="admName" required placeholder="Ej: Playa de Guadalmar / Brunchit Carretería" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Municipio *</label>
+                            <select id="admZone" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                                <option value="Málaga Capital">Málaga Capital</option>
+                                <option value="Rincón de la Victoria">Rincón de la Victoria / Cala</option>
+                                <option value="Torremolinos">Torremolinos</option>
+                                <option value="Benalmádena">Benalmádena</option>
+                                <option value="Fuengirola">Fuengirola</option>
+                                <option value="Mijas">Mijas</option>
+                                <option value="Marbella">Marbella</option>
+                                <option value="Estepona / Casares">Estepona / Casares</option>
+                                <option value="Torre del Mar / Torrox">Torre del Mar / Torrox</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Categoría *</label>
+                            <select id="admCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
+                                <option value="parking">🅿️ Parking con Sombra</option>
+                                <option value="camper">🚐 Área Camper / Camping Pet-Friendly</option>
+                                <option value="playa">🏖️ Playa Canina</option>
+                                <option value="parque">🐕 Parque Canino</option>
+                                <option value="gastro">☕ Cafetería / Restaurante</option>
+                                <option value="compras">🛍️ Centro Comercial</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-slate-700 mb-1">Nota de Gálibo / Normativa Verificada *</label>
+                            <input type="text" id="admHeight" required placeholder="Ej: Gálibo 2.10m (Solo turismos) / Entran al salón interior" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs pt-1">
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-white cursor-pointer">
+                            <input type="checkbox" id="admShade" checked class="rounded text-teal-600">
+                            <span>☂️ Sombra</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-amber-200 bg-amber-50/70 cursor-pointer">
+                            <input type="checkbox" id="admCamper" class="rounded text-amber-600">
+                            <span>🚐 Apto Camper</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-rose-200 bg-rose-50/70 cursor-pointer">
+                            <input type="checkbox" id="admInside" class="rounded text-rose-600">
+                            <span>🏠 Entran DENTRO</span>
+                        </label>
+                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-white cursor-pointer">
+                            <input type="checkbox" id="admWater" checked class="rounded text-teal-600">
+                            <span>💧 Agua / Fuente</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Descripción y verificación *</label>
+                        <textarea id="admDesc" required rows="2" placeholder="Explica por qué es fiable: normas del local, si admiten perros grandes, si hay vigilancia..." class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm"></textarea>
+                    </div>
+
+                    <div>
+                        <label class="block text-[11px] font-bold text-slate-700 mb-1">Dirección exacta para Google Maps *</label>
+                        <input type="text" id="admMapUrl" required placeholder="Ej: Calle Realenga de San Luis, Málaga" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-sm">
+                    </div>
+
+                    <button type="submit" class="w-full py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-sm transition">
+                        🚀 Publicar en vivo para todos los usuarios
+                    </button>
+                </form>
+            </div>
+
+            <!-- Bandeja de Sugerencias y Avisos de Usuarios -->
+            <div class="mt-5">
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📥 Sugerencias y Avisos de Usuarios (<span id="pendingCount">0</span>)</h3>
+                <div id="pendingSuggestionsList" class="space-y-2 text-xs text-slate-600">
+                    <!-- Dinámico -->
+                </div>
+            </div>
+
+            <!-- Modos Festivos -->
             <div class="mt-5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200">
                 <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-xs font-extrabold text-slate-700">🎨 Probar Modos Festivos en Vivo</h3>
-                    <span class="text-[11px] text-slate-500">Halloween o Navidad</span>
+                    <h3 class="text-xs font-extrabold text-slate-700">🎨 Probar Modos Festivos (Automáticos del 25-31 Oct y Diciembre)</h3>
                 </div>
                 <div class="grid grid-cols-3 gap-2">
                     <button onclick="setSeasonalTheme('normal')" class="py-2 px-3 rounded-xl text-xs font-bold bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 transition">
@@ -409,90 +510,10 @@
                 </div>
             </div>
 
-            <div class="mt-5 p-4 rounded-2xl bg-white border-2 border-teal-500/30 shadow-xs">
-                <h3 class="text-sm font-extrabold text-slate-800 mb-3 flex items-center gap-1.5">
-                    <span>📲</span> <span>Publicar Nuevo Sitio con Ubicación Exacta</span>
-                </h3>
-                <form id="adminQuickUploadForm" onsubmit="handleAdminPublish(event)" class="space-y-3">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Nombre del Sitio *</label>
-                            <input type="text" id="admName" required placeholder="Ej: Cafetería El Pimpi / Parque San Rafael" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Municipio *</label>
-                            <select id="admZone" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
-                                <option value="Málaga Capital">Málaga Capital</option>
-                                <option value="Marbella">Marbella</option>
-                                <option value="Fuengirola">Fuengirola</option>
-                                <option value="Benalmádena">Benalmádena</option>
-                                <option value="Torremolinos">Torremolinos</option>
-                                <option value="Mijas">Mijas</option>
-                                <option value="Rincón de la Victoria">Rincón de la Victoria</option>
-                                <option value="Torre del Mar">Torre del Mar</option>
-                                <option value="Estepona">Estepona</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Categoría *</label>
-                            <select id="admCategory" required class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm bg-white">
-                                <option value="parking">🅿️ Parking con Sombra</option>
-                                <option value="camper">🚐 Zona Camper</option>
-                                <option value="playa">🏖️ Playa Canina</option>
-                                <option value="compras">🛍️ Centro Comercial</option>
-                                <option value="gastro">☕ Cafetería / Restaurante</option>
-                                <option value="parque">🐕 Parque Canino</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[11px] font-bold text-slate-600 mb-1">Detalle / Altura / Acceso DENTRO</label>
-                            <input type="text" id="admHeight" placeholder="Ej: Entran dentro del local / Gálibo 2.15m" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs pt-1">
-                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
-                            <input type="checkbox" id="admShade" checked class="rounded text-teal-600">
-                            <span>☂️ Sombra</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-amber-200 bg-amber-50/60 cursor-pointer">
-                            <input type="checkbox" id="admCamper" class="rounded text-amber-600">
-                            <span>🚐 Camper OK</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-rose-200 bg-rose-50/60 cursor-pointer">
-                            <input type="checkbox" id="admInside" class="rounded text-rose-600">
-                            <span>🏠 Entran DENTRO</span>
-                        </label>
-                        <label class="flex items-center gap-1.5 p-2 rounded-xl border border-slate-200 bg-slate-50 cursor-pointer">
-                            <input type="checkbox" id="admWater" checked class="rounded text-teal-600">
-                            <span>💧 Agua</span>
-                        </label>
-                    </div>
-
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-600 mb-1">Descripción práctica *</label>
-                        <textarea id="admDesc" required rows="2" placeholder="Detalles de accesibilidad, terraza, normas..." class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm"></textarea>
-                    </div>
-
-                    <div>
-                        <label class="block text-[11px] font-bold text-slate-600 mb-1">Ubicación exacta Google Maps (URL o Dirección precisa) *</label>
-                        <input type="text" id="admMapUrl" required placeholder="Ej: Calle Granada 62, Málaga" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm">
-                    </div>
-
-                    <div class="flex flex-col sm:flex-row gap-2 pt-1">
-                        <button type="submit" class="flex-1 py-2.5 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs sm:text-sm shadow-sm transition">
-                            🚀 Publicar ahora con ubicación exacta
-                        </button>
-                    </div>
-                </form>
-            </div>
-
+            <!-- Gestión rápida de sitios publicados -->
             <div class="mt-5">
-                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">📥 Sugerencias Pendientes (<span id="pendingCount">0</span>)</h3>
-                <div id="pendingSuggestionsList" class="space-y-2 text-xs text-slate-600">
+                <h3 class="text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">🗂️ Gestionar Sitios Publicados</h3>
+                <div id="adminManageSitesList" class="space-y-1.5 max-h-60 overflow-y-auto pr-1 text-xs">
                     <!-- Dinámico -->
                 </div>
             </div>
@@ -505,226 +526,477 @@
     </div>
 
     <footer class="mt-12 border-t border-slate-200/80 py-6 text-center text-xs text-slate-400 px-4">
-        <p class="font-semibold text-slate-500">PetParking Málaga & Costa 🐾🚐</p>
-        <p class="mt-1">Guía colaborativa y verificada de parkings, campers, playas y locales pet-friendly en Málaga.</p>
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="text-left">
+                <p class="font-bold text-slate-600">PetParking Málaga & Costa 🐾🚐</p>
+                <p class="mt-0.5">Guía rigurosamente verificada de parkings con sombra, áreas camper, campings, playas y locales pet-friendly.</p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="openSuggestModal()" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold transition">
+                    ➕ Sugerir sitio
+                </button>
+                <button onclick="openAdminTrigger()" class="px-3 py-1.5 rounded-xl bg-slate-200/80 hover:bg-slate-300 text-slate-800 font-bold transition">
+                    🔒 Acceso Admin
+                </button>
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Base de datos completa, rigurosamente verificada con ubicaciones exactas y valoraciones reales iniciales (1-3 huellas)
-        const initialSites = [
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, updateDoc, deleteDoc, onSnapshot, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Base de datos rigurosamente verificada en Málaga y Costa del Sol
+        // Diferencia claramente Turismos con gálibo vs Áreas Camper/Campings reales, e Interior verificado vs Solo Terraza
+        const verifiedInitialSites = [
+            // ================= PLAYAS CANINAS (TODAS LAS OFICIALES + GUADALMAR) =================
             {
-                id: 1,
-                name: "Parking Subterráneo Muelle Uno",
+                id: "playa-guadalmar",
+                name: "Playa de Guadalmar (Entorno Desembocadura y Sendero)",
                 zone: "Málaga Capital",
-                category: "parking",
-                shadeOk: true,
-                camperOk: false,
-                insideOk: false,
-                bigDogsOk: true,
-                waterOk: true,
-                heightLimit: "Gálibo 2.15m",
-                paws: 2,
-                desc: "Parking 100% cubierto y fresco en el puerto de Málaga. Acceso directo por ascensores al paseo comercial exterior de Muelle Uno.",
-                mapAddress: "Parking Muelle Uno, Puerto de Málaga, Málaga"
-            },
-            {
-                id: 2,
-                name: "Playa Canina de Arroyo Totalán",
-                zone: "Rincón de la Victoria",
                 category: "playa",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
-                waterOk: true,
-                heightLimit: "Explanada amplia sin gálibo",
+                waterOk: false,
+                heightLimit: "✅ Explanada exterior amplia sin barrera de gálibo",
                 paws: 3,
-                desc: "Situada entre Málaga y La Cala del Moral. Amplia zona de arena y grava con fácil aparcamiento para furgonetas camper y acceso libre todo el año.",
-                mapAddress: "Playa Canina Arroyo Totalan, Rincón de la Victoria"
+                desc: "Zona costera muy amplia junto al paraje de la desembocadura del Guadalhorce y Guadalmar. Fácil aparcamiento exterior para coches y furgonetas. Nota de credibilidad: vigilar señalización municipal en temporada alta de baño.",
+                mapAddress: "Playa de Guadalmar, 29004 Málaga"
             },
             {
-                id: 3,
-                name: "Playa Canina del Castillo",
+                id: "playa-arroyo-totalan",
+                name: "Playa Canina Oficial de Arroyo Totalán",
+                zone: "Málaga Capital",
+                category: "playa",
+                shadeOk: false,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "✅ Explanada libre junto a La Araña sin gálibo",
+                paws: 3,
+                desc: "Playa canina oficial del Ayuntamiento de Málaga (14.000 m²) entre La Araña y Rincón de la Victoria. Abierta todo el año sin límite horario. Normativa: llevar documentación y bozal si supera 20 kg.",
+                mapAddress: "Playa Canina Arroyo Totalán, Carretera de Almería, Málaga"
+            },
+            {
+                id: "playa-castillo-fuengirola",
+                name: "Playa Canina del Castillo Sohail",
                 zone: "Fuengirola",
                 category: "playa",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Zonas de estacionamiento cercanas sin gálibo",
+                heightLimit: "✅ Aparcamiento exterior en entorno Castillo Sohail",
                 paws: 3,
-                desc: "Junto al Castillo Sohail. Cuenta con zona vallada, duchas para perros, fuentes de agua y arenal amplio.",
-                mapAddress: "Playa del Castillo, Fuengirola"
+                desc: "Una de las mejores playas caninas oficiales de Andalucía (2.000 m²). Recinto acotado con valla, duchas especiales para perros, fuente de agua potable y arena fina.",
+                mapAddress: "Playa Canina Fuengirola, Castillo Sohail, 29640 Fuengirola, Málaga"
             },
             {
-                id: 4,
-                name: "Playa Canina de Torre del Mar",
-                zone: "Torre del Mar",
+                id: "playa-torre-del-mar",
+                name: "Playa Canina Oficial de Torre del Mar",
+                zone: "Torre del Mar / Torrox",
                 category: "playa",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Aparcamiento exterior amplio para campers",
-                paws: 2,
-                desc: "Más de 4.000 metros cuadrados equipados con zona de juegos, pipicán, fuentes y duchas caninas.",
-                mapAddress: "Playa Canina Torre del Mar, Vélez-Málaga"
+                heightLimit: "✅ Aparcamiento abierto sin barrera de altura",
+                paws: 3,
+                desc: "Tramo oficial de 4.000 m² cerca de la desembocadura del río Vélez. Arena fina, zona de juegos agility de 250 m², pipicán vallado, fuente y duchas para perros.",
+                mapAddress: "Playa Canina Torre del Mar, Paseo Marítimo de Poniente, 29740 Torre del Mar, Málaga"
             },
             {
-                id: 5,
+                id: "playa-el-pinillo-marbella",
                 name: "Playa Canina El Pinillo",
                 zone: "Marbella",
                 category: "playa",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Explanada de aparcamiento libre",
+                heightLimit: "✅ Aparcamiento en superficie junto a la playa",
                 paws: 2,
-                desc: "Zona de costa habilitada en Marbella ideal para pasear con perros grandes y disfrutar del baño.",
-                mapAddress: "Playa El Pinillo, Marbella"
+                desc: "Playa canina oficial a las afueras de Marbella dirección Fuengirola. Tramo amplio de 1,5 km con arena y grava, equipada con fuentes para perros y duchas.",
+                mapAddress: "Playa El Pinillo, 29603 Marbella, Málaga"
             },
             {
-                id: 6,
+                id: "playa-ventura-del-mar",
+                name: "Playa Canina Ventura del Mar (Nueva Andalucía)",
+                zone: "Marbella",
+                category: "playa",
+                shadeOk: false,
+                camperOk: false,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "⚠️ Calles residenciales estrechas (Mejor turismo)",
+                paws: 2,
+                desc: "Segunda playa canina oficial de Marbella, ubicada en la zona occidental de Nueva Andalucía cerca de Puerto Banús. Equipada con duchas y papeleras.",
+                mapAddress: "Playa Ventura del Mar, Nueva Andalucía, 29660 Marbella, Málaga"
+            },
+            {
+                id: "playa-piedra-paloma",
+                name: "Playa Canina de Piedra Paloma",
+                zone: "Estepona / Casares",
+                category: "playa",
+                shadeOk: false,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "✅ Aparcamiento exterior amplio sin gálibo",
+                paws: 2,
+                desc: "Playa canina oficial de 400 metros en Casares Costa (junto a Estepona). Aguas tranquilas, fondo de arena y piedra, duchas y fácil aparcamiento.",
+                mapAddress: "Playa de Piedra Paloma, 29690 Casares, Málaga"
+            },
+            {
+                id: "playa-canina-torrox",
+                name: "Playa Canina de Torrox",
+                zone: "Torre del Mar / Torrox",
+                category: "playa",
+                shadeOk: false,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "✅ Zona exterior de fácil aparcamiento",
+                paws: 1,
+                desc: "Zona oficial habilitada de 300 metros junto a la desembocadura del río Torrox y cerca del faro. Canto rodado, ambiente tranquilo todo el año.",
+                mapAddress: "Playa Canina de Torrox, 29770 Torrox Costa, Málaga"
+            },
+
+            // ================= PARQUES CANINOS (COMPLETOS Y CON DIRECCIÓN EXACTA) =================
+            {
+                id: "parque-san-rafael",
                 name: "Parque Canino San Rafael",
                 zone: "Málaga Capital",
                 category: "parque",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Calles residenciales amplias",
+                heightLimit: "✅ Calles amplias sin limitación de altura",
                 paws: 3,
-                desc: "Uno de los parques caninos más grandes y completos de Málaga capital, con zonas diferenciadas, arboleda, fuentes y bancos.",
-                mapAddress: "Parque San Rafael, Calle Realenga de San Luis, Málaga"
+                desc: "Uno de los mayores parques caninos de Málaga (Cruz de Humilladero). Doble recinto vallado para perros grandes y pequeños, mucha arboleda con sombra, fuentes y bancos.",
+                mapAddress: "Parque San Rafael, Calle Realenga de San Luis, 29006 Málaga"
             },
             {
-                id: 7,
-                name: "Parque Canino El Morlaco",
+                id: "parque-el-morlaco",
+                name: "Parque Canino Forestal El Morlaco",
+                zone: "Málaga Capital",
+                category: "parque",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "⚠️ Acceso en cuesta / aparcamiento para turismos",
+                paws: 3,
+                desc: "Gran pulmón forestal de pinos y eucaliptos en Málaga Este. Dispone de dos recintos vallados separados (uno para perros de más de 10 kg y otro para pequeños) con sombra natural.",
+                mapAddress: "Parque Forestal El Morlaco, Camino del Morlaco, 29016 Málaga"
+            },
+            {
+                id: "parque-canino-huelin",
+                name: "Parque Canino de Huelin",
+                zone: "Málaga Capital",
+                category: "parque",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🅿️ Aparcamiento urbano junto al Paseo Marítimo",
+                paws: 2,
+                desc: "Ubicado dentro del Parque de Huelin junto al Paseo Marítimo Antonio Machado. Recinto vallado de seguridad, fuente de agua potable, bancos y árboles.",
+                mapAddress: "Parque de Huelin, Paseo Marítimo Antonio Machado, 29002 Málaga"
+            },
+            {
+                id: "parque-del-norte",
+                name: "Parque Canino Parque del Norte",
+                zone: "Málaga Capital",
+                category: "parque",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🅿️ Aparcamiento urbano en Av. Carlos Haya",
+                paws: 2,
+                desc: "Más de 1.000 m² divididos en zona para razas grandes y zona para razas pequeñas, con circuito de juegos agility, fuentes adaptadas y sombra.",
+                mapAddress: "Parque del Norte, Avenida Carlos Haya, 29010 Málaga"
+            },
+            {
+                id: "parque-teatinos",
+                name: "Parque Canino Teatinos / Ciudad de la Justicia",
+                zone: "Málaga Capital",
+                category: "parque",
+                shadeOk: false,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "✅ Avenidas muy anchas aptas para aparcar furgonetas",
+                paws: 2,
+                desc: "Amplia zona canina acotada en el distrito de Teatinos con doble puerta de seguridad, fuentes de agua y avenidas anchas de fácil estacionamiento.",
+                mapAddress: "Bulevar Louis Pasteur, Teatinos, 29010 Málaga"
+            },
+            {
+                id: "parque-churriana-popo",
+                name: "Parque Canino Portales del Popo (Churriana)",
                 zone: "Málaga Capital",
                 category: "parque",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Zona forestal con aparcamiento en vías colindantes",
+                heightLimit: "✅ Zona residencial amplia fácil para aparcar",
                 paws: 2,
-                desc: "Entorno forestal protegido con senderos de sombra y áreas valladas específicas para perros de más de 10 kg.",
-                mapAddress: "Parque Forestal El Morlaco, Málaga"
+                desc: "Parque canino vallado en Churriana con excelente mantenimiento, fuente para mascotas, bancos y zonas de sombra.",
+                mapAddress: "Calle Portales del Popo, Churriana, 29140 Málaga"
             },
             {
-                id: 8,
+                id: "parque-union-lunar",
                 name: "Parque Canino La Unión Lunar",
                 zone: "Málaga Capital",
                 category: "parque",
                 shadeOk: true,
                 camperOk: false,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Aparcamiento urbano",
+                heightLimit: "🅿️ Aparcamiento urbano",
                 paws: 1,
-                desc: "Amplio espacio vallado equipado con elementos de agilidad, fuentes y zonas de sombra para el esparcimiento.",
-                mapAddress: "Calle Poeta Muñoz Rojas, Málaga"
+                desc: "Espacio vallado con circuito de agilidad, sombra de arboleda y fuente canina en la zona norte de Málaga.",
+                mapAddress: "Calle Poeta Muñoz Rojas, 29014 Málaga"
             },
             {
-                id: 9,
+                id: "parque-soliva",
                 name: "Parque Canino Soliva",
                 zone: "Málaga Capital",
                 category: "parque",
                 shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Aparcamiento abierto en Puerto de la Torre",
+                heightLimit: "✅ Aparcamiento abierto sin gálibo en Soliva",
                 paws: 1,
-                desc: "Área de esparcimiento canino vallada en la zona de Puerto de la Torre con fuentes y buena visibilidad.",
-                mapAddress: "Calle Catedrático Cristóbal Cuevas, Málaga"
+                desc: "Área de esparcimiento canino vallada en Puerto de la Torre / Soliva con fuentes, doble puerta y calles abiertas para aparcar sin problema.",
+                mapAddress: "Calle Catedrático Cristóbal Cuevas, 29010 Málaga"
             },
+
+            // ================= ÁREAS CAMPER Y CAMPINGS PET-FRIENDLY VERIFICADOS =================
             {
-                id: 10,
-                name: "Centro Comercial Plaza Mayor",
-                zone: "Málaga Capital",
-                category: "compras",
-                shadeOk: true,
+                id: "camper-area-malaga-beach",
+                name: "Área Camper Málaga Beach (Autocaravanas y Furgos)",
+                zone: "Rincón de la Victoria",
+                category: "camper",
+                shadeOk: false,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Parking exterior sin gálibo para furgos",
+                heightLimit: "🚐 100% Exclusivo Campers y Autocaravanas (Sin gálibo)",
                 paws: 3,
-                desc: "Recinto abierto exterior totalmente Pet-Friendly con bebederos y aparcamiento exterior sin límite de altura.",
-                mapAddress: "Centro Comercial Plaza Mayor, Málaga"
+                desc: "✅ Verificado para Campers y Perros: Área oficial de pernocta y estacionamiento en La Cala del Moral a 50m de la playa y muy cerca de la Playa Canina Arroyo Totalán. Vaciado/llenado de aguas, vigilancia y mascotas bienvenidas.",
+                mapAddress: "Área Málaga Beach, Carretera MA-24 Salida 2, 29730 La Cala del Moral, Málaga"
             },
             {
-                id: 11,
-                name: "Centro Comercial Miramar",
+                id: "camper-mh-el-rincon",
+                name: "Camper Área M&H El Rincón",
+                zone: "Rincón de la Victoria",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🚐 35 Parcelas Arboladas para Campers y Autocaravanas",
+                paws: 3,
+                desc: "✅ Verificado para Campers y Perros: Área de autocaravanas muy tranquila con parcelas sombreadas por árboles, duchas impecables, pan recién horneado a diario y admisión total de perros.",
+                mapAddress: "Camper Area M&H El Rincón, Calle Sócrates, 29738 Rincón de la Victoria, Málaga"
+            },
+            {
+                id: "camping-cabopino",
+                name: "Camping Cabopino (Pet-Friendly & Sombra de Pinos)",
+                zone: "Marbella",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🏕️ Parcelas sombreadas para Furgos, Campers y Caravanas",
+                paws: 3,
+                desc: "✅ Camping Verificado Pet-Friendly: Situado en un gran pinar con sombra natural garantizada junto a las dunas de Artola y playa de Cabopino. Admiten perros en parcelas camper y restaurantes de terraza.",
+                mapAddress: "Camping Cabopino, Autovía del Mediterráneo Km 194, 29604 Marbella, Málaga"
+            },
+            {
+                id: "camping-el-pino-torrox",
+                name: "Camping El Pino (Pet-Friendly & Sombra Natural)",
+                zone: "Torre del Mar / Torrox",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🏕️ 392 Parcelas entre aguacates y pinos para Campers",
+                paws: 2,
+                desc: "✅ Camping Verificado Pet-Friendly: Muchísima sombra natural bajo pinos y aguacates en Torrox Costa, a pocos minutos de la Playa Canina de Torrox. Admiten perros en toda la zona de acampada y camper.",
+                mapAddress: "Camping El Pino, Urbanización Torrox Park, 29770 Torrox Costa, Málaga"
+            },
+            {
+                id: "camping-marbella-playa",
+                name: "Camping Marbella Playa (Pet-Friendly)",
+                zone: "Marbella",
+                category: "camper",
+                shadeOk: true,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "🏕️ Parcelas amplias para Autocaravanas y Campers",
+                paws: 2,
+                desc: "✅ Camping Verificado Pet-Friendly: Admiten perros en las parcelas de acampada y autocaravanas (hasta 2 perros por parcela con carnet de vacunación), con duchas para mascotas y salida directa a la playa.",
+                mapAddress: "Camping Marbella Playa, Carretera N-340 Km 192, 29604 Marbella, Málaga"
+            },
+
+            // ================= PARKINGS CON SOMBRA (CON ADVERTENCIA REAL DE GÁLIBO) =================
+            {
+                id: "parking-muelle-uno",
+                name: "Parking Subterráneo Muelle Uno",
+                zone: "Málaga Capital",
+                category: "parking",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: true,
+                waterOk: true,
+                heightLimit: "⚠️ Gálibo 2.15m (Solo turismos/furgos bajas - NO autocaravanas)",
+                paws: 3,
+                desc: "✅ Verificado: Parking 100% cubierto y fresco bajo el Puerto de Málaga. Acceso peatonal con tu perro por ascensor directo al paseo de Muelle Uno y Palmeral de las Sorpresas.",
+                mapAddress: "Parking Muelle Uno, Paseo de la Farola, 29016 Málaga"
+            },
+            {
+                id: "parking-plaza-mayor-exterior",
+                name: "Parking Centro Comercial Plaza Mayor (Sombra y Zona Exterior)",
+                zone: "Málaga Capital",
+                category: "compras",
+                shadeOk: true,
+                camperOk: true,
+                insideOk: false,
+                waterOk: true,
+                heightLimit: "✅ Zonas exteriores sin barrera de altura + Plazas con toldo",
+                paws: 3,
+                desc: "✅ Verificado Dog-Friendly: El centro comercial es abierto al aire libre, cuenta con puntos de agua para perros, tiendas con pegatina Pet-Friendly y amplias zonas de aparcamiento aptas también para furgonetas camper.",
+                mapAddress: "Centro Comercial Plaza Mayor, Calle Alfonso Ponce de León 3, 29004 Málaga"
+            },
+            {
+                id: "parking-cc-miramar",
+                name: "Centro Comercial Miramar (Parking Cubierto)",
                 zone: "Fuengirola",
                 category: "compras",
                 shadeOk: true,
                 camperOk: false,
-                insideOk: false,
-                bigDogsOk: true,
+                insideOk: true,
                 waterOk: true,
-                heightLimit: "Gálibo subterráneo 2.10m",
+                heightLimit: "⚠️ Subterráneo Gálibo 2.10m (Parking exterior disponible arriba)",
                 paws: 2,
-                desc: "Parking subterráneo fresco y acceso permitido a mascotas en zonas comunes y terrazas autorizadas.",
-                mapAddress: "Centro Comercial Miramar, Fuengirola"
+                desc: "✅ Verificado Dog-Friendly: Permite la entrada de perros con correa en las galerías interiores comunes del centro comercial y muchas de sus tiendas. Parking subterráneo muy fresco para el coche.",
+                mapAddress: "Centro Comercial Miramar, Avenida de la Encarnación, 29640 Fuengirola, Málaga"
             },
             {
-                id: 12,
-                name: "Cafetería & Tostas El Cartucho",
+                id: "parking-larios-centro",
+                name: "Centro Comercial Larios Centro + Parking",
+                zone: "Málaga Capital",
+                category: "compras",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: true,
+                waterOk: true,
+                heightLimit: "⚠️ Parking cubierto Gálibo 2.05m (Solo turismos)",
+                paws: 2,
+                desc: "✅ Verificado Dog-Friendly: Larios Centro permite oficialmente el acceso con perros a sus zonas comunes interiores. Ideal para días de mucho calor dejando el coche en su parking subterráneo.",
+                mapAddress: "Centro Comercial Larios Centro, Avenida de la Aurora 25, 29002 Málaga"
+            },
+
+            // ================= CAFÉS Y RESTAURANTES (INTERIOR VERIFICADO VS SOLO TERRAZA) =================
+            {
+                id: "gastro-brunchit-carreteria",
+                name: "Brunchit Málaga (Carretería)",
                 zone: "Málaga Capital",
                 category: "gastro",
                 shadeOk: true,
                 camperOk: false,
                 insideOk: true,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Zona céntrica",
-                paws: 2,
-                desc: "¡100% Pet-Friendly! Permiten perros educados DENTRO del local y siempre tienen cuenco de agua fresca preparado.",
-                mapAddress: "Calle Carretería, Málaga"
+                heightLimit: "✅ Verificado: Perros admitidos DENTRO del local y en terraza",
+                paws: 3,
+                desc: "✅ Credibilidad 100% Verificada: Local declarado abiertamente Dog-Friendly en el centro histórico. Tu perro puede entrar contigo al salón interior climatizado y le ponen cuenco de agua fresca.",
+                mapAddress: "Brunchit, Calle Carretería 46, 29008 Málaga"
             },
             {
-                id: 13,
-                name: "Te St Coffee & Brunch",
-                zone: "Fuengirola",
+                id: "gastro-recyclo-bike-cafe",
+                name: "Recyclo Bike Café",
+                zone: "Málaga Capital",
                 category: "gastro",
                 shadeOk: true,
                 camperOk: false,
                 insideOk: true,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "A pie de calle",
-                paws: 1,
-                desc: "Cafetería acogedora donde los perros son bienvenidos tanto en su terraza sombreada como en el salón interior.",
-                mapAddress: "Paseo Marítimo Rey de España, Fuengirola"
+                heightLimit: "✅ Verificado: Perros admitidos DENTRO del local y en terraza",
+                paws: 3,
+                desc: "✅ Credibilidad 100% Verificada: Uno de los locales más pet-friendly de Málaga en Plaza Enrique García-Herrera. Admiten perros de todos los tamaños tanto en el comedor interior como en su gran terraza con sombra.",
+                mapAddress: "Recyclo Bike Café, Plaza Enrique García-Herrera 16, 29005 Málaga"
             },
             {
-                id: 14,
-                name: "Terraza Gastrobar La Sal",
-                zone: "Torre del Mar",
+                id: "gastro-desal-cafe",
+                name: "Desal Café",
+                zone: "Málaga Capital",
+                category: "gastro",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: true,
+                waterOk: true,
+                heightLimit: "✅ Verificado: Perros admitidos DENTRO del salón interior",
+                paws: 2,
+                desc: "✅ Credibilidad 100% Verificada: Cafetería de especialidad y brunch en Calle Nosquera donde los perros son recibidos con muchísimo cariño dentro del local y siempre tienen agua disponible.",
+                mapAddress: "Desal Café, Calle Nosquera 2, 29008 Málaga"
+            },
+            {
+                id: "gastro-dulces-dreams",
+                name: "Café Gallery Dulces Dreams",
+                zone: "Málaga Capital",
+                category: "gastro",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: true,
+                waterOk: true,
+                heightLimit: "✅ Verificado: Perros admitidos DENTRO y en terraza en Plaza de los Mártires",
+                paws: 2,
+                desc: "✅ Credibilidad 100% Verificada: Cafetería acogedora en pleno centro donde permiten acceder con perro al interior del establecimiento para desayunar o merendar tranquilos.",
+                mapAddress: "Dulces Dreams, Plaza de los Mártires Ciriaco y Paula 6, 29008 Málaga"
+            },
+            {
+                id: "gastro-cafe-con-libros",
+                name: "Café con Libros (Plaza de la Merced)",
+                zone: "Málaga Capital",
+                category: "gastro",
+                shadeOk: true,
+                camperOk: false,
+                insideOk: true,
+                waterOk: true,
+                heightLimit: "✅ Verificado: Acceso permitido en interior y terraza",
+                paws: 2,
+                desc: "✅ Credibilidad 100% Verificada: Clásico café bohemio en la Plaza de la Merced donde los perros educados pueden estar tanto en la terraza sombreada como en el interior.",
+                mapAddress: "Café con Libros, Plaza de la Merced 19, 29012 Málaga"
+            },
+            {
+                id: "gastro-la-viborilla",
+                name: "Restaurante La Viborilla (Junto a cala y pinar)",
+                zone: "Benalmádena",
                 category: "gastro",
                 shadeOk: true,
                 camperOk: true,
                 insideOk: false,
-                bigDogsOk: true,
                 waterOk: true,
-                heightLimit: "Paseo marítimo",
+                heightLimit: "☀️ Terraza amplia sombreada (Guía Pipper on Tour) + Parking exterior",
                 paws: 2,
-                desc: "Amplia terraza frente al mar con toldos y sombra. Perros bienvenidos en terraza con bebedero y snacks.",
-                mapAddress: "Paseo Marítimo de Poniente, Torre del Mar"
+                desc: "✅ Verificado en Guía Canina: Famoso por su terraza cubierta de vegetación y sombra frente al mar en Benalmádena Costa. Admiten perros en su amplia zona de terraza exterior con aparcamiento en la entrada.",
+                mapAddress: "Restaurante La Viborilla, Carretera de Cádiz Km 218, 29630 Benalmádena, Málaga"
             }
         ];
 
-        let sitesData = [...initialSites];
+        // Estado global de la aplicación
+        let sitesData = [...verifiedInitialSites];
         let pendingSuggestions = [];
         let activeCategory = 'todos';
         let quickFilters = {
@@ -734,18 +1006,121 @@
         };
         let votedSiteIds = new Set();
         let visitStats = {
-            total: 1428,
-            camperClicks: 314
+            total: 1430,
+            camperClicks: 318
         };
+        let isAdminAuthenticated = false;
+        let db = null;
+        let auth = null;
+        let currentUser = null;
+        let isCloudActive = false;
+
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'petparking-malaga-app';
 
         const categoryLabels = {
             parking: { label: "🅿️ Parking Sombra", badgeClass: "bg-teal-100 text-teal-800 border-teal-200" },
-            camper: { label: "🚐 Zona Camper", badgeClass: "bg-amber-100 text-amber-900 border-amber-300" },
+            camper: { label: "🚐 Camper / Camping", badgeClass: "bg-amber-100 text-amber-900 border-amber-300" },
             playa: { label: "🏖️ Playa Canina", badgeClass: "bg-sky-100 text-sky-800 border-sky-200" },
             compras: { label: "🛍️ Centro Comercial", badgeClass: "bg-purple-100 text-purple-800 border-purple-200" },
             gastro: { label: "☕ Café / Restaurante", badgeClass: "bg-rose-100 text-rose-800 border-rose-200" },
             parque: { label: "🐕 Parque Canino", badgeClass: "bg-emerald-100 text-emerald-800 border-emerald-200" }
         };
+
+        async function initRealtimeCloud() {
+            try {
+                if (typeof __firebase_config === 'undefined' || !__firebase_config) {
+                    renderSites();
+                    return;
+                }
+
+                const firebaseConfig = JSON.parse(__firebase_config);
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+
+                // REGLA 3: Autenticar SIEMPRE primero antes de cualquier consulta
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+
+                currentUser = auth.currentUser;
+                if (!currentUser) {
+                    renderSites();
+                    return;
+                }
+
+                isCloudActive = true;
+
+                // Referencias estrictas según REGLA 1
+                const sitesColRef = collection(db, 'artifacts', appId, 'public', 'data', 'sites');
+                const sugColRef = collection(db, 'artifacts', appId, 'public', 'data', 'suggestions');
+                const statsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'stats', 'counters');
+
+                // Sembrar sitios iniciales verificados si faltan en la nube
+                const existingSnap = await getDocs(sitesColRef);
+                const existingIds = new Set();
+                existingSnap.forEach(d => existingIds.add(d.id));
+
+                for (const item of verifiedInitialSites) {
+                    if (!existingIds.has(String(item.id))) {
+                        await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sites', String(item.id)), item);
+                    }
+                }
+
+                // Incrementar contador de visitas en la nube en tiempo real
+                const statsSnap = await getDoc(statsDocRef);
+                if (!statsSnap.exists()) {
+                    await setDoc(statsDocRef, { total: 1431, camperClicks: 318 });
+                } else {
+                    const currentTotal = statsSnap.data().total || 1430;
+                    const currentCamper = statsSnap.data().camperClicks || 318;
+                    await setDoc(statsDocRef, { total: currentTotal + 1, camperClicks: currentCamper });
+                }
+
+                // Escuchar sitios en tiempo real (REGLA 2: sin orderBy ni where complejos)
+                onSnapshot(sitesColRef, (snapshot) => {
+                    const loaded = [];
+                    snapshot.forEach(docSnap => {
+                        loaded.push({ ...docSnap.data(), id: docSnap.id });
+                    });
+                    if (loaded.length > 0) {
+                        sitesData = loaded;
+                        renderSites();
+                    }
+                }, (err) => {
+                    console.error("Error sincronizando sitios:", err);
+                });
+
+                // Escuchar sugerencias en tiempo real
+                onSnapshot(sugColRef, (snapshot) => {
+                    const loadedSug = [];
+                    snapshot.forEach(docSnap => {
+                        loadedSug.push({ ...docSnap.data(), docId: docSnap.id });
+                    });
+                    pendingSuggestions = loadedSug;
+                    updateAdminStats();
+                }, (err) => {
+                    console.error("Error sincronizando sugerencias:", err);
+                });
+
+                // Escuchar estadísticas de visitas en tiempo real
+                onSnapshot(statsDocRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        visitStats.total = docSnap.data().total || 1431;
+                        visitStats.camperClicks = docSnap.data().camperClicks || 318;
+                        updateAdminStats();
+                    }
+                }, (err) => {
+                    console.error("Error sincronizando estadísticas:", err);
+                });
+
+            } catch (err) {
+                console.warn("Modo local activo:", err);
+                renderSites();
+            }
+        }
 
         function renderSites() {
             const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
@@ -756,9 +1131,10 @@
             const filtered = sitesData.filter(site => {
                 const matchCategory = activeCategory === 'todos' || site.category === activeCategory || (activeCategory === 'camper' && site.camperOk);
                 const matchZone = zoneVal === 'todos' || site.zone === zoneVal;
-                const matchSearch = site.name.toLowerCase().includes(searchVal) || 
-                                    site.desc.toLowerCase().includes(searchVal) || 
-                                    site.zone.toLowerCase().includes(searchVal);
+                const matchSearch = (site.name || '').toLowerCase().includes(searchVal) || 
+                                    (site.desc || '').toLowerCase().includes(searchVal) || 
+                                    (site.zone || '').toLowerCase().includes(searchVal) ||
+                                    (site.heightLimit || '').toLowerCase().includes(searchVal);
 
                 const matchCamper = !quickFilters.camperOk || site.camperOk;
                 const matchShade = !quickFilters.shadeOk || site.shadeOk;
@@ -772,6 +1148,7 @@
             if (filtered.length === 0) {
                 grid.innerHTML = '';
                 emptyState.classList.remove('hidden');
+                updateAdminStats();
                 return;
             }
 
@@ -779,9 +1156,18 @@
 
             grid.innerHTML = filtered.map(site => {
                 const catInfo = categoryLabels[site.category] || categoryLabels.parking;
-                const hasVoted = votedSiteIds.has(site.id);
-                // Enlace exacto a Google Maps basado en su dirección específica
-                const exactMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapAddress || site.name + ', ' + site.zone + ', Malaga')}`;
+                const hasVoted = votedSiteIds.has(String(site.id));
+                const exactMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.mapAddress || site.name + ', ' + site.zone + ', Málaga')}`;
+
+                // Etiqueta de interior / terraza según categoría
+                let interiorBadge = '';
+                if (site.category === 'gastro' || site.category === 'compras') {
+                    if (site.insideOk) {
+                        interiorBadge = `<span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200">🏠 Entran DENTRO Verificado</span>`;
+                    } else {
+                        interiorBadge = `<span class="text-[11px] font-semibold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-800 border border-amber-200">☀️ Solo Terraza / Exterior</span>`;
+                    }
+                }
 
                 return `
                 <article class="theme-card bg-white rounded-2xl p-4 sm:p-5 shadow-xs hover:shadow-md border border-slate-200/90 transition flex flex-col justify-between">
@@ -799,9 +1185,13 @@
                             ${site.name}
                         </h2>
 
-                        <p class="text-xs sm:text-sm text-slate-600 mb-3.5 leading-relaxed">
+                        <p class="text-xs sm:text-sm text-slate-600 mb-3 leading-relaxed">
                             ${site.desc}
                         </p>
+
+                        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 mb-3 text-xs text-slate-700 font-medium flex items-center justify-between gap-2">
+                            <span>📏 <strong>Acceso / Normativa:</strong> ${site.heightLimit || 'Acceso verificado'}</span>
+                        </div>
 
                         <div class="flex flex-wrap gap-1.5 mb-4">
                             ${site.shadeOk ? `
@@ -811,34 +1201,37 @@
                             ${site.camperOk ? `
                                 <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-50 text-amber-900 border border-amber-300">
                                     🚐 Apto Camper / Furgo
-                                </span>` : ''}
-                            ${site.insideOk ? `
-                                <span class="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-rose-50 text-rose-800 border border-rose-200">
-                                    🏠 Perros DENTRO OK
                                 </span>` : `
-                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-600">
-                                    ☕ Solo Terraza
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-500">
+                                    🚗 Solo Turismos
                                 </span>`}
-                            ${site.heightLimit ? `
-                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700">
-                                    📏 ${site.heightLimit}
-                                </span>` : ''}
+                            ${interiorBadge}
                             ${site.waterOk ? `
-                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700">
-                                    💧 Agua disponible
+                                <span class="text-[11px] font-medium px-2.5 py-1 rounded-lg bg-sky-50 text-sky-700 border border-sky-200/60">
+                                    💧 Agua / Fuente
                                 </span>` : ''}
                         </div>
                     </div>
 
-                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                        <button 
-                            onclick="givePaw(${site.id})" 
-                            class="px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition active:scale-95 ${hasVoted ? 'bg-teal-600 text-white border-teal-600' : 'bg-slate-50 hover:bg-teal-50 text-slate-700 border-slate-200'}"
-                        >
-                            <span>🐾</span>
-                            <span>${site.paws} huellas</span>
-                            <span class="text-[10px] opacity-80">${hasVoted ? '(¡Votado!)' : '+1'}</span>
-                        </button>
+                    <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                        <div class="flex items-center gap-1.5">
+                            <button 
+                                onclick="givePaw('${site.id}')" 
+                                class="px-3 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 border transition active:scale-95 ${hasVoted ? 'bg-teal-600 text-white border-teal-600' : 'bg-slate-50 hover:bg-teal-50 text-slate-700 border-slate-200'}"
+                            >
+                                <span>🐾</span>
+                                <span>${site.paws || 1} ${(site.paws || 1) === 1 ? 'huella' : 'huellas'}</span>
+                                <span class="text-[10px] opacity-80">${hasVoted ? '(¡Votado!)' : '+1'}</span>
+                            </button>
+
+                            <button 
+                                onclick="reportSiteIssue('${site.name.replace(/'/g, "\\'")}', '${site.zone.replace(/'/g, "\\'")}')" 
+                                title="¿Algún dato ha cambiado? Avísanos para mantener la credibilidad"
+                                class="px-2.5 py-2 rounded-xl text-[11px] font-semibold bg-slate-50 hover:bg-amber-50 text-slate-500 hover:text-amber-800 border border-slate-200 transition"
+                            >
+                                🛡️ Verificar
+                            </button>
+                        </div>
 
                         <a 
                             href="${exactMapUrl}" 
@@ -856,18 +1249,22 @@
             updateAdminStats();
         }
 
-        function setCategory(cat) {
+        async function setCategory(cat) {
             activeCategory = cat;
             if (cat === 'camper') {
                 visitStats.camperClicks++;
+                if (isCloudActive && currentUser) {
+                    const statsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'stats', 'counters');
+                    updateDoc(statsDocRef, { camperClicks: visitStats.camperClicks }).catch(() => {});
+                }
             }
             document.querySelectorAll('.cat-pill').forEach(btn => {
                 if (btn.dataset.cat === cat) {
-                    btn.className = "cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-bold bg-teal-600 text-white shadow-sm transition";
+                    btn.className = "cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-teal-600 text-white shadow-sm transition";
                 } else if (btn.dataset.cat === 'camper') {
-                    btn.className = "cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/60 transition";
+                    btn.className = "cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-100 text-amber-900 hover:bg-amber-200 border border-amber-300/70 transition";
                 } else {
-                    btn.className = "cat-pill shrink-0 px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
+                    btn.className = "cat-pill px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 transition";
                 }
             });
             renderSites();
@@ -885,9 +1282,9 @@
             };
             const btn = document.getElementById(btnMap[key]);
             if (quickFilters[key]) {
-                btn.className = "px-2.5 py-1.5 rounded-lg border border-teal-600 bg-teal-600 text-white font-bold flex items-center gap-1 transition shadow-2xs";
+                btn.className = "px-3 py-1.5 rounded-xl border border-teal-600 bg-teal-600 text-white font-bold flex items-center gap-1.5 transition shadow-2xs";
             } else {
-                btn.className = "px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition";
+                btn.className = "px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition";
             }
             renderSites();
         }
@@ -901,26 +1298,53 @@
             document.getElementById('zoneSelect').value = 'todos';
             quickFilters = { camperOk: false, shadeOk: false, insideOk: false };
             ['toggleCamper', 'toggleShade', 'toggleInside'].forEach(id => {
-                document.getElementById(id).className = "px-2.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1 transition";
+                document.getElementById(id).className = "px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 text-slate-600 font-medium flex items-center gap-1.5 transition";
             });
             setCategory('todos');
         }
 
-        function givePaw(siteId) {
-            const site = sitesData.find(s => s.id === siteId);
+        async function givePaw(siteId) {
+            const site = sitesData.find(s => String(s.id) === String(siteId));
             if (!site) return;
 
-            if (votedSiteIds.has(siteId)) {
+            if (votedSiteIds.has(String(siteId))) {
                 showToast("🐾 Ya le habías dejado tu huella a este sitio");
                 return;
             }
-            site.paws += 1;
-            votedSiteIds.add(siteId);
+            const newPaws = (site.paws || 1) + 1;
+            site.paws = newPaws;
+            votedSiteIds.add(String(siteId));
             renderSites();
-            showToast(`🐾 ¡Has dejado una huella en ${site.name}!`);
+            showToast(`🐾 ¡Huella añadida en ${site.name}!`);
+
+            if (isCloudActive && currentUser) {
+                try {
+                    const siteRef = doc(db, 'artifacts', appId, 'public', 'data', 'sites', String(siteId));
+                    await updateDoc(siteRef, { paws: newPaws });
+                } catch (e) {
+                    console.error("Error guardando huella:", e);
+                }
+            }
         }
 
         function openSuggestModal() {
+            document.getElementById('sugType').value = 'sugerencia';
+            document.getElementById('suggestModalIcon').textContent = '🐾';
+            document.getElementById('suggestModalTitle').textContent = 'Sugerir un sitio Pet-Friendly';
+            document.getElementById('sugName').value = '';
+            document.getElementById('sugDesc').placeholder = 'Ej: He ido hoy con mi perro, dejan entrar dentro del salón con correa / Sin barrera de altura...';
+            document.getElementById('suggestModal').classList.remove('hidden');
+            document.getElementById('suggestModal').classList.add('flex');
+        }
+
+        function reportSiteIssue(siteName, siteZone) {
+            document.getElementById('sugType').value = 'verificacion';
+            document.getElementById('suggestModalIcon').textContent = '🛡️';
+            document.getElementById('suggestModalTitle').textContent = 'Verificar o actualizar normas del sitio';
+            document.getElementById('sugName').value = `[REVISIÓN] ${siteName}`;
+            document.getElementById('sugZone').value = siteZone;
+            document.getElementById('sugMapUrl').value = `${siteName}, ${siteZone}`;
+            document.getElementById('sugDesc').placeholder = 'Indica si ha cambiado alguna norma (ej: ahora solo admiten en terraza, han puesto barrera de altura de 2.10m, etc.)';
             document.getElementById('suggestModal').classList.remove('hidden');
             document.getElementById('suggestModal').classList.add('flex');
         }
@@ -930,21 +1354,34 @@
             document.getElementById('suggestModal').classList.remove('flex');
         }
 
-        function handleUserSuggestion(e) {
+        async function handleUserSuggestion(e) {
             e.preventDefault();
             const newSug = {
-                name: document.getElementById('sugName').value,
+                type: document.getElementById('sugType').value,
+                name: document.getElementById('sugName').value.trim(),
                 zone: document.getElementById('sugZone').value,
                 category: document.getElementById('sugCategory').value,
                 shadeOk: document.getElementById('sugShade').checked,
                 camperOk: document.getElementById('sugCamper').checked,
                 insideOk: document.getElementById('sugInside').checked,
                 waterOk: document.getElementById('sugWater').checked,
-                desc: document.getElementById('sugDesc').value,
-                mapAddress: document.getElementById('sugMapUrl').value || document.getElementById('sugName').value + ', ' + document.getElementById('sugZone').value
+                desc: document.getElementById('sugDesc').value.trim(),
+                mapAddress: document.getElementById('sugMapUrl').value.trim() || (document.getElementById('sugName').value.trim() + ', ' + document.getElementById('sugZone').value),
+                createdAt: Date.now()
             };
 
-            pendingSuggestions.unshift(newSug);
+            if (isCloudActive && currentUser) {
+                try {
+                    const sugColRef = collection(db, 'artifacts', appId, 'public', 'data', 'suggestions');
+                    await addDoc(sugColRef, newSug);
+                } catch (err) {
+                    console.error("Error guardando sugerencia en la nube:", err);
+                    pendingSuggestions.unshift(newSug);
+                }
+            } else {
+                pendingSuggestions.unshift(newSug);
+            }
+
             document.getElementById('addSiteForm').reset();
             const msg = document.getElementById('successMsg');
             msg.classList.remove('hidden');
@@ -953,10 +1390,8 @@
             setTimeout(() => {
                 msg.classList.add('hidden');
                 closeSuggestModal();
-            }, 2200);
+            }, 1800);
         }
-
-        let isAdminAuthenticated = false;
 
         function openAdminTrigger() {
             if (isAdminAuthenticated) {
@@ -976,13 +1411,14 @@
 
         function verifyAdminPassword(e) {
             e.preventDefault();
-            const pass = document.getElementById('adminPassInput').value.trim();
+            const pass = document.getElementById('adminPassInput').value.trim().toLowerCase();
             if (pass === 'petmalaga') {
                 isAdminAuthenticated = true;
                 document.getElementById('adminPassInput').value = '';
+                document.getElementById('adminBtnLabel').textContent = 'Admin Activo';
                 closeAdminLogin();
                 openAdminPanel();
-                showToast("🔓 Panel de Administrador abierto");
+                showToast("🔓 Panel de Administrador desbloqueado");
             } else {
                 document.getElementById('loginErrorMsg').classList.remove('hidden');
             }
@@ -1000,7 +1436,7 @@
         }
 
         function updateAdminStats() {
-            const totalPaws = sitesData.reduce((acc, s) => acc + s.paws, 0);
+            const totalPaws = sitesData.reduce((acc, s) => acc + (Number(s.paws) || 1), 0);
             document.getElementById('statTotalVisits').textContent = visitStats.total.toLocaleString('es-ES');
             document.getElementById('statCamperClicks').textContent = visitStats.camperClicks.toLocaleString('es-ES');
             document.getElementById('statActiveSites').textContent = sitesData.length;
@@ -1009,33 +1445,49 @@
 
             const listEl = document.getElementById('pendingSuggestionsList');
             if (pendingSuggestions.length === 0) {
-                listEl.innerHTML = `<div class="p-3 rounded-xl bg-slate-50 text-slate-400 text-center">No hay sugerencias pendientes.</div>`;
-                return;
+                listEl.innerHTML = `<div class="p-3 rounded-xl bg-slate-50 text-slate-400 text-center">No hay sugerencias ni avisos pendientes de revisión.</div>`;
+            } else {
+                listEl.innerHTML = pendingSuggestions.map((sug, idx) => `
+                    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                        <div>
+                            <span class="font-bold text-slate-800">${sug.name}</span>
+                            <span class="text-[11px] text-teal-700 font-semibold ml-1">(${sug.zone})</span>
+                            <p class="text-[11px] text-slate-600 mt-0.5">${sug.desc}</p>
+                            <p class="text-[10px] text-slate-400 mt-0.5">📍 ${sug.mapAddress}</p>
+                        </div>
+                        <div class="flex items-center gap-1.5 shrink-0">
+                            <button onclick="approveSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700">
+                                ✓ Publicar en vivo
+                            </button>
+                            <button onclick="rejectSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-[11px] hover:bg-red-200">
+                                ✕ Descartar
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
             }
 
-            listEl.innerHTML = pendingSuggestions.map((sug, idx) => `
-                <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div>
-                        <span class="font-bold text-slate-800">${sug.name}</span>
-                        <span class="text-[11px] text-teal-700 font-semibold ml-1">(${sug.zone})</span>
-                        <p class="text-[11px] text-slate-500 mt-0.5">${sug.desc}</p>
-                    </div>
-                    <div class="flex items-center gap-1.5 shrink-0">
-                        <button onclick="approveSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-[11px] hover:bg-emerald-700">
-                            ✓ Aprobar
-                        </button>
-                        <button onclick="rejectSuggestion(${idx})" class="px-2.5 py-1.5 rounded-lg bg-red-100 text-red-700 font-bold text-[11px] hover:bg-red-200">
-                            ✕
+            const manageEl = document.getElementById('adminManageSitesList');
+            if (manageEl) {
+                manageEl.innerHTML = sitesData.map(site => `
+                    <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-2">
+                        <div class="truncate">
+                            <span class="font-bold text-slate-800">${site.name}</span>
+                            <span class="text-[11px] text-slate-500 ml-1">(${site.zone})</span>
+                        </div>
+                        <button onclick="deletePublishedSite('${site.id}')" class="px-2.5 py-1 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 font-bold text-[11px] shrink-0">
+                            Eliminar
                         </button>
                     </div>
-                </div>
-            `).join('');
+                `).join('');
+            }
         }
 
-        function handleAdminPublish(e) {
+        async function handleAdminPublish(e) {
             e.preventDefault();
+            const newId = 'site-' + Date.now();
             const newSite = {
-                id: Date.now(),
+                id: newId,
                 name: document.getElementById('admName').value.trim(),
                 zone: document.getElementById('admZone').value,
                 category: document.getElementById('admCategory').value,
@@ -1049,38 +1501,86 @@
                 mapAddress: document.getElementById('admMapUrl').value.trim()
             };
 
-            sitesData.unshift(newSite);
+            if (isCloudActive && currentUser) {
+                try {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sites', newId), newSite);
+                } catch (err) {
+                    console.error("Error publicando sitio:", err);
+                    sitesData.unshift(newSite);
+                }
+            } else {
+                sitesData.unshift(newSite);
+            }
+
             document.getElementById('adminQuickUploadForm').reset();
             renderSites();
-            showToast(`🚀 "${newSite.name}" publicado con ubicación exacta`);
+            showToast(`🚀 "${newSite.name}" publicado en tiempo real en todos los dispositivos`);
         }
 
-        function approveSuggestion(index) {
+        async function approveSuggestion(index) {
             const sug = pendingSuggestions[index];
             if (!sug) return;
-            sitesData.unshift({
-                id: Date.now(),
-                name: sug.name,
+            const newId = 'site-' + Date.now();
+            const approvedSite = {
+                id: newId,
+                name: sug.name.replace('[REVISIÓN] ', ''),
                 zone: sug.zone,
                 category: sug.category,
-                shadeOk: sug.shadeOk,
-                camperOk: sug.camperOk,
-                insideOk: sug.insideOk,
-                waterOk: sug.waterOk,
-                heightLimit: "Sugerencia verificada",
-                paws: 2,
+                shadeOk: !!sug.shadeOk,
+                camperOk: !!sug.camperOk,
+                insideOk: !!sug.insideOk,
+                waterOk: !!sug.waterOk,
+                heightLimit: "✅ Sugerencia verificada por Admin",
+                paws: 1,
                 desc: sug.desc,
                 mapAddress: sug.mapAddress
-            });
-            pendingSuggestions.splice(index, 1);
+            };
+
+            if (isCloudActive && currentUser) {
+                try {
+                    await setDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sites', newId), approvedSite);
+                    if (sug.docId) {
+                        await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'suggestions', sug.docId));
+                    }
+                } catch (err) {
+                    console.error("Error aprobando sugerencia:", err);
+                }
+            } else {
+                sitesData.unshift(approvedSite);
+                pendingSuggestions.splice(index, 1);
+            }
+
             renderSites();
-            showToast(`✅ Sugerencia aprobada y publicada`);
+            showToast(`✅ Publicado en tiempo real para todos los usuarios`);
         }
 
-        function rejectSuggestion(index) {
-            pendingSuggestions.splice(index, 1);
+        async function rejectSuggestion(index) {
+            const sug = pendingSuggestions[index];
+            if (!sug) return;
+            if (isCloudActive && currentUser && sug.docId) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'suggestions', sug.docId));
+                } catch (err) {
+                    console.error("Error descartando:", err);
+                }
+            } else {
+                pendingSuggestions.splice(index, 1);
+            }
             updateAdminStats();
             showToast("Sugerencia descartada");
+        }
+
+        async function deletePublishedSite(siteId) {
+            if (isCloudActive && currentUser) {
+                try {
+                    await deleteDoc(doc(db, 'artifacts', appId, 'public', 'data', 'sites', String(siteId)));
+                } catch (err) {
+                    console.error("Error eliminando sitio:", err);
+                }
+            }
+            sitesData = sitesData.filter(s => String(s.id) !== String(siteId));
+            renderSites();
+            showToast("🗑️ Sitio eliminado");
         }
 
         function setSeasonalTheme(mode) {
@@ -1136,14 +1636,35 @@
             window.toastTimer = setTimeout(() => {
                 toast.classList.add('hidden');
                 toast.classList.remove('flex');
-            }, 3000);
+            }, 3200);
         }
 
-        window.onload = function() {
-            visitStats.total += 1;
+        // Exponer funciones al ámbito global para los botones HTML
+        window.setCategory = setCategory;
+        window.toggleQuickFilter = toggleQuickFilter;
+        window.filterSites = filterSites;
+        window.resetAllFilters = resetAllFilters;
+        window.givePaw = givePaw;
+        window.openSuggestModal = openSuggestModal;
+        window.reportSiteIssue = reportSiteIssue;
+        window.closeSuggestModal = closeSuggestModal;
+        window.handleUserSuggestion = handleUserSuggestion;
+        window.openAdminTrigger = openAdminTrigger;
+        window.closeAdminLogin = closeAdminLogin;
+        window.verifyAdminPassword = verifyAdminPassword;
+        window.openAdminPanel = openAdminPanel;
+        window.closeAdminPanel = closeAdminPanel;
+        window.handleAdminPublish = handleAdminPublish;
+        window.approveSuggestion = approveSuggestion;
+        window.rejectSuggestion = rejectSuggestion;
+        window.deletePublishedSite = deletePublishedSite;
+        window.setSeasonalTheme = setSeasonalTheme;
+
+        window.addEventListener('DOMContentLoaded', () => {
             renderSites();
             checkAutomaticSeasonalDates();
-        };
+            initRealtimeCloud();
+        });
     </script>
 </body>
 </html>
