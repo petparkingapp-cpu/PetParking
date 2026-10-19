@@ -333,7 +333,7 @@
 
             <form onsubmit="verifyAdminPassword(event)" class="mt-4 space-y-3">
                 <p class="text-xs text-slate-600">
-                    Accede para ver las visitas en tiempo real, subir nuevos sitios al instante para todos los dispositivos o gestionar sugerencias.
+                    Accede para ver las visitas en tiempo real y gestionar sitios.
                 </p>
                 <div>
                     <input 
@@ -998,8 +998,8 @@
         };
         let votedSiteIds = new Set();
         let visitStats = {
-            total: 1430,
-            camperClicks: 318
+            total: 0,
+            camperClicks: 0
         };
         let isAdminAuthenticated = false;
         let db = null;
@@ -1061,13 +1061,13 @@
                     }
                 }
 
-                // Incrementar contador de visitas en la nube en tiempo real
+                // Incrementar contador de visitas en la nube en tiempo real desde 0
                 const statsSnap = await getDoc(statsDocRef);
                 if (!statsSnap.exists()) {
-                    await setDoc(statsDocRef, { total: 1431, camperClicks: 318 });
+                    await setDoc(statsDocRef, { total: 1, camperClicks: 0 });
                 } else {
-                    const currentTotal = statsSnap.data().total || 1430;
-                    const currentCamper = statsSnap.data().camperClicks || 318;
+                    const currentTotal = statsSnap.data().total || 0;
+                    const currentCamper = statsSnap.data().camperClicks || 0;
                     await setDoc(statsDocRef, { total: currentTotal + 1, camperClicks: currentCamper });
                 }
 
